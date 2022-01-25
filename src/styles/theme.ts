@@ -11,7 +11,7 @@ export const theme = extendTheme({
     gray: {
       600: "#707070",
     },
-    chardon: "##ffedde",
+    chardon: "#ffedde",
     negative: "#E60000",
     warning: "#FFCd07",
     sucess: "#168821",
