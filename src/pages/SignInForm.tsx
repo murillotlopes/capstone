@@ -20,6 +20,7 @@ export const SignInForm = ({ handleSignIn, errors, register }: SignInProps) => (
         h={[
             "60%", "60%", "55%", "55%"
         ]}
+        position={"relative"}
     >
         <Heading as="h3">Entrar</Heading>
         <input

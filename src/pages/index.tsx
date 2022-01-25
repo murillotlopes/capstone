@@ -51,11 +51,25 @@ export const SignIn = () => {
             bgGradient={"linear(to-r, bgColor 75%, primary 25%)"}
             h={"100vh"}
         >
-            <SignInForm
-                errors={errors}
-                register={register}
-                handleSignIn={handleSubmit(handleSignIn)}
+            <Image
+                src={Decor}
+                position={"absolute"}
+                w={[
+                    "45%", "45%", "12%", "12%"
+                ]}
+                h="auto"
+                top={[
+                    "40%", "15%", "40%", "25%"
+                ]}
+                right={[
+                    "60%", "85%", "85%", "85%"
+                ]}
             />
+                <SignInForm
+                    errors={errors}
+                    register={register}
+                    handleSignIn={handleSubmit(handleSignIn)}
+                />
         </Flex>
     )
 }
