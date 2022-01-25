@@ -1,12 +1,9 @@
-import Button from "./components/Button";
+import { SignIn } from "./pages";
 
 function App() {
-  return (
-    <div>
-      App
-      <Button text="something" />
-    </div>
-  );
+  return <div>
+    <SignIn/>
+  </div>;
 }
 
 export default App;
