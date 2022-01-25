@@ -26,6 +26,7 @@ interface AuthContextData {
     user: User
     accessToken: string
     signIn: (credentials: SignInCredentials) => Promise<void>
+    signUp: (credentials: SignInCredentials) => Promise<void>
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
@@ -47,6 +48,17 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         return {} as AuthState
     })
 
+    const signUp = useCallback(async ({ email, password }: SignInCredentials) => {
+      const response = await api.post("/users", { email, password });
+  
+      const { accessToken, user } = response.data;
+  
+      localStorage.setItem("@FindRecipes: accessToken", accessToken);
+      localStorage.setItem("@FindRecipes: user", JSON.stringify(user));
+  
+      setData({} as AuthState);
+    }, []);
+
     const signIn = useCallback(async ({ email, password }: SignInCredentials) => {
         const response = await api.post("/login", {email, password})
 
@@ -63,7 +75,8 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
             value={{
                 accessToken: data.accessToken,
                 user: data.user,
-                signIn
+                signIn,
+                signUp
             }}
         >
             {children}
@@ -72,3 +85,4 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 }
 
 export { AuthProvider, useAuth }
+
