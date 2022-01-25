@@ -1,9 +1,9 @@
 import { Flex, Heading } from "@chakra-ui/react"
 import { DeepMap, FieldError, FieldValues } from "react-hook-form"
-import Button from "../Components/Button"
-import { Input } from "../Components/Form/Input"
 import { FiUser } from "react-icons/fi"
 import { FiLock } from "react-icons/fi"
+import Button from "../components/Button"
+import { Input } from "../components/Form/Input"
 
 interface SignInProps {
     handleSignIn: () => void
