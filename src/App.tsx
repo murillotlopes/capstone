@@ -1,8 +1,8 @@
-import Button from "./Components/Button";
+import { SignIn } from "./pages";
 
 function App() {
-  return <div>App
-    <Button text="something"/>
+  return <div>
+    <SignIn/>
   </div>;
 }
 

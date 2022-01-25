@@ -1,92 +1,88 @@
-import {
-  createContext,
-  ReactNode,
-  useCallback,
-  useContext,
-  useState,
-} from "react";
+import { createContext, ReactNode, useCallback, useContext, useState } from "react";
 
-import { api } from "../services/api";
+import { api } from "../services/api"
 
 interface AuthProviderProps {
-  children: ReactNode;
+    children: ReactNode
 }
 
 interface User {
-  username: string;
-  email: string;
-  id: string;
+    username: string
+    email: string
+    id: string
 }
 
 interface AuthState {
-  accessToken: string;
-  user: User;
+    accessToken: string
+    user: User
 }
 
 interface SignInCredentials {
-  email: string;
-  password: string;
+    email: string
+    password: string
 }
 
 interface AuthContextData {
-  user: User;
-  accessToken: string;
-  signIn: (credentials: SignInCredentials) => Promise<void>;
-  signUp: (credentials: SignInCredentials) => Promise<void>;
+    user: User
+    accessToken: string
+    signIn: (credentials: SignInCredentials) => Promise<void>
+    signUp: (credentials: SignInCredentials) => Promise<void>
 }
 
-const AuthContext = createContext<AuthContextData>({} as AuthContextData);
+const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 
-const useAuth = () => useContext(AuthContext);
+const useAuth = () => useContext(AuthContext)
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [data, setData] = useState<AuthState>(() => {
-    const accessToken = localStorage.getItem("@FindRecipes: accessToken");
-    const user = localStorage.getItem("@FindRecipes: user");
+    const [data, setData] = useState<AuthState>(() => {
+    
+        const accessToken = localStorage.getItem("@FindRecipes: accessToken")
+        const user = localStorage.getItem("@FindRecipes: user")
 
-    if (accessToken && user) {
-      return {
-        accessToken,
-        user: JSON.parse(user),
-      };
-    }
-    return {} as AuthState;
-  });
+        if (accessToken && user) {
+            return {
+                accessToken,
+                user: JSON.parse(user)
+            }
+        }
+        return {} as AuthState
+    })
 
-  const signUp = useCallback(async ({ email, password }: SignInCredentials) => {
-    const response = await api.post("/users", { email, password });
+    const signUp = useCallback(async ({ email, password }: SignInCredentials) => {
+      const response = await api.post("/users", { email, password });
+  
+      const { accessToken, user } = response.data;
+  
+      localStorage.setItem("@FindRecipes: accessToken", accessToken);
+      localStorage.setItem("@FindRecipes: user", JSON.stringify(user));
+  
+      setData({} as AuthState);
+    }, []);
 
-    const { accessToken, user } = response.data;
+    const signIn = useCallback(async ({ email, password }: SignInCredentials) => {
+        const response = await api.post("/login", {email, password})
 
-    localStorage.setItem("@FindRecipes: accessToken", accessToken);
-    localStorage.setItem("@FindRecipes: user", JSON.stringify(user));
+        const { accessToken, user } = response.data
 
-    setData({} as AuthState);
-  }, []);
+        localStorage.setItem("@FindRecipes: accessToken", accessToken)
+        localStorage.setItem("@FindRecipes: user", JSON.stringify(user))
 
-  const signIn = useCallback(async ({ email, password }: SignInCredentials) => {
-    const response = await api.post("/login", { email, password });
+        setData({} as AuthState)
+    }, [])
 
-    const { accessToken, user } = response.data;
+    return (
+        <AuthContext.Provider
+            value={{
+                accessToken: data.accessToken,
+                user: data.user,
+                signIn,
+                signUp
+            }}
+        >
+            {children}
+        </AuthContext.Provider>
+    )
+}
 
-    localStorage.setItem("@FindRecipes: accessToken", accessToken);
-    localStorage.setItem("@FindRecipes: user", JSON.stringify(user));
+export { AuthProvider, useAuth }
 
-    setData({} as AuthState);
-  }, []);
-
-  return (
-    <AuthContext.Provider
-      value={{
-        accessToken: data.accessToken,
-        user: data.user,
-        signIn,
-        signUp,
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
-};
-
-export { AuthProvider, useAuth };
