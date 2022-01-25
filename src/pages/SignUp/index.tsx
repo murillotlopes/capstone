@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Flex, Image } from "@chakra-ui/react";
-import Decor from "../assets/plant.png";
+import Decor from "../../assets/plant.png";
 import { useAuth } from "../../contexts/Auth";
 
 interface SignUpData {
