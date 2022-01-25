@@ -3,7 +3,7 @@ import { SignInForm } from "./SignInForm"
 import { useForm } from "react-hook-form"
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
-import { Flex, Image } from "@chakra-ui/react"
+import { Flex, Heading, Image } from "@chakra-ui/react"
 import Decor from "../assets/plant.png"
 
 interface SignInData {
