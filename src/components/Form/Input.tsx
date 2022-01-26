@@ -28,7 +28,7 @@ type inputColorsOption = {
 };
 
 const InputColor: inputColorsOption = {
-  error: "red0",
+  error: "red",
   default: "gray",
   focus: "gray",
   filled: "green",
@@ -57,7 +57,7 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
     if (inputValue.length > 1 && !error) {
       return setInputStatus("filled");
     }
-  }, []);
+  }, [error]);
   return (
     <FormControl>
       {!!label && <FormLabel>{label}</FormLabel>}
@@ -70,6 +70,7 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
         )}
 
         <ChakraInput
+          ref={ref}
           h="50px"
           name={name}
           id={name}
