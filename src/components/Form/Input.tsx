@@ -35,7 +35,7 @@ const InputColor: inputColorsOption = {
 };
 
 const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
-  { label, name, error, icon: Icon, ...rest },
+  { label, name, error = null, icon: Icon, ...rest },
   ref
 ) => {
   const [inputValue, setInputValue] = useState("");
@@ -72,6 +72,7 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
         <ChakraInput
           h="50px"
           name={name}
+          id={name}
           variant="outline"
           {...rest}
           color={InputColor[inputStatus]}

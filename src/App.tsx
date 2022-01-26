@@ -1,9 +1,11 @@
-import Button from "./Components/Button";
+import { Routes } from "./routes";
 
 function App() {
-  return <div>App
-    <Button text="something"/>
-  </div>;
+  return (
+    <div>
+      <Routes />
+    </div>
+  );
 }
 
 export default App;
