@@ -11,6 +11,7 @@ export const theme = extendTheme({
     gray: {
       600: "#707070",
     },
+    bgColor: "#FFF5EC",
     chardon: "#ffedde",
     negative: "#E60000",
     warning: "#FFCd07",
