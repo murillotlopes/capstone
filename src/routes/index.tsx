@@ -8,10 +8,10 @@ import { Route } from "./Route";
 export const Routes = () => {
   return (
     <Switch>
-      <Route exact path="/" component={Home} />
-      <Route path="/signin" component={SignIn} />
-      <Route path="/signup" component={SignUp} />
-      <Route path="/dashboard" component={Dashboard} isPrivate />
+      <Route exact path="/" page={Home} />
+      <Route path="/signin" page={SignIn} />
+      <Route path="/signup" page={SignUp} />
+      <Route path="/dashboard" page={Dashboard} isPrivate />
     </Switch>
   );
 };
