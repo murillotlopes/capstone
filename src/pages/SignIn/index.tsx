@@ -3,7 +3,7 @@ import { SignInForm } from "./SignInForm";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Flex, Heading, Image } from "@chakra-ui/react";
+import { Flex, Image, Link, Text } from "@chakra-ui/react";
 import Decor from "../../assets/plant.png";
 
 interface SignInData {
@@ -41,19 +41,32 @@ export const SignIn = () => {
 
   return (
     <Flex
-      justifyContent={"center"}
+      justifyContent={"flex-start"}
       alignItems={"center"}
       bgGradient={"linear(to-r, bgColor 75%, primary 25%)"}
       h={"100vh"}
     >
+      <Flex
+        h={"100vh"}
+        flexDirection={"column"}
+        justifyContent={"space-between"}
+        position={["absolute", "relative", "relative", "relative"]}
+      >
+        <Link href='/' textDecor={"none"} _hover={{textDecor:"none"}} >
+          <Text
+            fontSize={['2rem','2rem', "3rem", "3rem"]}
+            margin={"1rem auto auto 1rem"}
+            fontWeight='700'
+            color='primary'
+            textTransform="uppercase"
+            lineHeight={['45px','65px']}
+          >Find Recipes</Text>
+        </Link>
       <Image
         src={Decor}
-        position={"absolute"}
-        w={["45%", "45%", "12%", "12%"]}
-        h="auto"
-        top={["40%", "15%", "40%", "25%"]}
-        right={["60%", "85%", "85%", "85%"]}
+        w={["25vw", "25vw", "10vw", "10vw"]}
       />
+      </Flex>
       <SignInForm
         errors={errors}
         register={register}

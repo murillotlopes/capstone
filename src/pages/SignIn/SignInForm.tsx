@@ -19,13 +19,14 @@ export const SignInForm = ({ handleSignIn, errors, register }: SignInProps) => (
     bgColor={"bgColor"}
     justifyContent={"space-evenly"}
     alignItems={"center"}
-    w={["90%", "80%", "40%", "40%"]}
-    h={["60%", "60%", "70%", "70%"]}
+    w={["90%", "55%", "40%", "40%"]}
+    h={["60%", "60%", "400px", "450px"]}
     position={"relative"}
     padding={"5rem"}
-    boxShadow="md"
+    boxShadow="lg"
     p="6"
-    rounded="md"
+    rounded="lg"
+    margin={["0 auto", "0 auto", "0", "0"]}
   >
     <Heading color={"violet.900"} as="h3">
       Entrar
