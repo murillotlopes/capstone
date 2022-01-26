@@ -18,14 +18,19 @@ export const RecipePage = ( recipe: Recipe ) => {
             key={recipe.id}
             bgGradient={"linear(to-r, bgColor 75%, primary 25%)"}
             h={"100vh"}
-            flexDir={"column"}
+            flexDir={["column", "column", "row-reverse", "row-reverse"]}
             justifyContent={"center"}
             alignItems={"center"}
         >
-            <Image src={recipe.imagem} width={"100vw"} borderRadius={"5px 0px 0px 525px"} />
+            <Image 
+            src={recipe.imagem} 
+            width={["100vw", "100vw", "50vw", "50vw"]} 
+            borderRadius={"5px 0px 0px 525px"} />
+            <Flex flexDir={"column"} >
             <Flex 
                 justifyContent={"flex-start"} 
-                margin="2.5rem auto"
+                margin={["2.5rem auto", "2.5rem auto", "auto auto auto 2.5rem", "auto auto auto 2.5rem"]}
+                width={["100vw", "100vw", "50vw", "50vw"]}
             >
                 <Box
                 width={"40%"}
@@ -40,20 +45,22 @@ export const RecipePage = ( recipe: Recipe ) => {
                 >
                     <Text>Ingredientes</Text>
                     <ul>
-                        <li>Lorem ipsum</li>
-                        <li>Lorem ipsum</li>
-                        <li>Lorem ipsum</li>
+                    <li>Lorem</li>
+                    <li>Lorem</li>
+                    <li>Lorem</li>
                     </ul>
                 </Box>
             </Flex>
             <Box
-                width={"90vw"}
+                width={["90vw", "90vw", "50vw", "50vw"]}
                 bgColor={"white"}
                 borderRadius={"25px"}
+                marginLeft={["auto", "auto", "2.5rem", "2.5rem"]}
             >
                 <Text>Receita</Text>
                 <Text>{recipe.modo_de_preparo}</Text>
             </Box>
+            </Flex>
         </Flex>
     )
 }
