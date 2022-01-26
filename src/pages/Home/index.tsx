@@ -31,7 +31,7 @@ export const Home = () => {
                     fontWeight="700"
                     flexDir={['column', 'row', 'row', 'row']}    
                 >   
-                    <Link href='/singin'>
+                    <Link href='/signin'>
                         <Text mr={["10px", "15px", "15px", "40px"]}>Entrar</Text>
                     </Link>
 
