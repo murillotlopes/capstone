@@ -1,4 +1,4 @@
-import { Flex, HStack, Box, Image, Text, VStack } from "@chakra-ui/react";
+import { Flex, Box, Image, Text } from "@chakra-ui/react";
 import IconFood from "../../assets/IconFood.png";
 import { AiOutlineRight } from "react-icons/ai";
 import { useState } from "react";
@@ -28,6 +28,7 @@ export const MenuList = () => {
         justifyContent={"center"}
         alignItems={"center"}
         boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px"
+        _hover={{ cursor: "pointer" }}
       >
         <Flex
           flexDir={["row", "column", "column", "column"]}
@@ -76,6 +77,7 @@ export const MenuList = () => {
         justifyContent={"center"}
         alignItems={"center"}
         boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px"
+        _hover={{ cursor: "pointer" }}
       >
         <Flex
           flexDir={["row", "column", "column", "column"]}
@@ -124,6 +126,7 @@ export const MenuList = () => {
         justifyContent={"center"}
         alignItems={"center"}
         boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px"
+        _hover={{ cursor: "pointer" }}
       >
         <Flex
           flexDir={["row", "column", "column", "column"]}
