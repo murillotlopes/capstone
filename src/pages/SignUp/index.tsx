@@ -2,7 +2,7 @@ import { SignUpForm } from "./SignUpForm";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Flex, Image, useDisclosure } from "@chakra-ui/react";
+import { Flex, Image, useDisclosure, useToast } from "@chakra-ui/react";
 import Decor from "../../assets/plant.png";
 import { useAuth } from "../../contexts/Auth";
 import ModalError from "../../components/ModalError"
@@ -15,6 +15,8 @@ interface SignUpData {
 }
 
 export const SignUp = () => {
+
+    const toast = useToast();
 
   const {isOpen, onClose, onOpen} = useDisclosure();
 
@@ -38,11 +40,17 @@ export const SignUp = () => {
   });
 
   const handleSignUp = (data: SignUpData) => {
-
-    signUp(data)
+    const currentData = { email: data.email, password: data.password}
+    signUp(currentData)
       .then((_) => {
         console.log(data);
-        // Adicionar toast
+        toast({
+          title: 'Account created.',
+          description: "We've created your account for you.",
+          status: 'success',
+          duration: 9000,
+          isClosable: true,
+        })
       })
       .catch((err) => {
         console.log(err);
