@@ -1,14 +1,21 @@
 import { Flex, Heading } from "@chakra-ui/react";
-import { DeepMap, FieldError, FieldValues } from "react-hook-form";
+import { DeepMap, FieldError, FieldValues, UseFormRegister } from "react-hook-form";
 import { FiUser } from "react-icons/fi";
 import { FiLock } from "react-icons/fi";
 import Button from "../../components/Button";
 import { Input } from "../../components/Form/Input";
 
+
+interface SignInData {
+  email: string;
+  password: string;
+}
+
+
 interface SignInProps {
   handleSignIn: () => void;
   errors: DeepMap<FieldValues, FieldError>;
-  register: any;
+  register: UseFormRegister<SignInData>;
 }
 
 export const SignInForm = ({ handleSignIn, errors, register }: SignInProps) => (

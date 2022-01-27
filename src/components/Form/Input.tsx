@@ -6,6 +6,7 @@ import {
   InputProps as ChakraInputProps,
   InputLeftElement,
   forwardRef,
+  FormErrorMessage,
 } from "@chakra-ui/react";
 import {
   ForwardRefRenderFunction,
@@ -28,48 +29,56 @@ type inputColorsOption = {
 };
 
 const InputColor: inputColorsOption = {
-  error: "red",
-  default: "gray",
-  focus: "gray",
-  filled: "green",
+  error: "negative",
+  default: "gray.600",
+  focus: "gray.600",
+  filled: "sucess",
 };
 
 const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
-  { label, name, error = null, icon: Icon, ...rest },
+  { label, name, error=null , icon: Icon, ...rest },
   ref
 ) => {
   const [inputValue, setInputValue] = useState("");
   const [inputStatus, setInputStatus] = useState("default");
+    useEffect(() => {
+    if (!!error) {
+      return setInputStatus("error");
+    }
+  }, [error]);
 
   const InputFocus = useCallback(() => {
+
     if (!error) {
       return setInputStatus("focus");
     }
   }, [error]);
 
-  useEffect(() => {
-    if (error) {
-      return setInputStatus("error");
-    }
-  }, [error]);
+
 
   const InputBlur = useCallback(() => {
     if (inputValue.length > 1 && !error) {
       return setInputStatus("filled");
+    }else if (!!error){
+      return setInputStatus("error");
     }
-  }, [error]);
+  }, [error,inputValue]);
+
+
   return (
-    <FormControl>
+    <FormControl isInvalid={!!error}>
       {!!label && <FormLabel>{label}</FormLabel>}
 
       <InputGroup>
         {Icon && (
-          <InputLeftElement>
+          <InputLeftElement  color={InputColor[inputStatus]}>
             <Icon />
           </InputLeftElement>
         )}
-
+        
         <ChakraInput
+        _hover={{bg: "violet.500"}}
+        border="2px"
           ref={ref}
           h="50px"
           name={name}
@@ -78,11 +87,13 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
           {...rest}
           color={InputColor[inputStatus]}
           borderColor={InputColor[inputStatus]}
-          onBlurCapture={InputBlur}
-          onFocus={InputFocus}
+          onBlur={InputBlur}
+          onFocusCapture={InputFocus}
           onChangeCapture={(e) => setInputValue(e.currentTarget.value)}
         />
       </InputGroup>
+              {!!error && <FormErrorMessage> {error.message}</FormErrorMessage>}
+
     </FormControl>
   );
 };
