@@ -9,7 +9,7 @@ import { useAuth } from "../../contexts/Auth";
 interface SignUpData {
   email: string;
   password: string;
-  confirm_password:string; 
+  confirm_password:string;   
 }
 
 export const SignUp = () => {
