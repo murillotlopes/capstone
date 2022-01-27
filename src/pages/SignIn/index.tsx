@@ -44,6 +44,7 @@ export const SignIn = () => {
       .then((_) => {
         
         toast({
+          position:"top",
           title: `Seja bem-vindo(a).`,
           description: "Ótimo te ver por aqui novamente!",
           status: 'success',

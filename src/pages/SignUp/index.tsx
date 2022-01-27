@@ -52,6 +52,7 @@ export const SignUp = () => {
       .then((_) => {
         console.log(data);
         toast({
+          position:"top",
           title: 'Conta criada com sucesso! ',
           description: "Você será redirecionado.",
           status: 'success',
