@@ -3,8 +3,10 @@ import { SignInForm } from "./SignInForm";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Flex, Image, Link, Text } from "@chakra-ui/react";
+import { Flex, Image, Link, Text, useDisclosure } from "@chakra-ui/react";
 import Decor from "../../assets/plant.png";
+import ModalError from "../../components/ModalError"
+
 
 interface SignInData {
   email: string;
@@ -12,6 +14,9 @@ interface SignInData {
 }
 
 export const SignIn = () => {
+
+  const {isOpen, onOpen,onClose} =   useDisclosure()
+
   const { signIn } = useAuth();
 
   const SignInSchema = yup.object().shape({
@@ -37,10 +42,12 @@ export const SignIn = () => {
       })
       .catch((err) => {
         console.log(err);
-        // Adicionar toast
+        onOpen()
       });
   };
 
+
+  
   return (
     <Flex
       justifyContent={"flex-start"}
@@ -73,6 +80,7 @@ export const SignIn = () => {
         register={register}
         handleSignIn={handleSubmit(handleSignIn)}
       />
+      <ModalError isOpen={isOpen} onClose={onClose} signIn />
     </Flex>
   );
 };

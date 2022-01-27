@@ -2,9 +2,11 @@ import { SignUpForm } from "./SignUpForm";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Flex, Image } from "@chakra-ui/react";
+import { Flex, Image, useDisclosure, useToast } from "@chakra-ui/react";
 import Decor from "../../assets/plant.png";
 import { useAuth } from "../../contexts/Auth";
+import ModalError from "../../components/ModalError"
+
 
 interface SignUpData {
   email: string;
@@ -13,13 +15,16 @@ interface SignUpData {
 }
 
 export const SignUp = () => {
+
+    const toast = useToast();
+
+  const {isOpen, onClose, onOpen} = useDisclosure();
+
+
   const { signUp } = useAuth();
   const SignUpSchema = yup.object().shape({
     email: yup.string().required("Campo obrigatório").email("E-mail inválido"),
-    password: yup.string().required("Campo obrigatório").matches(
-      /(?=^.{8,}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
-      "Senha deverá conter no mínimo uma letra minúscula, uma maiúscula, um número, um caractere especial e com o comprimento mínimo de oito caracteres."
-    ),
+    password: yup.string().required("Campo obrigatório"),
     confirm_password: yup
       .string()
       .required("Confirmação de senha obrigatória")
@@ -35,17 +40,26 @@ export const SignUp = () => {
   });
 
   const handleSignUp = (data: SignUpData) => {
-
-    signUp(data)
+    const currentData = { email: data.email, password: data.password}
+    signUp(currentData)
       .then((_) => {
         console.log(data);
-        // Adicionar toast
+        toast({
+          title: 'Conta criada com sucesso! ',
+          description: "Você ",
+          status: 'success',
+          duration: 9000,
+          isClosable: true,
+        })
       })
       .catch((err) => {
         console.log(err);
-        // Adicionar toast
+        onOpen()
       });
   };
+
+
+
 
   return (
     <Flex
@@ -67,6 +81,7 @@ export const SignUp = () => {
         register={register}
         handleSignUp={handleSubmit(handleSignUp)}
       />
+      <ModalError isOpen={isOpen} onClose={onClose}  />
     </Flex>
   );
 };
