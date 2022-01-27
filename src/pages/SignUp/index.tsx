@@ -24,10 +24,7 @@ export const SignUp = () => {
   const { signUp } = useAuth();
   const SignUpSchema = yup.object().shape({
     email: yup.string().required("Campo obrigatório").email("E-mail inválido"),
-    password: yup.string().required("Campo obrigatório").matches(
-      /(?=^.{8,}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
-      "Senha deverá conter no mínimo uma letra minúscula, uma maiúscula, um número, um caractere especial e com o comprimento mínimo de oito caracteres."
-    ),
+    password: yup.string().required("Campo obrigatório"),
     confirm_password: yup
       .string()
       .required("Confirmação de senha obrigatória")
@@ -48,8 +45,8 @@ export const SignUp = () => {
       .then((_) => {
         console.log(data);
         toast({
-          title: 'Account created.',
-          description: "We've created your account for you.",
+          title: 'Conta criada com sucesso! ',
+          description: "Você ",
           status: 'success',
           duration: 9000,
           isClosable: true,
