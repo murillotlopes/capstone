@@ -23,11 +23,7 @@ export const SignIn = () => {
     email: yup.string().required("Campo obrigatório").email("E-mail inválido"),
     password: yup
       .string()
-      .required("Campo obrigatório")
-      .matches(
-        /(?=^.{8,}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
-        "Senha deverá conter no mínimo uma letra minúscula, uma maiúscula, um número, um caractere especial e com o comprimento mínimo de oito caracteres."
-      ),
+      .required("Campo obrigatório"),
   });
 
   const {
