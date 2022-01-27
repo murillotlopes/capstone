@@ -35,7 +35,7 @@ const PublicationProvider = ({ children }: PublicationProviderProps ) => {
 
     useEffect(() => {
         api 
-        .get(`publications`, {
+        .get <Publication[]> (`publications`, {
             headers: {
                 Authorization: `Bearer ${accessToken} `
             },
