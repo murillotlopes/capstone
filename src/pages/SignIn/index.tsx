@@ -16,7 +16,13 @@ export const SignIn = () => {
 
   const SignInSchema = yup.object().shape({
     email: yup.string().required("Campo obrigatório").email("E-mail inválido"),
-    password: yup.string().required("Campo obrigatório"),
+    password: yup
+      .string()
+      .required("Campo obrigatório")
+      .matches(
+        /(?=^.{8,}$)((?=.*\d)(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
+        "Senha deverá conter no mínimo uma letra minúscula, uma maiúscula, um número, um caractere especial e com o comprimento mínimo de oito caracteres."
+      ),
   });
 
   const {
@@ -52,20 +58,19 @@ export const SignIn = () => {
         justifyContent={"space-between"}
         position={["absolute", "relative", "relative", "relative"]}
       >
-        <Link href='/' textDecor={"none"} _hover={{textDecor:"none"}} >
+        <Link href="/" textDecor={"none"} _hover={{ textDecor: "none" }}>
           <Text
-            fontSize={['2rem','2rem', "3rem", "3rem"]}
+            fontSize={["2rem", "2rem", "3rem", "3rem"]}
             margin={"1rem auto auto 1rem"}
-            fontWeight='700'
-            color='primary'
+            fontWeight="700"
+            color="primary"
             textTransform="uppercase"
-            lineHeight={['45px','65px']}
-          >Find Recipes</Text>
+            lineHeight={["45px", "65px"]}
+          >
+            Find Recipes
+          </Text>
         </Link>
-      <Image
-        src={Decor}
-        w={["25vw", "25vw", "10vw", "10vw"]}
-      />
+        <Image src={Decor} w={["25vw", "25vw", "10vw", "10vw"]} />
       </Flex>
       <SignInForm
         errors={errors}
