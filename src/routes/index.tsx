@@ -4,6 +4,7 @@ import { SignUp } from "../pages/SignUp";
 import { Dashboard } from "../pages/Dashboard";
 import { Home } from "../pages/Home";
 import { Route } from "./Route";
+import { RecipePage } from "../components/RecipePage";
 
 export const Routes = () => {
   return (
@@ -12,6 +13,7 @@ export const Routes = () => {
       <Route path="/signin" page={SignIn} />
       <Route path="/signup" page={SignUp} />
       <Route path="/dashboard" page={Dashboard} isPrivate />
+      <Route path="/recipe" page={RecipePage} isPrivate />
     </Switch>
   );
 };
