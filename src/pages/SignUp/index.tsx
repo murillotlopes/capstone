@@ -2,9 +2,11 @@ import { SignUpForm } from "./SignUpForm";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Flex, Image } from "@chakra-ui/react";
+import { Flex, Image, useDisclosure } from "@chakra-ui/react";
 import Decor from "../../assets/plant.png";
 import { useAuth } from "../../contexts/Auth";
+import ModalError from "../../components/ModalError"
+
 
 interface SignUpData {
   email: string;
@@ -13,6 +15,10 @@ interface SignUpData {
 }
 
 export const SignUp = () => {
+
+  const {isOpen, onClose, onOpen} = useDisclosure();
+
+
   const { signUp } = useAuth();
   const SignUpSchema = yup.object().shape({
     email: yup.string().required("Campo obrigatório").email("E-mail inválido"),
@@ -40,9 +46,12 @@ export const SignUp = () => {
       })
       .catch((err) => {
         console.log(err);
-        // Adicionar toast
+        onOpen()
       });
   };
+
+
+
 
   return (
     <Flex
@@ -64,6 +73,7 @@ export const SignUp = () => {
         register={register}
         handleSignUp={handleSubmit(handleSignUp)}
       />
+      <ModalError isOpen={isOpen} onClose={onClose}  />
     </Flex>
   );
 };
