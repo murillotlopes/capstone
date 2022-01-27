@@ -46,7 +46,7 @@ export const SignUp = () => {
 
   const handleSignUp = (data: SignUpData) => {
     
-    const currentData = { email: data.email, password: data.password}
+    const currentData = {name:data.name, email: data.email, password: data.password}
     console.log(currentData)
     signUp(currentData)
       .then((_) => {
