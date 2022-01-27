@@ -9,6 +9,7 @@ import { useAuth } from "../../contexts/Auth";
 interface SignUpData {
   email: string;
   password: string;
+  confirm_password:string;
 }
 
 export const SignUp = () => {
@@ -31,6 +32,7 @@ export const SignUp = () => {
   });
 
   const handleSignUp = (data: SignUpData) => {
+
     signUp(data)
       .then((_) => {
         console.log(data);
