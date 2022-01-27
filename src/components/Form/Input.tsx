@@ -77,7 +77,7 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
         )}
         
         <ChakraInput
-        _hover={{bg: "violet.500"}}
+        _hover={{bg: "gray.600"}}
         border="2px"
           ref={ref}
           h="50px"
