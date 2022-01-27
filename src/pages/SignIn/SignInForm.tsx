@@ -45,7 +45,6 @@ export const SignInForm = ({ handleSignIn, errors, register }: SignInProps) => (
         error={errors.email}
         placeholder="E-MAIL"
         name="email"
-        mb={"1rem"}
       />
       <Input
         icon={FiLock}

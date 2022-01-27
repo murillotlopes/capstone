@@ -7,7 +7,6 @@ interface AuthProviderProps {
 }
 
 interface User {
-    username: string
     email: string
     id: string
 }
@@ -36,8 +35,8 @@ const useAuth = () => useContext(AuthContext)
 const AuthProvider = ({ children }: AuthProviderProps) => {
     const [data, setData] = useState<AuthState>(() => {
     
-        const accessToken = localStorage.getItem("@FindRecipes: accessToken")
-        const user = localStorage.getItem("@FindRecipes: user")
+        const accessToken = localStorage.getItem("@FindRecipes:accessToken")
+        const user = localStorage.getItem("@FindRecipes:user")
 
         if (accessToken && user) {
             return {
@@ -56,7 +55,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       localStorage.setItem("@FindRecipes: accessToken", accessToken);
       localStorage.setItem("@FindRecipes: user", JSON.stringify(user));
   
-      setData({} as AuthState);
+      setData({ accessToken, user } as AuthState);
     }, []);
 
     const signIn = useCallback(async ({ email, password }: SignInCredentials) => {
@@ -64,10 +63,10 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
         const { accessToken, user } = response.data
 
-        localStorage.setItem("@FindRecipes: accessToken", accessToken)
-        localStorage.setItem("@FindRecipes: user", JSON.stringify(user))
+        localStorage.setItem("@FindRecipes:accessToken", accessToken)
+        localStorage.setItem("@FindRecipes:user", JSON.stringify(user))
 
-        setData({} as AuthState)
+        setData({ accessToken, user } as AuthState)
     }, [])
 
     return (
@@ -76,7 +75,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
                 accessToken: data.accessToken,
                 user: data.user,
                 signIn,
-                signUp
+                signUp,
             }}
         >
             {children}
