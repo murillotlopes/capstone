@@ -6,6 +6,7 @@ import  Button  from "../../components/Button";
 import { Input } from "../../components/Form/Input";
 
 interface SignUpData {
+  name:string;
   email: string;
   password: string;
   confirm_password:string;
@@ -37,6 +38,13 @@ export const SignUpForm = ({ handleSignUp, errors, register }: SignUpProps) => (
       Entrar
     </Heading>
     <Flex flexDirection={"column"}>
+    <Input
+        icon={FiUser}
+        {...register("name")}
+        error={errors.name}
+        placeholder="NOME"
+        name="name"
+      />
       <Input
         icon={FiUser}
         {...register("email")}

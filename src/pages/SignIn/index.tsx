@@ -3,7 +3,7 @@ import { SignInForm } from "./SignInForm";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Flex, Image, Link, Text, useDisclosure } from "@chakra-ui/react";
+import { Flex, Image, Link, Text, useDisclosure, useToast } from "@chakra-ui/react";
 import Decor from "../../assets/plant.png";
 import ModalError from "../../components/ModalError"
 
@@ -15,9 +15,12 @@ interface SignInData {
 
 export const SignIn = () => {
 
+  const toast = useToast();
+
+
   const {isOpen, onOpen,onClose} =   useDisclosure()
 
-  const { signIn } = useAuth();
+  const { signIn, user } = useAuth();
 
   const SignInSchema = yup.object().shape({
     email: yup.string().required("Campo obrigatório").email("E-mail inválido"),
@@ -35,10 +38,18 @@ export const SignIn = () => {
   });
 
   const handleSignIn = (data: SignInData) => {
+
+    console.log(data);
     signIn(data)
       .then((_) => {
-        console.log(data);
-        // Adicionar toast
+        
+        toast({
+          title: `Seja bem-vindo(a).`,
+          description: "Ótimo te ver por aqui novamente!",
+          status: 'success',
+          duration: 9000,
+          isClosable: true,
+        })
       })
       .catch((err) => {
         console.log(err);
