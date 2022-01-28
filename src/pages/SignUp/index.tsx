@@ -2,7 +2,14 @@ import { SignUpForm } from "./SignUpForm";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Flex, Image, useDisclosure, useToast } from "@chakra-ui/react";
+import {
+  Flex,
+  Image,
+  Link,
+  Text,
+  useDisclosure,
+  useToast,
+} from "@chakra-ui/react";
 import Decor from "../../assets/plant.png";
 import { useAuth } from "../../contexts/Auth";
 import ModalError from "../../components/ModalError";
@@ -42,7 +49,6 @@ export const SignUp = () => {
       email: data.email,
       password: data.password,
     };
-
     signUp(currentData)
       .then((_) => {
         console.log(data);
@@ -64,19 +70,38 @@ export const SignUp = () => {
 
   return (
     <Flex
-      justifyContent={"center"}
+      justifyContent={"flex-start"}
       alignItems={"center"}
       bgGradient={"linear(to-r, bgColor 75%, primary 25%)"}
       h={"100vh"}
     >
-      <Image
-        src={Decor}
-        position={"absolute"}
-        w={["45%", "45%", "12%", "12%"]}
-        h="auto"
-        top={["40%", "15%", "40%", "25%"]}
-        right={["60%", "85%", "85%", "85%"]}
-      />
+      <Flex
+        flexDirection={"column"}
+        justifyContent={"space-between"}
+        h={"100vh"}
+      >
+        <Link href="/" textDecor={"none"} _hover={{ textDecor: "none" }}>
+          <Text
+            position={"absolute"}
+            fontSize={["2rem", "2rem", "3rem", "3rem"]}
+            margin={"1rem auto auto 3rem"}
+            fontWeight="700"
+            color="primary"
+            textTransform="uppercase"
+            lineHeight={["45px", "65px"]}
+          >
+            Find Recipes
+          </Text>
+        </Link>
+        <Image
+          src={Decor}
+          position={["absolute"]}
+          w={["45%", "30%", "20%", "12%"]}
+          h="auto"
+          top={["30%", "15%", "30%", "30%"]}
+          right={["60%", "80%", "80%", "88%"]}
+        />
+      </Flex>
       <SignUpForm
         errors={errors}
         register={register}

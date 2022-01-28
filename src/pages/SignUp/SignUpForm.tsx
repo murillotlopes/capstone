@@ -34,13 +34,14 @@ export const SignUpForm = ({ handleSignUp, errors, register }: SignUpProps) => {
       bgColor={"bgColor"}
       justifyContent={"space-evenly"}
       alignItems={"center"}
-      w={["90%", "80%", "40%", "40%"]}
+      w={["90%", "55%", "40%", "40%"]}
       h={["60%", "60%", "70%", "70%"]}
       position={"relative"}
       padding={"5rem"}
       boxShadow="md"
       p="6"
       rounded="md"
+      margin={["0 auto","0 auto","0 auto","0 auto"]}
     >
       <Heading color={"violet.900"} as="h3">
         Cadastrar
@@ -50,8 +51,8 @@ export const SignUpForm = ({ handleSignUp, errors, register }: SignUpProps) => {
           icon={FiUser}
           {...register("username")}
           error={errors.name}
-          placeholder="NOME"
-          name="name"
+          placeholder="USERNAME"
+          name="username"
         />
         <Input
           icon={FiUser}
