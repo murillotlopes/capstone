@@ -34,26 +34,27 @@ export const FeedCard = () => {
             h="50px"
             borderRadius="10px"
           />
-
-          <Heading
-            as="p"
-            fontSize="lg"
-            ml="3"
-            color="gray.500"
-            fontWeight="semibold"
-          >
-            Name
-          </Heading>
-          <Heading
-            as="h6"
-            fontSize="md"
-            ml="3"
-            color="gray.300"
-            size="4xs"
-            fontWeight="500"
-          >
-            Data
-          </Heading>
+          <Box>
+            <Heading
+              as="p"
+              fontSize="lg"
+              ml="3"
+              color="gray.500"
+              fontWeight="semibold"
+            >
+              Name
+            </Heading>
+            <Heading
+              as="h6"
+              fontSize="md"
+              ml="3"
+              color="gray.300"
+              size="4xs"
+              fontWeight="500"
+            >
+              Data
+            </Heading>
+          </Box>
         </Flex>
 
         <Flex>
