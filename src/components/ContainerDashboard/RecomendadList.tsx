@@ -25,7 +25,7 @@ export const RecomendedList = () => {
   return (
     <Flex
       w={"100%"}
-      h={["60%", "60%", "80%", "80%"]}
+      h={["150px", "200px", "300px", "300px"]}
       justifyContent={"center"}
       marginTop={0}
     >
@@ -33,6 +33,7 @@ export const RecomendedList = () => {
         <VStack
           w={["50%", "50%", "25%", "20%"]}
           h={"100%"}
+          maxH={"300px"}
           m={2}
           bg={"#FFFFFF"}
           borderRadius={"15px"}
@@ -42,9 +43,9 @@ export const RecomendedList = () => {
           onClick={() => handleRecipe(recipe.id)}
         >
           <Image
-            h={"200px"}
+            h={["75px", "100px", "150px", "150px"]}
             w={"95%"}
-            minH={"200px"}
+            minH={["75px", "100px", "150px", "150px"]}
             m={2}
             borderRadius={"15px"}
             src={recipe.image}
@@ -53,8 +54,10 @@ export const RecomendedList = () => {
           <Flex
             flexDir={"column"}
             alignItems={"flex-start"}
-            pl={[0, 2, 4, 4]}
+            pl={[1.5, 2, 4, 4]}
+            pb={2}
             h={"50%"}
+            w={"100%"}
           >
             <Text
               fontWeight={"bold"}
@@ -67,6 +70,10 @@ export const RecomendedList = () => {
               mb={[0, 1, 2, 2]}
               color={"gray.600"}
               fontSize={["xs", "md", "lg", "xl"]}
+              w={["90%", "90%", "95%", "95%"]}
+              overflow={"hidden"}
+              textOverflow={"ellipsis"}
+              whiteSpace={"nowrap"}
             >
               {recipe.title}
             </Text>

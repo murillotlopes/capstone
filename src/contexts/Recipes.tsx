@@ -18,6 +18,7 @@ interface Recipe {
   serves: number;
   method: string;
   ingredients: string[];
+  searchIngredients: string[];
   image: string;
 }
 

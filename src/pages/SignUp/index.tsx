@@ -5,24 +5,21 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Flex, Image, useDisclosure, useToast } from "@chakra-ui/react";
 import Decor from "../../assets/plant.png";
 import { useAuth } from "../../contexts/Auth";
-import ModalError from "../../components/ModalError"
+import ModalError from "../../components/ModalError";
 import { useHistory } from "react-router-dom";
 
-
 interface SignUpData {
-  username: string
+  username: string;
   email: string;
   password: string;
 }
 
 export const SignUp = () => {
+  const toast = useToast();
 
-    const toast = useToast();
+  const { isOpen, onClose, onOpen } = useDisclosure();
 
-  const {isOpen, onClose, onOpen} = useDisclosure();
-
-
-  const history = useHistory()
+  const history = useHistory();
 
   const { signUp } = useAuth();
   const SignUpSchema = yup.object().shape({
@@ -40,30 +37,30 @@ export const SignUp = () => {
   });
 
   const handleSignUp = (data: SignUpData) => {
-    
-    const currentData = {username:data.username, email: data.email, password: data.password}
-    console.log(currentData)
+    const currentData = {
+      username: data.username,
+      email: data.email,
+      password: data.password,
+    };
+
     signUp(currentData)
       .then((_) => {
         console.log(data);
         toast({
-          position:"top",
-          title: 'Conta criada com sucesso! ',
+          position: "top",
+          title: "Conta criada com sucesso! ",
           description: "Você será redirecionado.",
-          status: 'success',
+          status: "success",
           duration: 9000,
           isClosable: true,
-        })
-        history.push("/dashboard")
+        });
+        history.push("/dashboard");
       })
       .catch((err) => {
         console.log(err);
-        onOpen()
+        onOpen();
       });
   };
-
-
-
 
   return (
     <Flex
@@ -85,7 +82,7 @@ export const SignUp = () => {
         register={register}
         handleSignUp={handleSubmit(handleSignUp)}
       />
-      <ModalError isOpen={isOpen} onClose={onClose}  />
+      <ModalError isOpen={isOpen} onClose={onClose} />
     </Flex>
   );
 };
