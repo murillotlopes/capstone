@@ -2,27 +2,31 @@ import { SignUpForm } from "./SignUpForm";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Flex, Image, useDisclosure, useToast } from "@chakra-ui/react";
+import {
+  Flex,
+  Image,
+  Link,
+  Text,
+  useDisclosure,
+  useToast,
+} from "@chakra-ui/react";
 import Decor from "../../assets/plant.png";
 import { useAuth } from "../../contexts/Auth";
-import ModalError from "../../components/ModalError"
+import ModalError from "../../components/ModalError";
 import { useHistory } from "react-router-dom";
 
-
 interface SignUpData {
-  username: string
+  username: string;
   email: string;
   password: string;
 }
 
 export const SignUp = () => {
+  const toast = useToast();
 
-    const toast = useToast();
+  const { isOpen, onClose, onOpen } = useDisclosure();
 
-  const {isOpen, onClose, onOpen} = useDisclosure();
-
-
-  const history = useHistory()
+  const history = useHistory();
 
   const { signUp } = useAuth();
   const SignUpSchema = yup.object().shape({
@@ -40,52 +44,68 @@ export const SignUp = () => {
   });
 
   const handleSignUp = (data: SignUpData) => {
-    
-    const currentData = {username:data.username, email: data.email, password: data.password}
-    console.log(currentData)
+    const currentData = {
+      username: data.username,
+      email: data.email,
+      password: data.password,
+    };
+    console.log(currentData);
     signUp(currentData)
       .then((_) => {
         console.log(data);
         toast({
-          position:"top",
-          title: 'Conta criada com sucesso! ',
+          position: "top",
+          title: "Conta criada com sucesso! ",
           description: "Você será redirecionado.",
-          status: 'success',
+          status: "success",
           duration: 9000,
           isClosable: true,
-        })
-        history.push("/dashboard")
+        });
+        history.push("/dashboard");
       })
       .catch((err) => {
         console.log(err);
-        onOpen()
+        onOpen();
       });
   };
 
-
-
-
   return (
     <Flex
-      justifyContent={"center"}
+      justifyContent={"flex-start"}
       alignItems={"center"}
       bgGradient={"linear(to-r, bgColor 75%, primary 25%)"}
       h={"100vh"}
     >
-      <Image
-        src={Decor}
-        position={"absolute"}
-        w={["45%", "45%", "12%", "12%"]}
-        h="auto"
-        top={["40%", "15%", "40%", "25%"]}
-        right={["60%", "85%", "85%", "85%"]}
-      />
+      <Flex flexDirection={"column"} justifyContent={"space-between"}
+      h={"100vh"}>
+        <Link href="/" textDecor={"none"} _hover={{ textDecor: "none" }}>
+          <Text
+          position={"absolute"}
+            fontSize={["2rem", "2rem", "3rem", "3rem"]}
+            margin={"1rem auto auto 3rem"}
+            fontWeight="700"
+            color="primary"
+            textTransform="uppercase"
+            lineHeight={["45px", "65px"]}
+          >
+            Find Recipes
+          </Text>
+        </Link>
+        <Image
+          src={Decor}
+          position={["absolute"]}
+          w={["45%", "30%", "20%", "12%"]}
+          h="auto"
+          top={["30%", "15%", "30%", "30%"]}
+          right={["60%", "80%", "80%", "88%"]}
+        />
+      </Flex>
       <SignUpForm
         errors={errors}
         register={register}
         handleSignUp={handleSubmit(handleSignUp)}
       />
-      <ModalError isOpen={isOpen} onClose={onClose}  />
+      <ModalError isOpen={isOpen} onClose={onClose} />
     </Flex>
   );
 };
