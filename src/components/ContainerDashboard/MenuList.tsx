@@ -3,6 +3,7 @@ import IconFood from "../../assets/IconFood.png";
 import { AiOutlineRight } from "react-icons/ai";
 import { useState } from "react";
 import { theme } from "../../styles/theme";
+import { ModalDashboard } from "./Modal";
 
 export const MenuList = () => {
   const [bgColor, setBgColor] = useState(true);
@@ -49,21 +50,7 @@ export const MenuList = () => {
           >
             Foods
           </Text>
-          <Box
-            w={["25px", "25px", "35px", "50px"]}
-            h={["25px", "25px", "35px", "50px"]}
-            borderRadius={40}
-            bg={bgColor ? "#000000" : "#FFFFFF"}
-            display={"flex"}
-            alignItems={"center"}
-            justifyContent={"center"}
-            m={3}
-          >
-            <AiOutlineRight
-              size={30}
-              color={bgColor ? "#FFFFFF" : theme.colors.secondary}
-            />
-          </Box>
+          <ModalDashboard />
         </Flex>
       </Flex>
       <Flex
