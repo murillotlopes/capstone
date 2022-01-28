@@ -7,6 +7,7 @@ interface AuthProviderProps {
 }
 
 interface User {
+    username: string
     email: string
     id: string
 }
