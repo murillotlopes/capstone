@@ -9,8 +9,7 @@ import { FiUser } from "react-icons/fi";
 import { FiLock } from "react-icons/fi";
 import { useHistory } from "react-router-dom";
 import { Input } from "../../components/Form/Input";
-import Button from "../../components/Button"
-
+import Button from "../../components/Button";
 
 interface SignUpData {
   username: string;
@@ -80,8 +79,15 @@ export const SignUpForm = ({ handleSignUp, errors, register }: SignUpProps) => {
           rounded="md"
         />
         <Text>
-          Já possui cadastro?  
-          <ChakraButton variant="link" color="violet.500" onClick={() => history.push("/signin")}> Faça login</ChakraButton>
+          Já possui cadastro?
+          <ChakraButton
+            variant="link"
+            color="violet.500"
+            onClick={() => history.push("/signin")}
+          >
+            {" "}
+            Faça login
+          </ChakraButton>
         </Text>
       </Flex>
     </Flex>
