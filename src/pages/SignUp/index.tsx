@@ -10,10 +10,9 @@ import { useHistory } from "react-router-dom";
 
 
 interface SignUpData {
-  name:string;
+  username: string
   email: string;
   password: string;
-  confirm_password:string;   
 }
 
 export const SignUp = () => {
@@ -27,13 +26,9 @@ export const SignUp = () => {
 
   const { signUp } = useAuth();
   const SignUpSchema = yup.object().shape({
-    name: yup.string().required("Campo obrigatório"),
+    username: yup.string().required("Campo obrigatório"),
     email: yup.string().required("Campo obrigatório").email("E-mail inválido"),
     password: yup.string().required("Campo obrigatório"),
-    confirm_password: yup
-      .string()
-      .required("Confirmação de senha obrigatória")
-      .oneOf([yup.ref("password")], "Senhas diferentes"),
   });
 
   const {
@@ -46,7 +41,7 @@ export const SignUp = () => {
 
   const handleSignUp = (data: SignUpData) => {
     
-    const currentData = {name:data.name, email: data.email, password: data.password}
+    const currentData = {username:data.username, email: data.email, password: data.password}
     console.log(currentData)
     signUp(currentData)
       .then((_) => {

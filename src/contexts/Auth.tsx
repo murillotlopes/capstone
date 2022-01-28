@@ -21,11 +21,17 @@ interface SignInCredentials {
     password: string
 }
 
+interface SignUpCredentials {
+    username: string
+    email: string
+    password: string
+}
+
 interface AuthContextData {
     user: User
     accessToken: string
     signIn: (credentials: SignInCredentials) => Promise<void>
-    signUp: (credentials: SignInCredentials) => Promise<void>
+    signUp: (credentials: SignUpCredentials) => Promise<void>
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
@@ -47,8 +53,8 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         return {} as AuthState
     })
 
-    const signUp = useCallback(async ({ email, password }: SignInCredentials) => {
-      const response = await api.post("/users", { email, password });
+    const signUp = useCallback(async ({ username, email, password }: SignUpCredentials) => {
+      const response = await api.post("/users", { username, email, password });
   
       const { accessToken, user } = response.data;
   

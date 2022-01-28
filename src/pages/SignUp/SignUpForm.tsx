@@ -7,16 +7,15 @@ import {
 } from "react-hook-form";
 import { FiUser } from "react-icons/fi";
 import { FiLock } from "react-icons/fi";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Input } from "../../components/Form/Input";
 import Button from "../../components/Button"
 
 
 interface SignUpData {
-  name: string;
+  username: string;
   email: string;
   password: string;
-  confirm_password: string;
 }
 
 interface SignUpProps {
@@ -50,7 +49,7 @@ export const SignUpForm = ({ handleSignUp, errors, register }: SignUpProps) => {
       <Flex flexDirection={"column"} alignItems="center">
         <Input
           icon={FiUser}
-          {...register("name")}
+          {...register("username")}
           error={errors.name}
           placeholder="NOME"
           name="name"
@@ -68,14 +67,6 @@ export const SignUpForm = ({ handleSignUp, errors, register }: SignUpProps) => {
           error={errors.password}
           placeholder="SENHA"
           name="password"
-          type={"password"}
-        />
-        <Input
-          icon={FiLock}
-          {...register("confirm_password")}
-          error={errors.password}
-          placeholder="CONFIRMAR SENHA"
-          name="confirm_password"
           type={"password"}
         />
         <Button
