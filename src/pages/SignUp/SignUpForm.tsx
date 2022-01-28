@@ -52,8 +52,8 @@ export const SignUpForm = ({ handleSignUp, errors, register }: SignUpProps) => {
           icon={FiUser}
           {...register("username")}
           error={errors.name}
-          placeholder="NOME"
-          name="name"
+          placeholder="USERNAME"
+          name="username"
         />
         <Input
           icon={FiUser}

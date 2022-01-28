@@ -32,7 +32,7 @@ export const SignUp = () => {
   const SignUpSchema = yup.object().shape({
     username: yup.string().required("Campo obrigatório"),
     email: yup.string().required("Campo obrigatório").email("E-mail inválido"),
-    password: yup.string().required("Campo obrigatório"),
+    password: yup.string().required("Campo obrigatório")
   });
 
   const {
