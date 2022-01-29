@@ -1,15 +1,9 @@
 import { Flex, Box, Image, Text } from "@chakra-ui/react";
 import IconFood from "../../assets/IconFood.png";
 import { AiOutlineRight } from "react-icons/ai";
-import { useState } from "react";
-import { theme } from "../../styles/theme";
 import { ModalDashboard } from "./Modal";
 
 export const MenuList = () => {
-  const [bgColor, setBgColor] = useState(true);
-  const [bgColor2, setBgColor2] = useState(true);
-  const [bgColor3, setBgColor3] = useState(true);
-
   return (
     <Flex
       flexDir={["column", "row", "row", "row"]}
@@ -23,13 +17,11 @@ export const MenuList = () => {
         h={["30%", "70%", "80%", "100%"]}
         m={["10px 20px", "0px 30px"]}
         borderRadius={"20px"}
-        bg={bgColor ? "#FFFFFF" : "secondary"}
-        onMouseOver={() => setBgColor(!bgColor)}
-        onMouseOut={() => setBgColor(!bgColor)}
+        bg={"#FFFFFF"}
         justifyContent={"center"}
         alignItems={"center"}
         boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px"
-        _hover={{ cursor: "pointer" }}
+        _hover={{ cursor: "pointer", bg: "secondary" }}
       >
         <Flex
           flexDir={["row", "column", "column", "column"]}
@@ -43,7 +35,7 @@ export const MenuList = () => {
             h={["63px", "63px", "100px", "126px"]}
           />
           <Text
-            color={bgColor ? "violet.900" : "#FFFFFF"}
+            color={"#000000"}
             fontWeight={"500"}
             m={3}
             fontSize={["md", "md", "2xl", "3xl"]}
@@ -58,13 +50,11 @@ export const MenuList = () => {
         h={["30%", "70%", "80%", "100%"]}
         m={["10px 20px", "0px 30px"]}
         borderRadius={"20px"}
-        bg={bgColor2 ? "#FFFFFF" : "secondary"}
-        onMouseOver={() => setBgColor2(!bgColor2)}
-        onMouseOut={() => setBgColor2(!bgColor2)}
+        bg={"#FFFFFF"}
         justifyContent={"center"}
         alignItems={"center"}
         boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px"
-        _hover={{ cursor: "pointer" }}
+        _hover={{ cursor: "pointer", bg: "secondary" }}
       >
         <Flex
           flexDir={["row", "column", "column", "column"]}
@@ -78,7 +68,7 @@ export const MenuList = () => {
             h={["63px", "63px", "100px", "126px"]}
           />
           <Text
-            color={bgColor2 ? "violet.900" : "#FFFFFF"}
+            color={"#000000"}
             fontWeight={"500"}
             fontSize={["md", "md", "2xl", "3xl"]}
             m={3}
@@ -89,16 +79,13 @@ export const MenuList = () => {
             w={["25px", "25px", "35px", "50px"]}
             h={["25px", "25px", "35px", "50px"]}
             borderRadius={40}
-            bg={bgColor2 ? "#000000" : "#FFFFFF"}
+            bg={"#000000"}
             display={"flex"}
             alignItems={"center"}
             justifyContent={"center"}
             m={3}
           >
-            <AiOutlineRight
-              size={30}
-              color={bgColor2 ? "#FFFFFF" : theme.colors.secondary}
-            />
+            <AiOutlineRight size={30} color={"#FFFFFF"} />
           </Box>
         </Flex>
       </Flex>
@@ -107,13 +94,11 @@ export const MenuList = () => {
         h={["30%", "70%", "80%", "100%"]}
         m={["10px 20px", "0px 30px"]}
         borderRadius={"20px"}
-        bg={bgColor3 ? "#FFFFFF" : "secondary"}
-        onMouseOver={() => setBgColor3(!bgColor3)}
-        onMouseOut={() => setBgColor3(!bgColor3)}
+        bg={"#FFFFFF"}
         justifyContent={"center"}
         alignItems={"center"}
         boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px"
-        _hover={{ cursor: "pointer" }}
+        _hover={{ cursor: "pointer", bg: "secondary" }}
       >
         <Flex
           flexDir={["row", "column", "column", "column"]}
@@ -127,7 +112,7 @@ export const MenuList = () => {
             h={["63px", "63px", "100px", "126px"]}
           />
           <Text
-            color={bgColor3 ? "violet.900" : "#FFFFFF"}
+            color={"#000000"}
             fontWeight={"500"}
             fontSize={["md", "md", "2xl", "3xl"]}
             m={3}
@@ -138,16 +123,13 @@ export const MenuList = () => {
             w={["25px", "25px", "35px", "50px"]}
             h={["25px", "25px", "35px", "50px"]}
             borderRadius={40}
-            bg={bgColor3 ? "#000000" : "#FFFFFF"}
+            bg={"#000000"}
             display={"flex"}
             alignItems={"center"}
             justifyContent={"center"}
             m={3}
           >
-            <AiOutlineRight
-              size={30}
-              color={bgColor3 ? "#FFFFFF" : theme.colors.secondary}
-            />
+            <AiOutlineRight size={30} color={"#FFFFFF"} />
           </Box>
         </Flex>
       </Flex>

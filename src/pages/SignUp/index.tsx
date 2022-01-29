@@ -49,7 +49,6 @@ export const SignUp = () => {
       email: data.email,
       password: data.password,
     };
-    console.log(currentData);
     signUp(currentData)
       .then((_) => {
         console.log(data);
@@ -76,11 +75,14 @@ export const SignUp = () => {
       bgGradient={"linear(to-r, bgColor 75%, primary 25%)"}
       h={"100vh"}
     >
-      <Flex flexDirection={"column"} justifyContent={"space-between"}
-      h={"100vh"}>
+      <Flex
+        flexDirection={"column"}
+        justifyContent={"space-between"}
+        h={"100vh"}
+      >
         <Link href="/" textDecor={"none"} _hover={{ textDecor: "none" }}>
           <Text
-          position={"absolute"}
+            position={"absolute"}
             fontSize={["2rem", "2rem", "3rem", "3rem"]}
             margin={"1rem auto auto 3rem"}
             fontWeight="700"
