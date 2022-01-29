@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import Decor from "../../assets/plant.png";
 import { useAuth } from "../../contexts/Auth";
-import ModalError from "../../components/ModalError";
+import ModalError from "../../components/Form/ModalError";
 import { useHistory } from "react-router-dom";
 
 interface SignUpData {

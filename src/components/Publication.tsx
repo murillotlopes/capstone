@@ -12,20 +12,33 @@ import {
 import { useState } from "react";
 import { useAuth } from "../contexts/Auth";
 import { usePublication } from "../contexts/Publication";
+import Button from "./Button";
 
-interface NewPublication {
+interface NewPublicationProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const NewPublication = ({ isOpen, onClose }: NewPublication) => {
-  const { addPublication } = usePublication();
+interface HandleNewPublicationProps{
+  image:string;
+  category: string;
+  description: string;
+}
 
+const NewPublication = ({ isOpen, onClose }: NewPublicationProps) => {
+  const { addPublication } = usePublication();
   const { user } = useAuth();
 
-  const handleNewpublication = () => {
+  const [description, setDescription] = useState("")
+  const [category, setCategory] = useState("")
+  const [image, setImage] = useState("")
+
+
+  const handleNewpublication = (image, category,description )=> {
     return addPublication;
   };
+
+  //Funcao para fazer upload da foto para API
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -34,13 +47,21 @@ const NewPublication = ({ isOpen, onClose }: NewPublication) => {
       </ModalHeader>
       <ModalCloseButton />
       <ModalBody>
+
         <Heading>Conte-nos mais sobre a sua experiência.</Heading>
-        <Select placeholder='Escolha a categoria da sua receita'>
-  <option value='fitness'>Fitness</option>
-  <option value='sobremesa'>Sobremesa</option>
-  <option value='entradas'>Entradas</option>
-  <option value='prato-principal'>Prato Principal</option>
-</Select>
+        <Flex as="form"
+        onSubmit={}>
+          <Input placeholder="Cole o link da imagem desejada" onChangeCapture={e => setImage(e.currentTarget.value)} />
+        <Input placeholder="o que você achou ?" variant="outline" onChangeCapture={e => setDescription(e.currentTarget.value)} />
+        <Select variant="outline"  placeholder="Escolha a categoria da sua receita" onChangeCapture={e => setCategory(e.currentTarget.value)}>
+          <option value="fitness">Fitness</option>
+          <option value="sobremesa">Sobremesa</option>
+          <option value="entradas">Entradas</option>
+          <option value="prato-principal">Prato Principal</option>
+        </Select>
+        <Button  text="Postar" type="submit" />
+        </Flex>
+        
       </ModalBody>
     </Modal>
   );
