@@ -69,7 +69,7 @@ export const SignIn = () => {
         flexDirection={"column"}
         justifyContent={"space-between"}
       >
-        <Link href="/" textDecor={"none"} _hover={{ textDecor: "none" }}>
+        <Link href="/" textDecor={"none"} _hover={{ textDecor: "none" }} cursor={"pointer"} >
           <Image
             src={Logo}
             position={"absolute"}

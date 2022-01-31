@@ -1,4 +1,4 @@
-import { Box, Flex, Image, Stack, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, Link, Stack, Text } from "@chakra-ui/react";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { FiArrowLeftCircle } from "react-icons/fi";
 import { FiUser } from "react-icons/fi";
@@ -23,12 +23,14 @@ export const RecipePage = () => {
       <Flex
       justifyContent={"space-between"}
       >
-        <Image
-          src={Logo}
-          w="85px"
-          margin="10px"
-          onClick={() => history.push("/dashboard")}
-        />
+        <Link href="/dashboard" textDecor={"none"} _hover={{ textDecor: "none"}} cursor={"pointer"} >
+          <Image
+            src={Logo}
+            w="85px"
+            margin="10px"
+            onClick={() => history.push("/dashboard")}
+          />
+        </Link>
         <Stack
         position="fixed"
         right="0"
