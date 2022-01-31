@@ -53,6 +53,7 @@ export const ModalRecipe = ({
           color={"#FFFFFF"}
           _hover={{ cursor: "pointer", bg: "secondary" }}
           mr={3}
+          boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px"
           onClick={onOpen}
         >
           PRONTO

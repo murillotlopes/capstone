@@ -31,10 +31,11 @@ export const Dashboard = () => {
           fontWeight="700"
           color="primary"
           textTransform="uppercase"
+          _hover={{ cursor: "pointer" }}
         >
           Find Recipes
         </Text>
-        <Box onClick={signOut}>
+        <Box onClick={signOut} _hover={{ cursor: "pointer" }}>
           <FiLogOut color={"#000000"} size={25} />
         </Box>
       </Flex>
