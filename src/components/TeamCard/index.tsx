@@ -5,9 +5,9 @@ interface MemberProps {
   name: string;
   role: string;
   image: string;
-  linkedin?: string;
+  linkedinLink?: string;
 }
-export const TeamCard = ({ name, role, image, linkedin }: MemberProps) => {
+export const TeamCard = ({ name, role, image, linkedinLink }: MemberProps) => {
   return (
     <Flex
       w={["200px", "150px", "200px", "150px"]}
@@ -18,7 +18,7 @@ export const TeamCard = ({ name, role, image, linkedin }: MemberProps) => {
       fontWeight={"500"}
       fontSize={"20px"}
       lineHeight={"32px"}
-      margin={["0% 6%", "0% 6%", "3%", "0% 0%"]}
+      margin={["1% 10% 0% 0%", "0% 6%", "3%", "0% 0%"]}
     >
       <Img
         backgroundColor={"white"}
@@ -26,15 +26,13 @@ export const TeamCard = ({ name, role, image, linkedin }: MemberProps) => {
         h={"100px"}
         src={image}
         borderRadius={"50%"}
-        border={"2px grey solid"}
-        padding={"10px"}
       ></Img>
       <Flex flexDirection={"column"} alignItems={"center"}>
         <Text textAlign={"center"} w={"160px"}>
           {name}
         </Text>
-        <Text>{role}</Text>
-        <Link href={linkedin}>
+        <Text fontSize={"16px"}>{role}</Text>
+        <Link href={linkedinLink} target="_blank">
           <Img w={"30px"} h={"30px"} src={linkedinLogo}></Img>
         </Link>
       </Flex>
