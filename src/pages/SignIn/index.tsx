@@ -7,11 +7,11 @@ import {
   Flex,
   Image,
   Link,
-  Text,
   useDisclosure,
   useToast,
 } from "@chakra-ui/react";
 import Decor from "../../assets/plant.png";
+import Logo from "../../assets/logo.png"
 import ModalError from "../../components/ModalError";
 
 interface SignInData {
@@ -24,7 +24,7 @@ export const SignIn = () => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const { signIn, user } = useAuth();
+  const { signIn } = useAuth();
 
   const SignInSchema = yup.object().shape({
     email: yup.string().required("Campo obrigatório").email("E-mail inválido"),
@@ -68,21 +68,23 @@ export const SignIn = () => {
         h={"100vh"}
         flexDirection={"column"}
         justifyContent={"space-between"}
-        position={["absolute", "relative", "relative", "relative"]}
       >
         <Link href="/" textDecor={"none"} _hover={{ textDecor: "none" }}>
-          <Text
-            fontSize={["2rem", "2rem", "3rem", "3rem"]}
-            margin={"1rem auto auto 1rem"}
-            fontWeight="700"
-            color="primary"
-            textTransform="uppercase"
-            lineHeight={["45px", "65px"]}
-          >
-            Find Recipes
-          </Text>
+          <Image
+            src={Logo}
+            position={"absolute"}
+            w={"85px"}
+            margin={"10px"}
+          />
         </Link>
-        <Image src={Decor} w={["25vw", "25vw", "10vw", "10vw"]} />
+        <Image 
+          src={Decor} 
+          position={["absolute"]}
+          w={["20%", "20%", "15%", "10%"]}
+          h="auto"
+          top={["50%", "25%", "30%", "30%"]}
+          right={["80%", "80%", "85%", "90%"]}
+        />
       </Flex>
       <SignInForm
         errors={errors}

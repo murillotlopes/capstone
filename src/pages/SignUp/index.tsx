@@ -6,7 +6,6 @@ import {
   Flex,
   Image,
   Link,
-  Text,
   useDisclosure,
   useToast,
 } from "@chakra-ui/react";
@@ -14,6 +13,7 @@ import Decor from "../../assets/plant.png";
 import { useAuth } from "../../contexts/Auth";
 import ModalError from "../../components/ModalError";
 import { useHistory } from "react-router-dom";
+import Logo from "../../assets/logo.png";
 
 interface SignUpData {
   username: string;
@@ -81,24 +81,14 @@ export const SignUp = () => {
         h={"100vh"}
       >
         <Link href="/" textDecor={"none"} _hover={{ textDecor: "none" }}>
-          <Text
-            position={"absolute"}
-            fontSize={["2rem", "2rem", "3rem", "3rem"]}
-            margin={"1rem auto auto 3rem"}
-            fontWeight="700"
-            color="primary"
-            textTransform="uppercase"
-            lineHeight={["45px", "65px"]}
-          >
-            Find Recipes
-          </Text>
+          <Image src={Logo} position={"absolute"} w={"85px"} margin={"10px"} />
         </Link>
         <Image
           src={Decor}
           position={["absolute"]}
           w={["45%", "30%", "20%", "12%"]}
           h="auto"
-          top={["30%", "15%", "30%", "30%"]}
+          top={["20%", "15%", "30%", "30%"]}
           right={["60%", "80%", "80%", "88%"]}
         />
       </Flex>
