@@ -1,15 +1,5 @@
 import { Flex, Box, Image, Heading, Container } from "@chakra-ui/react";
-import { usePublication } from "../../contexts/Publication";
-
-// interface Publication {
-//   userId: number
-//   icon: string
-//   username: string
-//   photo: string
-//   category: string
-//   description: string
-//   id: number
-// }
+import Logo from "../../assets/logo.png";
 
 export const FeedCard = () => {
   return (
@@ -23,9 +13,24 @@ export const FeedCard = () => {
       display={"flex"}
       justifyContent={"flex-start"}
       alignItems={"flex-start"}
+      flexDirection={"column"}
     >
-      <Box w="300px" margin="20px">
-        <Flex>
+      <Image src={Logo} w="85px" margin="10px"></Image>
+      <Box
+        w={["280px", "320px"]}
+        margin="5px 10px 5px 20px"
+        background="chardon"
+        display="flex"
+        alignItems="center"
+        flexDirection={"column"}
+        borderRadius="10px"
+      >
+        <Flex
+          w="100%"
+          display="flex"
+          justifyContent={"flex-start"}
+          margin="10px 0 0 21px"
+        >
           <Image
             src="https://www.allstorehospitality.com/wp-content/uploads/2016/09/tableware1-600x600.jpg"
             alt="Dan Abramov"
@@ -62,13 +67,13 @@ export const FeedCard = () => {
             src="https://bit.ly/dan-abramov"
             alt="Dan Abramov"
             mb="2"
-            w="300px"
-            h="300px"
+            w={["250px", "300px"]}
+            h={["250px", "300px"]}
             borderRadius="10px"
           />
         </Flex>
 
-        <Flex>
+        <Flex w="100%" textAlign="start">
           <Heading
             as="p"
             fontSize="md"
@@ -76,6 +81,7 @@ export const FeedCard = () => {
             p="1px"
             w="100%"
             fontWeight="500"
+            margin="0 14px 5px 10px"
           >
             You and your will love this refreshing salad that is perfect for
             warm days or summer time!
