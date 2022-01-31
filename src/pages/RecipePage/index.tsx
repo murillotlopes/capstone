@@ -12,11 +12,12 @@ export const RecipePage = () => {
 
   const history = useHistory();
 
+
   return (
     <Flex
       key={recipeRender.id}
       bgGradient={"linear(to-r, bgColor 75%, primary 25%)"}
-      h={"100vh"}
+      h={["150vh", "150vh", "100vh", "100vh"]}
       flexDirection={"column"}
     >
       <Flex
@@ -55,6 +56,8 @@ export const RecipePage = () => {
         src={recipeRender.image} 
         borderRadius={"5px 0px 0px 525px"}
         w={["100vw", "100vw", "50vw", "50vw"]}
+        maxH={"75vh"}
+        mt={"1rem"}
         />
       </Flex>
       <Flex flexDir={"column"}>
