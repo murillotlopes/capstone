@@ -65,8 +65,6 @@ export const ModalDashboard = () => {
     handleClick();
   }, [findRecipes]);
 
-  //O teste é acionado o numero de vezes necesário, mas o findRecipes só recepe uma nova receita no onClick
-
   return (
     <>
       <Box
@@ -108,7 +106,7 @@ export const ModalDashboard = () => {
           />
           <ModalBody>
             <Text color={"gray.600"} fontWeight={"bold"} m={3}>
-              Escolha seus ingredientes:{" "}
+              Escolha 3 ou mais ingredientes:{" "}
             </Text>
             <Flex flexWrap={"wrap"} w={"100%"} justifyContent={"center"}>
               {Words.map((word, index) => (
@@ -172,13 +170,17 @@ export const ModalDashboard = () => {
                   "none",
                   "none",
                 ]}
-                onClick={() => setFindIngredient([])}
+                onClick={() => {
+                  setFindIngredient([]);
+                  setFindRecipes([]);
+                }}
               >
                 LIMPAR INGREDIENTES
               </Button>
               <ModalRecipe
                 handleClick={handleClick}
                 findRecipes={findRecipes}
+                findIngredient={findIngredient}
                 setFindRecipes={setFindRecipes}
               />
             </Flex>

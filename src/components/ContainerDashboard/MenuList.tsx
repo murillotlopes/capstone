@@ -1,5 +1,7 @@
 import { Flex, Box, Image, Text } from "@chakra-ui/react";
 import IconFood from "../../assets/IconFood.png";
+import IconCandy from "../../assets/IconCandy.png";
+import IconFeed from "../../assets/IconFeed.png";
 import { AiOutlineRight } from "react-icons/ai";
 import { useHistory } from "react-router";
 import { ModalDashboard } from "./Modal";
@@ -13,16 +15,16 @@ export const MenuList = () => {
 
   return (
     <Flex
-      flexDir={["column", "row", "row", "row"]}
+      flexDir={["column", "column", "row", "row"]}
       w={"100%"}
       h={"100%"}
       justifyContent={"center"}
       alignItems={"center"}
     >
       <Flex
-        w={["100%", "30%", "20%", "20%"]}
-        h={["30%", "70%", "80%", "100%"]}
-        m={["10px 20px", "0px 30px"]}
+        w={["100%", "100%", "20%", "20%"]}
+        h={["30%", "30%", "80%", "100%"]}
+        m={["10px 20px", "10px 20px", "0px 30px", "0px 30px"]}
         borderRadius={"20px"}
         bg={"#FFFFFF"}
         justifyContent={"center"}
@@ -31,7 +33,7 @@ export const MenuList = () => {
         _hover={{ cursor: "pointer", bg: "secondary" }}
       >
         <Flex
-          flexDir={["row", "column", "column", "column"]}
+          flexDir={["row", "row", "column", "column"]}
           justifyContent={"center"}
           alignItems={"center"}
         >
@@ -53,9 +55,9 @@ export const MenuList = () => {
         </Flex>
       </Flex>
       <Flex
-        w={["100%", "30%", "20%", "20%"]}
-        h={["30%", "70%", "80%", "100%"]}
-        m={["10px 20px", "0px 30px"]}
+        w={["100%", "100%", "20%", "20%"]}
+        h={["30%", "30%", "80%", "100%"]}
+        m={["10px 20px", "10px 20px", "0px 30px", "0px 30px"]}
         borderRadius={"20px"}
         bg={"#FFFFFF"}
         justifyContent={"center"}
@@ -64,14 +66,12 @@ export const MenuList = () => {
         _hover={{ cursor: "pointer", bg: "secondary" }}
       >
         <Flex
-          flexDir={["row", "column", "column", "column"]}
+          flexDir={["row", "row", "column", "column"]}
           justifyContent={"center"}
           alignItems={"center"}
         >
           <Image
-            src={
-              "https://images.vexels.com/media/users/3/151804/isolated/preview/96a36d4589e3ce8334995ab1d34e2619-icone-plano-de-sundae-de-sorvete.png"
-            }
+            src={IconCandy}
             m={3}
             w={["63px", "63px", "100px", "126px"]}
             h={["63px", "63px", "100px", "126px"]}
@@ -104,9 +104,9 @@ export const MenuList = () => {
         </Flex>
       </Flex>
       <Flex
-        w={["100%", "30%", "20%", "20%"]}
-        h={["30%", "70%", "80%", "100%"]}
-        m={["10px 20px", "0px 30px"]}
+        w={["100%", "100%", "20%", "20%"]}
+        h={["30%", "30%", "80%", "100%"]}
+        m={["10px 20px", "10px 20px", "0px 30px", "0px 30px"]}
         borderRadius={"20px"}
         bg={"#FFFFFF"}
         justifyContent={"center"}
@@ -115,14 +115,12 @@ export const MenuList = () => {
         _hover={{ cursor: "pointer", bg: "secondary" }}
       >
         <Flex
-          flexDir={["row", "column", "column", "column"]}
+          flexDir={["row", "row", "column", "column"]}
           justifyContent={"center"}
           alignItems={"center"}
         >
           <Image
-            src={
-              "https://www.gedai.com.br/wp-content/uploads/2018/08/icone-boletins-3CC6ED.png"
-            }
+            src={IconFood}
             m={3}
             w={["63px", "63px", "100px", "126px"]}
             h={["63px", "63px", "100px", "126px"]}
