@@ -1,6 +1,7 @@
 import { Flex, Box, Image, Text } from "@chakra-ui/react";
 import IconFood from "../../assets/IconFood.png";
 import { AiOutlineRight } from "react-icons/ai";
+import { useHistory } from "react-router";
 import { ModalDashboard } from "./Modal";
 import { theme } from "../../styles/theme";
 import { useState } from "react";
@@ -8,6 +9,8 @@ import { useState } from "react";
 export const MenuList = () => {
   const [bgColor, setBgColor] = useState(true);
   const [bgColor2, setBgColor2] = useState(true);
+  const history = useHistory();
+
   return (
     <Flex
       flexDir={["column", "row", "row", "row"]}
@@ -147,6 +150,8 @@ export const MenuList = () => {
             <AiOutlineRight
               size={30}
               color={bgColor2 ? "#FFFFFF" : theme.colors.secondary}
+              type="button"
+              onClick={() => history.push("/feed")}
             />
           </Box>
         </Flex>
