@@ -7,6 +7,7 @@ import { Route } from "./Route";
 import { RecipePage } from "../components/RecipePage";
 import { MatchFood } from "../pages/MatchFood";
 import { FeedPage } from "../pages/Feed";
+import { TeamPage } from "../pages/Team";
 
 export const Routes = () => {
   return (
@@ -18,6 +19,7 @@ export const Routes = () => {
       <Route path="/recipe" page={RecipePage} isPrivate />
       <Route path='/matchFood' page={MatchFood} isPrivate />
       <Route path="/feed" page={FeedPage} isPrivate />
+      <Route path="/team" page={TeamPage}/>
     </Switch>
   );
 };

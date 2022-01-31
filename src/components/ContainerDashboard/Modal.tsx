@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { AiOutlineRight } from "react-icons/ai";
+import { useHistory } from "react-router-dom";
 import { Words } from "../../assets/words";
 import { useRecipes } from "../../contexts/Recipes";
 import { theme } from "../../styles/theme";
@@ -35,6 +36,7 @@ export const ModalDashboard = () => {
   const [findIngredient, setFindIngredient] = useState<string[]>([]);
   const [findRecipes, setFindRecipes] = useState<Recipe[]>([]);
   const { recipes } = useRecipes();
+  const history = useHistory();
 
   const handleClick = () => {
     let count = 0;
@@ -59,7 +61,9 @@ export const ModalDashboard = () => {
     });
   };
 
-  //O teste é acionado o numero de vezes necesário, mas o findRecipes só recepe uma nova receita no onClick
+  useEffect(() => {
+    handleClick();
+  }, [findRecipes]);
 
   return (
     <>
@@ -102,7 +106,7 @@ export const ModalDashboard = () => {
           />
           <ModalBody>
             <Text color={"gray.600"} fontWeight={"bold"} m={3}>
-              Escolha seus ingredientes:{" "}
+              Escolha 3 ou mais ingredientes:{" "}
             </Text>
             <Flex flexWrap={"wrap"} w={"100%"} justifyContent={"center"}>
               {Words.map((word, index) => (
@@ -126,20 +130,60 @@ export const ModalDashboard = () => {
             </Flex>
           </ModalBody>
           <ModalFooter>
-            <Button
-              bg={"#FFFFFF"}
-              color={"primary"}
-              _hover={{ cursor: "pointer", bg: "#FFFFFF" }}
-              mr={3}
-              onClick={() => setFindIngredient([])}
+            <Flex
+              w={"100%"}
+              flexDir={["column", "column", "row", "row"]}
+              justifyContent={["center", "center", "flex-start", "flex-start"]}
+              alignItems={"center"}
             >
-              LIMPAR INGREDIENTES
-            </Button>
-            <ModalRecipe
-              handleClick={handleClick}
-              findRecipes={findRecipes}
-              setFindRecipes={setFindRecipes}
-            />
+              <Button
+                bg={"#FFFFFF"}
+                color={"primary"}
+                _hover={{ cursor: "pointer", bg: "#FFFFFF" }}
+                m={3}
+                w={["100%", "50%"]}
+                justifyContent={[
+                  "center",
+                  "center",
+                  "flex-start",
+                  "flex-start",
+                ]}
+                boxShadow={[
+                  "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+                  "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+                  "none",
+                  "none",
+                ]}
+                borderRadius={10}
+                onClick={() => history.push("/matchfood")}
+              >
+                EXPLORE NOSSAS COMIDAS
+              </Button>
+              <Button
+                bg={"#FFFFFF"}
+                color={"primary"}
+                _hover={{ cursor: "pointer", bg: "#FFFFFF" }}
+                m={3}
+                boxShadow={[
+                  "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+                  "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+                  "none",
+                  "none",
+                ]}
+                onClick={() => {
+                  setFindIngredient([]);
+                  setFindRecipes([]);
+                }}
+              >
+                LIMPAR INGREDIENTES
+              </Button>
+              <ModalRecipe
+                handleClick={handleClick}
+                findRecipes={findRecipes}
+                findIngredient={findIngredient}
+                setFindRecipes={setFindRecipes}
+              />
+            </Flex>
           </ModalFooter>
         </ModalContent>
       </Modal>
