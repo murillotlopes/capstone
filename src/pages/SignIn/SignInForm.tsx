@@ -32,13 +32,13 @@ export const SignInForm = ({ handleSignIn, errors, register }: SignInProps) => {
       bgColor={"bgColor"}
       justifyContent={"space-evenly"}
       alignItems={"center"}
-      w={["90%", "55%", "40%", "40%"]}
+      w={["80%", "55%", "45%", "40%"]}
       h={["60%", "60%", "70%", "70%"]}
       position={"relative"}
       padding={"5rem"}
-      boxShadow="md"
+      boxShadow="lg"
       p="6"
-      rounded="md"
+      rounded="lg"
       margin={["0 auto", "0 auto", "0 auto", "0 auto"]}
     >
       <Heading color={"violet.900"} as="h3">
@@ -69,8 +69,11 @@ export const SignInForm = ({ handleSignIn, errors, register }: SignInProps) => {
           p="6"
           rounded="md"
         />
-        <Text>
-          Ainda não possui cadastro? 
+        <Text
+          textAlign={"center"}
+        >
+          Ainda não possui conta? 
+          <br/>
           <ChakraButton
             variant="link"
             color="violet.500"

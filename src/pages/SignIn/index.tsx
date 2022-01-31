@@ -7,7 +7,6 @@ import {
   Flex,
   Image,
   Link,
-  Text,
   useDisclosure,
   useToast,
 } from "@chakra-ui/react";
@@ -74,17 +73,17 @@ export const SignIn = () => {
           <Image
             src={Logo}
             position={"absolute"}
-            w={["28%","25%","10%","10%"]}
-            h={"auto"}
+            w={"85px"}
+            margin={"10px"}
           />
         </Link>
         <Image 
           src={Decor} 
           position={["absolute"]}
-          w={["45%", "20%", "20%", "12%"]}
+          w={["20%", "20%", "15%", "10%"]}
           h="auto"
-          top={["30%", "30%", "30%", "30%"]}
-          right={["60%", "80%", "80%", "88%"]}
+          top={["50%", "25%", "30%", "30%"]}
+          right={["80%", "80%", "85%", "90%"]}
         />
       </Flex>
       <SignInForm
