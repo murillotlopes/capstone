@@ -41,6 +41,8 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
 ) => {
   const [inputValue, setInputValue] = useState("");
   const [inputStatus, setInputStatus] = useState("default");
+
+  
     useEffect(() => {
     if (!!error) {
       return setInputStatus("error");

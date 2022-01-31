@@ -45,6 +45,8 @@ const SelectBase: ForwardRefRenderFunction<HTMLSelectElement, SelectProps> = (
 ) => {
   const [inputValue, setInputValue] = useState("");
   const [inputStatus, setInputStatus] = useState("default");
+
+
   useEffect(() => {
     if (!!error) {
       return setInputStatus("error");
@@ -64,14 +66,14 @@ const SelectBase: ForwardRefRenderFunction<HTMLSelectElement, SelectProps> = (
       return setInputStatus("error");
     }
   }, [error, inputValue]);
-
+  
   return (
     <FormControl isInvalid={!!error}>
       {!!label && <FormLabel>{label}</FormLabel>}
 
       <InputGroup margin={"0.5rem auto"}>
         <ChakraSelect
-          _hover={{ bg: "gray.600", color: "white" }}
+          // _hover={{ bg: "gray.600", color: "white" }}
           border="2px"
           ref={ref}
           h="50px"

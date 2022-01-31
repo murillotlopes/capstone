@@ -1,3 +1,4 @@
+import { useToast } from "@chakra-ui/react";
 import {
   createContext,
   ReactNode,
@@ -33,7 +34,10 @@ interface CreatePublicationProps {
 
 interface PublicationContextData {
   publications: Publication[];
-  addPublication: (publication: CreatePublicationProps) => void;
+  addPublication: (
+    publication: CreatePublicationProps,
+    onClose: () => void
+  ) => void;
   editPublication: (publication: Publication) => void;
   deletePublication: (publication: Publication) => void;
 }
@@ -46,8 +50,8 @@ const usePublication = () => useContext(PublicationContext);
 
 const PublicationProvider = ({ children }: PublicationProviderProps) => {
   const [publications, setPublications] = useState<Publication[]>([]);
-
   const { accessToken, user } = useAuth();
+  const toast = useToast();
 
   useEffect(() => {
     api
@@ -62,16 +66,38 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
       .catch((err) => setPublications(publications));
   }, []);
 
-  const addPublication = (publication: CreatePublicationProps) => {
-      console.log(publication)
+  const addPublication = (
+    publication: CreatePublicationProps,
+    onClose: () => void
+  ) => {
+    console.log(publication);
     api
-      .post("/publications",publication,  {
+      .post("/publications", publication, {
         headers: {
           Authorization: `Bearer ${accessToken} `,
         },
       })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((_) =>{
+        toast({
+          position: "top",
+          title: "Yummi",
+          description: "Seu post foi enviado com sucesso!",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+        })
+        onClose()}
+      )
+            .catch((err) =>
+        toast({
+          position: "top",
+          title: "Ooops",
+          description: "Algo deu errado, tente novamente.",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        })
+      );
   };
 
   const editPublication = (publication: Publication) => {};
