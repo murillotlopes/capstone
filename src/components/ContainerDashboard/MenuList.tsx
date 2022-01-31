@@ -1,9 +1,12 @@
 import { Flex, Box, Image, Text } from "@chakra-ui/react";
 import IconFood from "../../assets/IconFood.png";
 import { AiOutlineRight } from "react-icons/ai";
+import { useHistory } from "react-router";
 import { ModalDashboard } from "./Modal";
 
 export const MenuList = () => {
+  const history = useHistory();
+
   return (
     <Flex
       flexDir={["column", "row", "row", "row"]}
@@ -129,7 +132,12 @@ export const MenuList = () => {
             justifyContent={"center"}
             m={3}
           >
-            <AiOutlineRight size={30} color={"#FFFFFF"} />
+            <AiOutlineRight
+              type="button"
+              size={30}
+              color={"#FFFFFF"}
+              onClick={() => history.push("/feed")}
+            />
           </Box>
         </Flex>
       </Flex>
