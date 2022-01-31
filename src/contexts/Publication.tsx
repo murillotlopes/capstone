@@ -86,7 +86,10 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
           duration: 9000,
           isClosable: true,
         })
-        onClose()}
+        onClose()
+       setTimeout(()=>{document.location.reload()}, 3000 )
+      
+      }
       )
             .catch((err) =>
         toast({

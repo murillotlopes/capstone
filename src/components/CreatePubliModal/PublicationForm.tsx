@@ -44,7 +44,6 @@ export const PublicationForm = ({
           name="category"
           options={categoryOptions}
         />
-
         <Button text="Publicar" type="submit" />
       </VStack>
     </Flex>

@@ -92,6 +92,7 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
           onBlur={InputBlur}
           onFocusCapture={InputFocus}
           onChangeCapture={(e) => setInputValue(e.currentTarget.value)}
+          value={inputValue}
         />
       </InputGroup>
               {!!error && <FormErrorMessage> {error.message}</FormErrorMessage>}

@@ -37,7 +37,7 @@ export const Dashboard = () => {
         <Box onClick={signOut}>
           <FiLogOut color={"#000000"} size={25} />
         </Box>
-        <CreatePubliModal />
+        
       </Flex>
       <Center
         h={"100%"}
