@@ -1,6 +1,5 @@
 import { Flex, Text, Link } from "@chakra-ui/react";
 import { TeamCard } from "../../components/TeamCard";
-import profileHolder from "../../assets/profileHolder.png";
 import LuanProfile from "../../assets/LuanLinkedin.png";
 import ThiagoProfile from "../../assets/ThiagoLinkedin.png";
 import BernardoProfile from "../../assets/BernardoLinkedin.png";
