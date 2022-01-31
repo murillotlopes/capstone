@@ -3,7 +3,7 @@ import { FiLogOut } from "react-icons/fi";
 import { MenuList } from "../../components/ContainerDashboard/MenuList";
 import { RecomendedList } from "../../components/ContainerDashboard/RecomendadList";
 import { useAuth } from "../../contexts/Auth";
-
+import {CreatePubliModal} from "../../components/CreatePubliModal"
 export const Dashboard = () => {
   const { signOut } = useAuth();
 
@@ -37,6 +37,7 @@ export const Dashboard = () => {
         <Box onClick={signOut}>
           <FiLogOut color={"#000000"} size={25} />
         </Box>
+        <CreatePubliModal />
       </Flex>
       <Center
         h={"100%"}

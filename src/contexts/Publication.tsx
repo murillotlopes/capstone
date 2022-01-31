@@ -1,69 +1,95 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { api } from "../services/api";
 import { useAuth } from "./Auth";
 
 interface PublicationProviderProps {
-    children: ReactNode
+  children: ReactNode;
 }
 
 interface Publication {
-    userId: number
-    icon: string
-    username: string
-    photo: string
-    category: string
-    description: string
-    id: number   
+  userId: number;
+  icon: string;
+  username: string;
+  photo: string;
+  category: string;
+  description: string;
+  id: number;
+}
+
+interface CreatePublicationProps {
+  userId: number;
+  icon: string;
+  username: string;
+  photo: string;
+  category: string;
+  description: string;
 }
 
 interface PublicationContextData {
-    publications: Publication[]
-    addPublication: (publication: Publication) => void
-    editPublication: (publication: Publication) => void
-    deletePublication: (publication: Publication) => void
+  publications: Publication[];
+  addPublication: (publication: CreatePublicationProps) => void;
+  editPublication: (publication: Publication) => void;
+  deletePublication: (publication: Publication) => void;
 }
 
-const PublicationContext = createContext<PublicationContextData> ({} as PublicationContextData)
+const PublicationContext = createContext<PublicationContextData>(
+  {} as PublicationContextData
+);
 
-const usePublication = () => useContext(PublicationContext)
+const usePublication = () => useContext(PublicationContext);
 
-const PublicationProvider = ({ children }: PublicationProviderProps ) => {
-    
-    const [publications, setPublications] = useState <Publication[]> ([])
-    
-    const { accessToken, user } = useAuth()
+const PublicationProvider = ({ children }: PublicationProviderProps) => {
+  const [publications, setPublications] = useState<Publication[]>([]);
 
-    useEffect(() => {
-        api 
-        .get <Publication[]> (`publications`, {
-            headers: {
-                Authorization: `Bearer ${accessToken} `
-            },
-        })
-        .then((response) => {
-            setPublications(response.data)
-        })
-        .catch(err => setPublications(publications))
-    }, [])
+  const { accessToken, user } = useAuth();
 
-    const addPublication = (publication: Publication) => {}
+  useEffect(() => {
+    api
+      .get<Publication[]>(`publications`, {
+        headers: {
+          Authorization: `Bearer ${accessToken} `,
+        },
+      })
+      .then((response) => {
+        setPublications(response.data);
+      })
+      .catch((err) => setPublications(publications));
+  }, []);
 
-    const editPublication = (publication: Publication) => {}
+  const addPublication = (publication: CreatePublicationProps) => {
+      console.log(publication)
+    api
+      .post("/publications",publication,  {
+        headers: {
+          Authorization: `Bearer ${accessToken} `,
+        },
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
 
-    const deletePublication = (publication: Publication) => {}
+  const editPublication = (publication: Publication) => {};
 
-    return (
-        <PublicationContext.Provider
-            value={{
-                publications,
-                addPublication,
-                editPublication,
-                deletePublication,
-            }}
-        >
-            {children}
-        </PublicationContext.Provider>
-    )
-}
+  const deletePublication = (publication: Publication) => {};
 
-export { usePublication, PublicationProvider }
+  return (
+    <PublicationContext.Provider
+      value={{
+        publications,
+        addPublication,
+        editPublication,
+        deletePublication,
+      }}
+    >
+      {children}
+    </PublicationContext.Provider>
+  );
+};
+
+export { usePublication, PublicationProvider };

@@ -6,37 +6,36 @@ import {
     ModalFooter,
     ModalBody,
     ModalCloseButton,
+    Box,
+    useDisclosure,
   } from '@chakra-ui/react'
 
 import { usePublication } from "../../contexts/Publication"
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-
+import {FiPlus} from "react-icons/fi"
 import { PublicationForm } from "./PublicationForm";
+import { useAuth } from '../../contexts/Auth';
 
-interface CreatePubliModalProps {
-    isOpen: boolean
-    onClose: () => void
 
-}
 
 interface PublicationData {
-    userId: number
-    icon: string
-    username: string
     photo: string
     category: string
     description: string
-    id: number       
+           
 }
 
-export const CreatePubliModal = ({ isOpen, onClose }: CreatePubliModalProps) => {
-    
+export const CreatePubliModal = () => {
+    const {user } = useAuth();
+    const {onOpen, isOpen, onClose} = useDisclosure();
     const { addPublication } = usePublication()
 
     const PublicationShema = yup.object().shape({
-        description: yup.string().required("Campo obrigatório")
+        description: yup.string().required("Campo obrigatório"),
+        photo: yup.string(),
+        category: yup.string().required("Campo obrigatório")
     })
 
     const {
@@ -48,10 +47,27 @@ export const CreatePubliModal = ({ isOpen, onClose }: CreatePubliModalProps) => 
     })
 
     const handlePublication = (data: PublicationData) => {
-        addPublication(data)
+        const userId = parseInt(user.id, 10)
+
+        const dataRequest = {
+            ...data,
+            userId: userId,
+            icon:"icon",
+            username: user.username
+        }
+        
+        
+        addPublication(dataRequest)
     }
 
     return (
+        <>
+        <Box bgSize="30px" onClick={()=> onOpen()} _hover={{cursor: "pointer"}}>
+        <FiPlus />
+        </Box>
+
+
+
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay/>
             <ModalContent>
@@ -67,5 +83,8 @@ export const CreatePubliModal = ({ isOpen, onClose }: CreatePubliModalProps) => 
                 <ModalFooter/>
             </ModalContent>
         </Modal>
+        
+        </>
+        
     )
 }

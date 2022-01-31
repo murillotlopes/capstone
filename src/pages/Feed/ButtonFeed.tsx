@@ -19,7 +19,7 @@ export const ButtonFeed = () => {
       margin="30px 60px 0 0"
       cursor="pointer"
     >
-      <CreatePubliModal isOpen={isOpen} onClose={onClose} />
+      {/* <CreatePubliModal isOpen={isOpen} onClose={onClose} /> */}
       <FiPlusCircle onClick={onOpen} />
       <FiArrowLeftCircle onClick={() => history.push("/dashboard")} />
       <FiLogOut />
