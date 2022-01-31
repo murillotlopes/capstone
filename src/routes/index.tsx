@@ -4,7 +4,7 @@ import { SignUp } from "../pages/SignUp";
 import { Dashboard } from "../pages/Dashboard";
 import { Home } from "../pages/Home";
 import { Route } from "./Route";
-import { RecipePage } from "../components/RecipePage";
+import { RecipePage } from "../pages/RecipePage";
 import { MatchFood } from "../pages/MatchFood";
 import { FeedPage } from "../pages/Feed";
 

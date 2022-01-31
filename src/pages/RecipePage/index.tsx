@@ -1,25 +1,61 @@
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, Stack, Text } from "@chakra-ui/react";
 import { AiOutlineClockCircle } from "react-icons/ai";
+import { FiArrowLeftCircle } from "react-icons/fi";
 import { FiUser } from "react-icons/fi";
 import { useRecipes } from "../../contexts/Recipes";
+import Logo from "../../assets/logo.png"
+import { useHistory } from "react-router-dom";
 
 export const RecipePage = () => {
+
   const { recipeRender } = useRecipes();
+
+  const history = useHistory();
 
   return (
     <Flex
       key={recipeRender.id}
       bgGradient={"linear(to-r, bgColor 75%, primary 25%)"}
       h={"100vh"}
+      flexDirection={"column"}
+    >
+      <Flex
+      justifyContent={"space-between"}
+      >
+        <Image
+          src={Logo}
+          w="85px"
+          margin="10px"
+          onClick={() => history.push("/dashboard")}
+        />
+        <Stack
+        position="fixed"
+        right="0"
+        fontSize="30px"
+        cursor="pointer"
+        display="flex"
+        flexDirection={["row", "column"]}
+        margin="30px"
+        spacing="15px"
+        >
+          <FiArrowLeftCircle
+          onClick={() => history.push("/dashboard")}
+        />
+        </Stack>
+      </Flex>
+    <Flex
       flexDir={["column", "column", "row-reverse", "row-reverse"]}
       justifyContent={"center"}
       alignItems={"center"}
     >
       <Flex
-        width={["100vw", "100vw", "50vw", "50vw"]}
         justifyContent={"flex-end"}
       >
-        <Image src={recipeRender.image} borderRadius={"5px 0px 0px 525px"} />
+        <Image 
+        src={recipeRender.image} 
+        borderRadius={"5px 0px 0px 525px"}
+        w={["100vw", "100vw", "50vw", "50vw"]}
+        />
       </Flex>
       <Flex flexDir={"column"}>
         <Flex
@@ -84,6 +120,7 @@ export const RecipePage = () => {
           <Text>{recipeRender.method}</Text>
         </Box>
       </Flex>
+    </Flex>
     </Flex>
   );
 };
