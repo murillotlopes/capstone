@@ -53,7 +53,7 @@ const RecipesProvider = ({ children }: RecipesProps) => {
       .get<Recipe>(`https://capstone-json.herokuapp.com/recipes/${recipeId}`)
       .then((response) => {
         setRecipeRender(response.data);
-        history.push("/recipe");
+        history.push(`recipe/${recipeId}`);
       });
   };
 

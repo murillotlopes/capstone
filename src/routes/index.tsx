@@ -16,7 +16,7 @@ export const Routes = () => {
       <Route path="/signin" page={SignIn} />
       <Route path="/signup" page={SignUp} />
       <Route path="/dashboard" page={Dashboard} isPrivate />
-      <Route path="/recipe" page={RecipePage} isPrivate />
+      <Route path="/recipe/:id" page={RecipePage} isPrivate />
       <Route path="/explore" page={MatchFood} isPrivate />
       <Route path="/feed" page={FeedPage} isPrivate />
       <Route path="/team" page={TeamPage} />
