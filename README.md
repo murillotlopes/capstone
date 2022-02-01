@@ -1,46 +1,77 @@
-# Getting Started with Create React App
+<img src="https://user-images.githubusercontent.com/88336360/151994368-a25609d8-7bc3-496b-b858-7b38554da9ef.png"/>
+<img src="https://img.shields.io/static/v1?label=react&message=framework&color=blue&style=for-the-badge&logo=REACT"/>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descrição do Projeto <br/>
 
-## Available Scripts
+<p align="justify"> Desenvolver uma plataforma capaz de ajudar o usuário a preparar pratos apenas com os ingredientes disponíveis na dispensa!! </p>
 
-In the project directory, you can run:
+<img src="https://user-images.githubusercontent.com/88336360/151995119-16c5fd91-5e53-4ad8-b75a-df3cc753e2ae.png"/>
 
-### `yarn start`
+## O que a aplicação é capz de fazer? :checkered_flag:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+:trophy: Recomendar receitas para o usuário;
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+:trophy: Interação entre os usuários através de uma rede social onde é possível compartilhar receitas;
 
-### `yarn test`
+## Deploy da aplicação com Vercel
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> https://capstone-dusky.vercel.app/
 
-### `yarn build`
+## Pré-requesitos
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+:warning: [Yarn](https://classic.yarnpkg.com/pt-BR/docs/install/#windows-stable) 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Como rodar a aplicação :arrow_forward:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+No terminal, clone o projeto: 
 
-### `yarn eject`
+```
+git clone git@github.com:thdias00/capstone.git
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Entre na pasta do projeto:  
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+cd capstone
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Instale as dependecias:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+yarn install
+```
 
-## Learn More
+Execute a aplicação:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+yarn start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Pronto, agora é possível acessar a aplicação a partir da rota http://localhost:3000/ 
+
+## JSON :floppy_disk:
+
+Para essa aplicação utilizamos um banco de dados feito com JSON que pode ser acessado pelo link abaixo: 
+
+> https://github.com/thdias00/capstoneapi
+
+## Linguagens, dependencias e libs utilizadas :books:
+
+- React
+- Typescript
+- React-hook-form
+- React-router-dom
+- JWT-decode
+- Axios
+- React-icons
+
+
+Framework para layouts prontos:
+- Chakra UI
+
+## Desenvolvedores
+
+[<img src="https://user-images.githubusercontent.com/88336360/151998369-995ccb3e-d97e-4573-a6f0-b9663a6b66fb.png" width=115><br><sub>Luan Diniz</sub>](https://github.com/luandniz) |[<img src="https://user-images.githubusercontent.com/88336360/151998705-d22830fa-d9e2-4cf4-990a-e5b8a8e8c29f.png" width=115><br><sub>Thiago Dias</sub>](https://github.com/thdias00) | [<img src="https://user-images.githubusercontent.com/88336360/151998944-33b69bc7-ab76-4f49-805a-028b188f3238.png" width=115><br><sub>Bernardo Costa</sub>](https://github.com/bercardosoc) | [<img src="https://user-images.githubusercontent.com/88336360/151999168-130dace3-40e3-41cc-94d9-7b00e27e33b7.png" width=115><br><sub>Aine Mota</sub>](https://github.com/ainemota) | [<img src="https://user-images.githubusercontent.com/88336360/151999391-cc0d006c-3f30-423d-a064-8639a60f7270.png" width=115><br><sub>Murillo Lopes</sub>](https://github.com/murillotlopes) | [<img src="https://user-images.githubusercontent.com/88336360/151999711-621ae2f3-638d-4c84-bfc8-fa78470c7c7b.png" width=115><br><sub>Otávio Ikegami</sub>](https://github.com/otavio-ikegami) |
+| :---: | :---: | :---: | :---: | :---: | :---:
+
+> Status do Projeto: Concluido :heavy_check_mark:
