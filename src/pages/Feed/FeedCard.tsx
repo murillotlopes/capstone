@@ -44,7 +44,7 @@ export const FeedCard = ({ publication }: FeedCartProps) => {
         position="relative"
       >
         <Image
-          src="https://www.allstorehospitality.com/wp-content/uploads/2016/09/tableware1-600x600.jpg"
+          src={user.profile}
           alt="Dan Abramov"
           mb="2"
           w="50px"
@@ -59,7 +59,7 @@ export const FeedCard = ({ publication }: FeedCartProps) => {
             color="gray.500"
             fontWeight="semibold"
           >
-            {publication.username !== "" ? publication.username : "Anonimous"}
+            {publication.username !== "" ? publication.username : "Anonymous"}
           </Heading>
           <Heading
             as="h6"
