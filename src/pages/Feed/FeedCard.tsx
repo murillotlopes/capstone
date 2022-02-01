@@ -1,7 +1,22 @@
-import { Flex, Box, Image, Heading, Container } from "@chakra-ui/react";
+import { Flex, Box, Image, Heading, Container, Center } from "@chakra-ui/react";
 import Logo from "../../assets/logo.png";
+import {FaTrash, FaEdit} from "react-icons/fa"
+import { usePublication } from "../../contexts/Publication";
 
-export const FeedCard = () => {
+interface Publication {
+  userId: number;
+  icon: string;
+  username: string;
+  photo: string;
+  category: string;
+  description: string;
+  id: number;
+}
+
+export const FeedCard = (publication : Publication) => {
+
+  const {editPublication, deletePublication} = usePublication();
+
   return (
     <Container
       w={"100%"}
@@ -60,6 +75,13 @@ export const FeedCard = () => {
               Data
             </Heading>
           </Box>
+          <Center as="button" onClick={()=>editPublication(publication)}>
+          <FaEdit />
+          </Center>
+          <Center as="button" onClick={()=>deletePublication(publication)}>
+          <FaTrash />
+          </Center>
+          
         </Flex>
 
         <Flex>

@@ -1,8 +1,12 @@
 import { Flex } from "@chakra-ui/react";
 import { FeedCard } from "../Feed/FeedCard";
 import { ButtonFeed } from "../Feed/ButtonFeed";
+import { usePublication } from "../../contexts/Publication";
 
 export const FeedPage = () => {
+
+  const {} = usePublication();
+  
   return (
     <Flex
       justifyContent={"flex-start"}
@@ -11,7 +15,7 @@ export const FeedPage = () => {
       h={"100vh"}
     >
       <ButtonFeed></ButtonFeed>
-      <FeedCard></FeedCard>
+      <FeedCard />
     </Flex>
   );
 };
