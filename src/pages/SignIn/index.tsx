@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import Decor from "../../assets/plant.png";
 import Logo from "../../assets/logo.png"
-import ModalError from "../../components/ModalError";
+import ModalError from "../../components/Form/ModalError";
 
 interface SignInData {
   email: string;

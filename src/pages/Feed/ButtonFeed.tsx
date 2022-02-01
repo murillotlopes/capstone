@@ -2,6 +2,7 @@ import { FiArrowLeftCircle, FiLogOut, FiPlusCircle } from "react-icons/fi";
 import { useHistory } from "react-router-dom";
 import { Box, Stack } from "@chakra-ui/react";
 import { PseudoBox } from "@chakra-ui/core";
+import { CreatePubliModal } from "../../components/CreatePubliModal";
 
 export const ButtonFeed = () => {
   const history = useHistory();
@@ -19,7 +20,7 @@ export const ButtonFeed = () => {
       h={["50px", "150px"]}
       w={["120px", "30px"]}
     >
-      <FiPlusCircle />
+      <CreatePubliModal />
       <FiArrowLeftCircle onClick={() => history.push("/dashboard")} />
       <FiLogOut />
     </Box>
