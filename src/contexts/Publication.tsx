@@ -32,14 +32,25 @@ interface CreatePublicationProps {
   description: string;
 }
 
+
+  interface EditPublicationData{
+   
+      description?: string;
+      photo?:string;
+      category?:string;
+    }
+  
+
 interface PublicationContextData {
   publications: Publication[];
   addPublication: (
     publication: CreatePublicationProps,
     onClose: () => void
   ) => void;
-  editPublication: (publication: Publication) => void;
+  editPublication: (publication : Publication) => void;
   deletePublication: (publication: Publication) => void;
+  setEditPublicationData:(arg: EditPublicationData) => void;
+  editPublicationData: EditPublicationData;
 }
 
 const PublicationContext = createContext<PublicationContextData>(
@@ -49,9 +60,11 @@ const PublicationContext = createContext<PublicationContextData>(
 const usePublication = () => useContext(PublicationContext);
 
 const PublicationProvider = ({ children }: PublicationProviderProps) => {
+  const [editPublicationData, setEditPublicationData] = useState<EditPublicationData>({} as EditPublicationData)
   const [publications, setPublications] = useState<Publication[]>([]);
   const { accessToken, user } = useAuth();
   const toast = useToast();
+ 
 
   useEffect(() => {
     api
@@ -77,7 +90,7 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
           Authorization: `Bearer ${accessToken} `,
         },
       })
-      .then((_) =>{
+      .then((_) => {
         toast({
           position: "top",
           title: "Yummi",
@@ -85,13 +98,13 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
           status: "success",
           duration: 9000,
           isClosable: true,
-        })
-        onClose()
-       setTimeout(()=>{document.location.reload()}, 3000 )
-      
-      }
-      )
-            .catch((err) =>
+        });
+        onClose();
+        setTimeout(() => {
+          document.location.reload();
+        }, 3000);
+      })
+      .catch((err) =>
         toast({
           position: "top",
           title: "Ooops",
@@ -103,17 +116,63 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
       );
   };
 
-  const editPublication = (publication: Publication) => {
-    console.log("editei")
+  const editPublication = (publication : Publication) => {
+    console.log(editPublicationData)
+    api
+      .patch(`/publications/${publication.id}`, editPublicationData, {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      })
+      .then((res) =>{
+        console.log(res)
+        setEditPublicationData({} as EditPublicationData)
+      })
+      .catch((err) =>        toast({
+        position: "top",
+        title: "Erro ao editar seu post!",
+        description: "Tente novamente.",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      }));
   };
 
   const deletePublication = (publication: Publication) => {
-    console.log("deletei")
+    api
+      .delete(`/publications/${publication.id}`, {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      })
+      .then((res) => {
+        console.log(res);
+        toast({
+          position: "top",
+          title: "Seu post foi deletado com sucesso!",
+          description: "A página será atualizada.",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+        });
+
+        setTimeout(() => {
+          document.location.reload();
+        }, 3000);
+      })
+      .catch((err) =>
+        toast({
+          position: "top",
+          title: "Erro ao deletar seu post!",
+          description: "Tente novamente.",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        })
+      );
   };
 
   return (
     <PublicationContext.Provider
       value={{
+        editPublicationData,
+        setEditPublicationData,
         publications,
         addPublication,
         editPublication,

@@ -15,14 +15,7 @@ import {
 } from "react";
 import { FieldError } from "react-hook-form";
 
-
-interface Options {
-  value: string;
-  label: string;
-}
-
 interface SelectProps extends ChakraSelectProps {
-  options: Options[];
   label?: string;
   name?: string;
   error?: FieldError | null;
@@ -40,12 +33,16 @@ const InputColor: inputColorsOption = {
 };
 
 const SelectBase: ForwardRefRenderFunction<HTMLSelectElement, SelectProps> = (
-  { label, name, error = null, icon: Icon, options, ...rest },
+  { label, name, error = null, icon: Icon, ...rest },
   ref
 ) => {
   const [inputValue, setInputValue] = useState("");
   const [inputStatus, setInputStatus] = useState("default");
-
+  const categoryOptions = [
+    { value: "fitness", label: "Fitness" },
+    { value: "sobremesa", label: "Sobremesa" },
+    { value: "entradas", label: "Entradas" },
+    { value: "prato-principal", label: "Prato Principal" }]
 
   useEffect(() => {
     if (!!error) {
@@ -87,7 +84,7 @@ const SelectBase: ForwardRefRenderFunction<HTMLSelectElement, SelectProps> = (
           onFocusCapture={InputFocus}
           onChangeCapture={(e) => setInputValue(e.currentTarget.value)}
         >
-          {options.map((item) => (
+          {categoryOptions.map((item) => (
             <option   key={item.value} value={item.value}>{item.label}</option>
           ))}
         </ChakraSelect>
