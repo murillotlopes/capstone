@@ -5,10 +5,17 @@ import { PseudoBox } from "@chakra-ui/core";
 import { useAuth } from "../../contexts/Auth";
 import { CreatePubliModal } from "../../components/CreatePubliModal";
 import { EditProModal } from "../../components/EditProModal";
+import { useIcons } from "../../contexts/Icons";
+import { useEffect } from "react";
 
 export const ButtonFeed = () => {
   const history = useHistory();
   const { signOut } = useAuth();
+  const { loadIcons} = useIcons()
+  
+  useEffect(() => {
+    loadIcons()
+  }, [])
 
   return (
     <Box
