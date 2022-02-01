@@ -33,6 +33,7 @@ interface SignUpCredentials {
   username: string;
   email: string;
   password: string;
+  profile: string;
 }
 
 interface AuthContextData {
@@ -62,10 +63,10 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   });
 
   const signUp = useCallback(
-    async ({ username, email, password }: SignUpCredentials) => {
+    async ({ username, email, password, profile }: SignUpCredentials) => {
       const response = await axios.post(
         "https://capstone-json.herokuapp.com/users",
-        { username, email, password }
+        { username, email, password, profile }
       );
 
       const { accessToken, user } = response.data;

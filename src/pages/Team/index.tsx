@@ -7,6 +7,7 @@ import AineProfile from "../../assets/AineLinkedin.png";
 import MuriloProfile from "../../assets/MuriloLinkedin.png";
 import OtavioProfile from "../../assets/OtavioLinkedin.png";
 import Logo from "../../assets/logo.png";
+import { useHistory } from "react-router-dom";
 
 export const TeamPage = () => {
   return (
@@ -19,7 +20,13 @@ export const TeamPage = () => {
       fontFamily="Poppins"
     >
       <Link href="/" textDecor={"none"} _hover={{ textDecor: "none" }}>
-        <Image src={Logo} w={["75px","100px","100px","140px"]} margin={"20px"} position={"absolute"} left={"1%"} />
+        <Image
+          src={Logo}
+          w={["75px", "100px", "100px", "140px"]}
+          margin={"20px"}
+          position={"absolute"}
+          left={"1%"}
+        />
       </Link>
       <Text
         position={"absolute"}
