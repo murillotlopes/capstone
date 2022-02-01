@@ -5,8 +5,8 @@ import { usePublication } from "../../contexts/Publication";
 
 export const FeedPage = () => {
 
-  const {} = usePublication();
-  
+  const {publications} = usePublication();
+
   return (
     <Flex
       justifyContent={"flex-start"}
@@ -17,7 +17,8 @@ export const FeedPage = () => {
       w={"100vw"}
     >
       <ButtonFeed></ButtonFeed>
-      <FeedCard />
+      {publications.map((item) =>  <FeedCard publication={item} />)}
+     
     </Flex>
   );
 };
