@@ -50,6 +50,7 @@ export const RecomendedList = () => {
             borderRadius={"15px"}
             src={recipe.image}
             alt={recipe.title}
+            objectFit={"cover"}
           />
           <Flex
             flexDir={"column"}
