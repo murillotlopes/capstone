@@ -3,18 +3,11 @@ import {
   Box,
   Image,
   Heading,
-  Container,
-  Center,
-  VStack,
   HStack,
-  useDisclosure,
 } from "@chakra-ui/react";
-import { useState } from "react";
-import { FaTrash, FaEdit } from "react-icons/fa";
 import { useAuth } from "../../contexts/Auth";
-import { usePublication } from "../../contexts/Publication";
-import DeleteConfirmModal from "../../components/DeleteConfirmModal"
-
+import DeleteConfirmModal from "../../components/PublicationsModal/DeleteConfirmModal";
+import EditModal from "../../components/PublicationsModal/EditPublimodal";
 
 interface FeedCartProps {
   publication: {
@@ -29,11 +22,8 @@ interface FeedCartProps {
 }
 
 export const FeedCard = ({ publication }: FeedCartProps) => {
-  const { editPublication, deletePublication } = usePublication();
   const { user } = useAuth();
   const userId = parseInt(user.id, 10);
-  const {isOpen, onClose, onOpen} = useDisclosure();
-
 
   return (
     <Box
@@ -84,20 +74,8 @@ export const FeedCard = ({ publication }: FeedCartProps) => {
         </Box>
         {publication.userId === userId && (
           <HStack spacing="6" position="absolute" right="30px " top="15px">
-            <Center
-              fontSize="2xl"
-              as="button"
-              onClick={() => editPublication(publication)}
-            >
-              <FaEdit />
-            </Center>
-            <Center
-              as="button"
-              fontSize="xl"
-              onClick={() => onOpen() }
-            >
-              <FaTrash />
-            </Center>
+            <EditModal publication={publication} />
+            <DeleteConfirmModal publication={publication} />
           </HStack>
         )}
       </Flex>
@@ -128,7 +106,7 @@ export const FeedCard = ({ publication }: FeedCartProps) => {
           {publication.description}
         </Heading>
       </Flex>
-      <DeleteConfirmModal onClose={onClose} isOpen={isOpen} publication={publication} />
+
     </Box>
   );
 };

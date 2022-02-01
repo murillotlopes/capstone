@@ -32,14 +32,25 @@ interface CreatePublicationProps {
   description: string;
 }
 
+
+  interface EditPublicationData{
+   
+      description?: string;
+      photo?:string;
+      category?:string;
+    }
+  
+
 interface PublicationContextData {
   publications: Publication[];
   addPublication: (
     publication: CreatePublicationProps,
     onClose: () => void
   ) => void;
-  editPublication: (publication: Publication) => void;
+  editPublication: (publication : Publication) => void;
   deletePublication: (publication: Publication) => void;
+  setEditPublicationData:(arg: EditPublicationData) => void;
+  editPublicationData: EditPublicationData;
 }
 
 const PublicationContext = createContext<PublicationContextData>(
@@ -49,9 +60,11 @@ const PublicationContext = createContext<PublicationContextData>(
 const usePublication = () => useContext(PublicationContext);
 
 const PublicationProvider = ({ children }: PublicationProviderProps) => {
+  const [editPublicationData, setEditPublicationData] = useState<EditPublicationData>({} as EditPublicationData)
   const [publications, setPublications] = useState<Publication[]>([]);
   const { accessToken, user } = useAuth();
   const toast = useToast();
+ 
 
   useEffect(() => {
     api
@@ -103,12 +116,16 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
       );
   };
 
-  const editPublication = (publication: Publication) => {
+  const editPublication = (publication : Publication) => {
+    console.log(editPublicationData)
     api
-      .patch(`/publications/${publication.id}`, publication, {
+      .patch(`/publications/${publication.id}`, editPublicationData, {
         headers: { Authorization: `Bearer ${accessToken}` },
       })
-      .then((res) => console.log(res))
+      .then((res) =>{
+        console.log(res)
+        setEditPublicationData({} as EditPublicationData)
+      })
       .catch((err) =>        toast({
         position: "top",
         title: "Erro ao editar seu post!",
@@ -154,6 +171,8 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
   return (
     <PublicationContext.Provider
       value={{
+        editPublicationData,
+        setEditPublicationData,
         publications,
         addPublication,
         editPublication,

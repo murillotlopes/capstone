@@ -8,7 +8,6 @@ import {
   ModalCloseButton,
   Box,
   useDisclosure,
-  useToast,
 } from "@chakra-ui/react";
 
 import { usePublication } from "../../../contexts/Publication";
@@ -18,7 +17,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { FiPlus } from "react-icons/fi";
 import { PublicationForm } from "./PublicationForm";
 import { useAuth } from "../../../contexts/Auth";
-import { useState } from "react";
 
 interface PublicationData {
   photo: string;

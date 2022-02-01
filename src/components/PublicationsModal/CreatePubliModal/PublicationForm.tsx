@@ -15,12 +15,7 @@ export const PublicationForm = ({
   register,
   handlePublication,
 }: CreatePubliProps) => {
-  const categoryOptions = [
-    { value: "fitness", label: "Fitness" },
-    { value: "sobremesa", label: "Sobremesa" },
-    { value: "entradas", label: "Entradas" },
-    { value: "prato-principal", label: "Prato Principal" },
-  ];
+
 
   return (
     <Flex as="form" onSubmit={handlePublication} flexDirection={"column"}>
@@ -36,8 +31,8 @@ export const PublicationForm = ({
           {...register("category")}
           placeholder="Escolha a categoria da sua receita"
           name="category"
-          options={categoryOptions}
-        />{" "}
+          
+        />
         <Input
           {...register("description")}
           error={errors.description}
