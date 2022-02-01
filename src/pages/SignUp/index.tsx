@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import Decor from "../../assets/plant.png";
 import { useAuth } from "../../contexts/Auth";
-import ModalError from "../../components/ModalError";
+import ModalError from "../../components/Form/ModalError";
 import { useHistory } from "react-router-dom";
 import Logo from "../../assets/logo.png";
 
@@ -48,6 +48,7 @@ export const SignUp = () => {
       username: data.username,
       email: data.email,
       password: data.password,
+      profile: "https://raw.githubusercontent.com/thdias00/capstone/develop/src/assets/profileHolder.png",
     };
     signUp(currentData)
       .then((_) => {

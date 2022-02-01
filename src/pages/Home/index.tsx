@@ -1,7 +1,5 @@
 import { Box, Center, Flex, Img, Text, Menu } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
-import circleGrid from "../../assets/circle_grid.svg";
-import foodPlate from "../../assets/this.png";
 import { Header } from "../Home/header";
 import { Content } from "../Home/content";
 

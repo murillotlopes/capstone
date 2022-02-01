@@ -1,4 +1,4 @@
-import { Flex, Text, Link } from "@chakra-ui/react";
+import { Flex, Text, Link, Image } from "@chakra-ui/react";
 import { TeamCard } from "../../components/TeamCard";
 import LuanProfile from "../../assets/LuanLinkedin.png";
 import ThiagoProfile from "../../assets/ThiagoLinkedin.png";
@@ -6,6 +6,8 @@ import BernardoProfile from "../../assets/BernardoLinkedin.png";
 import AineProfile from "../../assets/AineLinkedin.png";
 import MuriloProfile from "../../assets/MuriloLinkedin.png";
 import OtavioProfile from "../../assets/OtavioLinkedin.png";
+import Logo from "../../assets/logo.png";
+import { useHistory } from "react-router-dom";
 
 export const TeamPage = () => {
   return (
@@ -17,6 +19,15 @@ export const TeamPage = () => {
       height={["100vh"]}
       fontFamily="Poppins"
     >
+      <Link href="/" textDecor={"none"} _hover={{ textDecor: "none" }}>
+        <Image
+          src={Logo}
+          w={["75px", "100px", "100px", "140px"]}
+          margin={"20px"}
+          position={"absolute"}
+          left={"1%"}
+        />
+      </Link>
       <Text
         position={"absolute"}
         textAlign={"center"}
