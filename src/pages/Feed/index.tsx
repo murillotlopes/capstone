@@ -8,7 +8,6 @@ import Logo from "../../assets/logo.png";
 export const FeedPage = () => {
 
   const {publications} = usePublication();
-console.log(publications)
   return (
     <Flex
       justifyContent={"flex-start"}
