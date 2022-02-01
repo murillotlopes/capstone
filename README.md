@@ -7,7 +7,7 @@
 
 <img src="https://user-images.githubusercontent.com/88336360/151995119-16c5fd91-5e53-4ad8-b75a-df3cc753e2ae.png"/>
 
-## O que a aplicação é capz de fazer? :checkered_flag:
+## O que a aplicação é capaz de fazer? :checkered_flag:
 
 :trophy: Recomendar receitas para o usuário;
 
