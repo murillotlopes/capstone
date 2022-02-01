@@ -1,5 +1,5 @@
 import { Box, Center, Flex, Image, Text } from "@chakra-ui/react";
-import { FiLogOut } from "react-icons/fi";
+import { FiArrowLeftCircle, FiLogOut } from "react-icons/fi";
 import { RecipeBox } from "../../components/RecipeBox";
 import { useRecipes } from "../../contexts/Recipes";
 import Logo from "../../assets/logo.png";
@@ -37,9 +37,14 @@ export const MatchFood = () => {
           _hover={{ cursor: "pointer" }}
           onClick={() => history.push("/dashboard")}
         />
-        <Box onClick={signOut} _hover={{ cursor: "pointer" }}>
-          <FiLogOut color={"#000000"} size={25} />
-        </Box>
+        <Flex flexDir={"column"}>
+          <Box onClick={() => history.goBack()} _hover={{ cursor: "pointer" }}>
+            <FiArrowLeftCircle size={25} />
+          </Box>
+          <Box onClick={signOut} _hover={{ cursor: "pointer" }} mt={"15px"}>
+            <FiLogOut color={"#000000"} size={25} />
+          </Box>
+        </Flex>
       </Flex>
       <Center
         w={"100vw"}
