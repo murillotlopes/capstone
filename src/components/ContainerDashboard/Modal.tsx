@@ -109,7 +109,7 @@ export const ModalDashboard = () => {
               Escolha 3 ou mais ingredientes:{" "}
             </Text>
             <Flex flexWrap={"wrap"} w={"100%"} justifyContent={"center"}>
-              {Words.map((word, index) => (
+              {Words.sort().map((word, index) => (
                 <Box
                   key={index}
                   padding={2}
@@ -133,32 +133,9 @@ export const ModalDashboard = () => {
             <Flex
               w={"100%"}
               flexDir={["column", "column", "row", "row"]}
-              justifyContent={["center", "center", "flex-start", "flex-start"]}
+              justifyContent={["center", "center", "flex-end", "flex-end"]}
               alignItems={"center"}
             >
-              <Button
-                bg={"#FFFFFF"}
-                color={"primary"}
-                _hover={{ cursor: "pointer", bg: "#FFFFFF" }}
-                m={3}
-                w={["100%", "50%"]}
-                justifyContent={[
-                  "center",
-                  "center",
-                  "flex-start",
-                  "flex-start",
-                ]}
-                boxShadow={[
-                  "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-                  "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-                  "none",
-                  "none",
-                ]}
-                borderRadius={10}
-                onClick={() => history.push("/matchfood")}
-              >
-                EXPLORE NOSSAS COMIDAS
-              </Button>
               <Button
                 bg={"#FFFFFF"}
                 color={"primary"}

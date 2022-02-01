@@ -69,6 +69,7 @@ export const MenuList = () => {
           flexDir={["row", "row", "column", "column"]}
           justifyContent={"center"}
           alignItems={"center"}
+          onClick={() => history.push("/explore")}
         >
           <Image
             src={IconCandy}
@@ -82,7 +83,7 @@ export const MenuList = () => {
             fontSize={["md", "md", "2xl", "3xl"]}
             m={3}
           >
-            Doces
+            Explorar
           </Text>
           <Box
             w={["25px", "25px", "35px", "50px"]}
@@ -120,7 +121,7 @@ export const MenuList = () => {
           alignItems={"center"}
         >
           <Image
-            src={IconFood}
+            src={IconFeed}
             m={3}
             w={["63px", "63px", "100px", "126px"]}
             h={["63px", "63px", "100px", "126px"]}
