@@ -33,7 +33,11 @@ export const Home = () => {
           </Link>
 
           <Link href="/signup">
-            <Text>Cadastrar</Text>
+            <Text mr={["10px", "15px", "15px", "40px"]}>Cadastrar</Text>
+          </Link>
+
+          <Link href="/team">
+            <Text>Sobre Nós</Text>
           </Link>
         </Flex>
       </Flex>

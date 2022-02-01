@@ -2,9 +2,11 @@ import { FiArrowLeftCircle, FiLogOut, FiPlusCircle } from "react-icons/fi";
 import { useHistory } from "react-router-dom";
 import { Box, Stack } from "@chakra-ui/react";
 import { PseudoBox } from "@chakra-ui/core";
+import { useAuth } from "../../contexts/Auth";
 
 export const ButtonFeed = () => {
   const history = useHistory();
+  const { signOut } = useAuth();
 
   return (
     <Box
@@ -21,7 +23,7 @@ export const ButtonFeed = () => {
     >
       <FiPlusCircle />
       <FiArrowLeftCircle onClick={() => history.push("/dashboard")} />
-      <FiLogOut />
+      <FiLogOut onClick={signOut} />
     </Box>
   );
 };
