@@ -1,4 +1,4 @@
-import { Flex, Text, Link, Image, Box } from "@chakra-ui/react";
+import { Flex, Text, Link, Image } from "@chakra-ui/react";
 import { TeamCard } from "../../components/TeamCard";
 import LuanProfile from "../../assets/LuanLinkedin.png";
 import ThiagoProfile from "../../assets/ThiagoLinkedin.png";
@@ -7,11 +7,9 @@ import AineProfile from "../../assets/AineLinkedin.png";
 import MuriloProfile from "../../assets/MuriloLinkedin.png";
 import OtavioProfile from "../../assets/OtavioLinkedin.png";
 import Logo from "../../assets/logo.png";
-import { FiArrowLeftCircle } from "react-icons/fi";
 import { useHistory } from "react-router-dom";
 
 export const TeamPage = () => {
-  const history = useHistory();
   return (
     <Flex
       justifyContent={"flex-start"}
@@ -21,25 +19,15 @@ export const TeamPage = () => {
       height={["100vh"]}
       fontFamily="Poppins"
     >
-      <Flex
-        w={"100%"}
-        position={"absolute"}
-        top={0}
-        justifyContent={"space-between"}
-        alignItems={"center"}
-        p={"0px 10px"}
-      >
+      <Link href="/" textDecor={"none"} _hover={{ textDecor: "none" }}>
         <Image
-          onClick={() => history.push("/")}
           src={Logo}
-          w="85px"
-          margin="10px"
-          _hover={{ cursor: "pointer" }}
+          w={["75px", "100px", "100px", "140px"]}
+          margin={"20px"}
+          position={"absolute"}
+          left={"1%"}
         />
-        <Box onClick={() => history.goBack()} _hover={{ cursor: "pointer" }}>
-          <FiArrowLeftCircle size={25} />
-        </Box>
-      </Flex>
+      </Link>
       <Text
         position={"absolute"}
         textAlign={"center"}
