@@ -77,7 +77,7 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
           Authorization: `Bearer ${accessToken} `,
         },
       })
-      .then((_) =>{
+      .then((_) => {
         toast({
           position: "top",
           title: "Yummi",
@@ -85,13 +85,13 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
           status: "success",
           duration: 9000,
           isClosable: true,
-        })
-        onClose()
-       setTimeout(()=>{document.location.reload()}, 3000 )
-      
-      }
-      )
-            .catch((err) =>
+        });
+        onClose();
+        setTimeout(() => {
+          document.location.reload();
+        }, 3000);
+      })
+      .catch((err) =>
         toast({
           position: "top",
           title: "Ooops",
@@ -104,11 +104,51 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
   };
 
   const editPublication = (publication: Publication) => {
-    console.log("editei")
+    api
+      .patch(`/publications/${publication.id}`, publication, {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      })
+      .then((res) => console.log(res))
+      .catch((err) =>        toast({
+        position: "top",
+        title: "Erro ao editar seu post!",
+        description: "Tente novamente.",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      }));
   };
 
   const deletePublication = (publication: Publication) => {
-    console.log("deletei")
+    api
+      .delete(`/publications/${publication.id}`, {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      })
+      .then((res) => {
+        console.log(res);
+        toast({
+          position: "top",
+          title: "Seu post foi deletado com sucesso!",
+          description: "A página será atualizada.",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+        });
+
+        setTimeout(() => {
+          document.location.reload();
+        }, 3000);
+      })
+      .catch((err) =>
+        toast({
+          position: "top",
+          title: "Erro ao deletar seu post!",
+          description: "Tente novamente.",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        })
+      );
   };
 
   return (
