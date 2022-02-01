@@ -103,9 +103,13 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
       );
   };
 
-  const editPublication = (publication: Publication) => {};
+  const editPublication = (publication: Publication) => {
+    console.log("editei")
+  };
 
-  const deletePublication = (publication: Publication) => {};
+  const deletePublication = (publication: Publication) => {
+    console.log("deletei")
+  };
 
   return (
     <PublicationContext.Provider
