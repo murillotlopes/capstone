@@ -1,8 +1,8 @@
-import {  Flex, VStack } from "@chakra-ui/react";
+import { Flex, VStack } from "@chakra-ui/react";
 import { DeepMap, FieldError, FieldValues } from "react-hook-form";
-import Button from "../Button";
-import { Input } from "../Form/Input";
-import { Select } from "../Form/InputSelect";
+import Button from "../../Button";
+import { Select } from "../../Form/InputSelect";
+import { TextArea } from "../../Form/TextArea";
 
 interface CreatePubliProps {
   handlePublication: () => void;
@@ -25,24 +25,19 @@ export const PublicationForm = ({
   return (
     <Flex as="form" onSubmit={handlePublication} flexDirection={"column"}>
       <VStack spacing="4">
-        <Input
-          {...register("description")}
-          error={errors.description}
-          placeholder="Hoje eu cozinhei..."
-          name="description"
-        />
-        <Input
-          {...register("photo")}
-          error={errors.photo}
-          placeholder="Cole o link da imagem desejada"
-          name="photo"
-        />
         <Select
-          erorr={errors.category}
-          {...register("category")}
+          error={errors.category}
           placeholder="Escolha a categoria da sua receita"
           name="category"
           options={categoryOptions}
+          {...register("category")}
+        />
+        <TextArea
+          
+          error={errors.description}
+          placeholder="Descreva sua experiência..."
+          name="description"
+          {...register("description")}
         />
         <Button text="Publicar" type="submit" />
       </VStack>

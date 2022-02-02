@@ -44,11 +44,20 @@ export const RecipePage = () => {
           margin="30px"
           spacing="15px"
         >
-          <Box onClick={() => history.goBack()} _hover={{ cursor: "pointer" }}>
-            <FiArrowLeftCircle />
+          <Box
+            onClick={() => history.goBack()}
+            _hover={{ color: "white", transition: "0.5s" }}
+            cursor="pointer"
+          >
+            <FiArrowLeftCircle size={35} />
           </Box>
-          <Box onClick={signOut} _hover={{ cursor: "pointer" }} mt={"15px"}>
-            <FiLogOut color={"#000000"} size={25} />
+          <Box
+            onClick={signOut}
+            _hover={{ color: "white", transition: "0.5s" }}
+            cursor="pointer"
+            mt={"15px"}
+          >
+            <FiLogOut size={35} />
           </Box>
         </Stack>
       </Flex>

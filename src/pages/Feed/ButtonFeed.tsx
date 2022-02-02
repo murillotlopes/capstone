@@ -2,8 +2,9 @@ import { FiArrowLeftCircle, FiLogOut, FiPlusCircle, FiUser } from "react-icons/f
 import { useHistory } from "react-router-dom";
 import { Box, Stack, useDisclosure } from "@chakra-ui/react";
 import { PseudoBox } from "@chakra-ui/core";
+
+import { CreatePubliModal } from "../../components/PublicationsModal/CreatePubliModal"
 import { useAuth } from "../../contexts/Auth";
-import { CreatePubliModal } from "../../components/CreatePubliModal";
 import { EditProModal } from "../../components/EditProModal";
 import { useIcons } from "../../contexts/Icons";
 import { useEffect } from "react";

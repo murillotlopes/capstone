@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
+  Box,
   Flex,
   Image,
   Link,
@@ -14,6 +15,7 @@ import { useAuth } from "../../contexts/Auth";
 import ModalError from "../../components/Form/ModalError";
 import { useHistory } from "react-router-dom";
 import Logo from "../../assets/logo.png";
+import { FiArrowLeftCircle } from "react-icons/fi";
 
 interface SignUpData {
   username: string;
@@ -48,7 +50,8 @@ export const SignUp = () => {
       username: data.username,
       email: data.email,
       password: data.password,
-      profile: "https://raw.githubusercontent.com/thdias00/capstone/develop/src/assets/profileHolder.png",
+      profile:
+        "https://raw.githubusercontent.com/thdias00/capstone/develop/src/assets/profileHolder.png",
     };
     signUp(currentData)
       .then((_) => {
@@ -56,7 +59,7 @@ export const SignUp = () => {
         toast({
           position: "top",
           title: "Conta criada com sucesso! ",
-          description: "Você será redirecionado.",
+          description: "Por favor, faça o login.",
           status: "success",
           duration: 9000,
           isClosable: true,
@@ -84,15 +87,21 @@ export const SignUp = () => {
         <Link href="/" textDecor={"none"} _hover={{ textDecor: "none" }}>
           <Image src={Logo} position={"absolute"} w={"85px"} margin={"10px"} />
         </Link>
-        <Image
-          src={Decor}
-          position={["absolute"]}
-          w={["45%", "30%", "20%", "12%"]}
-          h="auto"
-          top={["20%", "15%", "30%", "30%"]}
-          right={["60%", "80%", "80%", "88%"]}
-        />
+        <Image src={Decor} position={"absolute"} bottom="0" h="70%" />
       </Flex>
+
+      <Box
+        position="fixed"
+        right="0"
+        top="0"
+        fontSize="40px"
+        margin={["10px", "30px 30px 0 0"]}
+        _hover={{ color: "white", transition: "0.5s" }}
+        cursor="pointer"
+      >
+        <FiArrowLeftCircle type="button" onClick={() => history.push("/")} />
+      </Box>
+
       <SignUpForm
         errors={errors}
         register={register}
