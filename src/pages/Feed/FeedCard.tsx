@@ -18,6 +18,7 @@ interface FeedCartProps {
     category: string;
     description: string;
     id: number;
+    date:string;
   };
 }
 
@@ -69,7 +70,7 @@ export const FeedCard = ({ publication }: FeedCartProps) => {
             size="4xs"
             fontWeight="500"
           >
-            Data
+           {publication.date}
           </Heading>
         </Box>
         {publication.userId === userId && (

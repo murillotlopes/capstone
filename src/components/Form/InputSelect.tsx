@@ -19,13 +19,14 @@ interface SelectProps extends ChakraSelectProps {
   label?: string;
   name?: string;
   error?: FieldError | null;
+  options: Array<inputOption>;
 }
 
-type inputColorsOption = {
+type inputOption = {
   [key: string]: string;
 };
 
-const InputColor: inputColorsOption = {
+const InputColor: inputOption = {
   error: "negative",
   default: "gray.600",
   focus: "gray.600",
@@ -33,18 +34,12 @@ const InputColor: inputColorsOption = {
 };
 
 const SelectBase: ForwardRefRenderFunction<HTMLSelectElement, SelectProps> = (
-  { label, name, error = null, icon: Icon, ...rest },
+  { options, label, name, error = null, icon: Icon, ...rest },
   ref
 ) => {
   const [inputValue, setInputValue] = useState("");
   const [inputStatus, setInputStatus] = useState("default");
-  const categoryOptions = [
-    { value: "fitness", label: "Fitness" },
-    { value: "sobremesa", label: "Sobremesa" },
-    { value: "entradas", label: "Entradas" },
-    { value: "prato-principal", label: "Prato Principal" },
-  ];
-
+ 
   useEffect(() => {
     if (!!error) {
       return setInputStatus("error");
@@ -71,21 +66,21 @@ const SelectBase: ForwardRefRenderFunction<HTMLSelectElement, SelectProps> = (
 
       <InputGroup margin={"0.5rem auto"}>
         <ChakraSelect
-          // _hover={{ bg: "gray.600", color: "white" }}
           border="2px"
           ref={ref}
           h="50px"
           name={name}
           id={name}
           variant="outline"
-          {...rest}
           color={InputColor[inputStatus]}
           borderColor={InputColor[inputStatus]}
           onBlur={InputBlur}
           onFocusCapture={InputFocus}
           onChangeCapture={(e) => setInputValue(e.currentTarget.value)}
+          value={inputValue}
+          {...rest}
         >
-          {categoryOptions.map((item) => (
+          {options.map((item) => (
             <option key={item.value} value={item.value}>
               {item.label}
             </option>

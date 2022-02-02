@@ -21,6 +21,7 @@ interface Publication {
   category: string;
   description: string;
   id: number;
+  date:string;
 }
 
 interface CreatePublicationProps {
@@ -30,6 +31,7 @@ interface CreatePublicationProps {
   photo: string;
   category: string;
   description: string;
+  
 }
 
 
@@ -106,9 +108,9 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
           isClosable: true,
         });
         onClose();
-        setTimeout(() => {
-          document.location.reload();
-        }, 3000);
+        // setTimeout(() => {
+        //   document.location.reload();
+        // }, 3000);
       })
       .catch((err) =>
         toast({
@@ -123,7 +125,7 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
   };
 
   const editPublication = (publication : Publication) => {
-    
+   
     console.log(editPublicationData)
     api
       .patch(`/publications/${publication.id}`, editPublicationData, {
@@ -133,7 +135,8 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
         console.log(res)
         setEditPublicationData({} as EditPublicationData)
       })
-      .catch((err) =>        toast({
+      .catch((err) =>
+              toast({
         position: "top",
         title: "Erro ao editar seu post!",
         description: "Tente novamente.",
@@ -159,9 +162,6 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
           isClosable: true,
         });
 
-        setTimeout(() => {
-          document.location.reload();
-        }, 3000);
       })
       .catch((err) =>
         toast({

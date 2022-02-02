@@ -21,6 +21,7 @@ interface Publication {
   category: string;
   description: string;
   id: number;
+  date:string;
 }
 
 interface DeleteConfirmationProps {
