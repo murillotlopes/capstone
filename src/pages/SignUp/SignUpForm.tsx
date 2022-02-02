@@ -41,9 +41,9 @@ export const SignUpForm = ({ handleSignUp, errors, register }: SignUpProps) => {
       boxShadow="md"
       p="6"
       rounded="md"
-      margin={["0 auto","0 auto","0 auto","0 auto"]}
+      margin={["0 auto", "0 auto", "0 auto", "0 auto"]}
     >
-      <Heading color={"violet.900"} as="h3">
+      <Heading bgGradient="linear(to-l, black, primary)" bgClip="text" as="h3">
         Cadastrar
       </Heading>
       <Flex flexDirection={"column"} alignItems="center">
@@ -77,15 +77,17 @@ export const SignUpForm = ({ handleSignUp, errors, register }: SignUpProps) => {
           boxShadow="md"
           p="6"
           rounded="md"
+          _hover={{ transform: "scale(1.1)", transition: "all 0.5s" }}
+          bg="gray.800"
+          bgClip="text"
         />
         <Text>
           Já possui cadastro?
           <ChakraButton
             variant="link"
-            color="violet.500"
+            color="gray.800"
             onClick={() => history.push("/signin")}
           >
-            {" "}
             Faça login
           </ChakraButton>
         </Text>

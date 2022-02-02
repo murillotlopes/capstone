@@ -3,7 +3,7 @@ import { FiLogOut } from "react-icons/fi";
 import { MenuList } from "../../components/ContainerDashboard/MenuList";
 import { RecomendedList } from "../../components/ContainerDashboard/RecomendadList";
 import { useAuth } from "../../contexts/Auth";
-import {CreatePubliModal} from "../../components/PublicationsModal/CreatePubliModal"
+import { CreatePubliModal } from "../../components/PublicationsModal/CreatePubliModal";
 import Logo from "../../assets/logo.png";
 
 export const Dashboard = () => {
@@ -31,10 +31,18 @@ export const Dashboard = () => {
         p={"0px 10px"}
       >
         <Image src={Logo} w="85px" margin="10px" />
-        <Box onClick={signOut} _hover={{ cursor: "pointer" }}>
-          <FiLogOut color={"#000000"} size={25} />
+        <Box
+          position="fixed"
+          right="0"
+          top="0"
+          fontSize="40px"
+          margin={["10px", "30px 30px 0 0"]}
+          _hover={{ color: "white", transition: "0.5s" }}
+          cursor="pointer"
+          onClick={signOut}
+        >
+          <FiLogOut />
         </Box>
-        
       </Flex>
       <Center
         h={"100%"}

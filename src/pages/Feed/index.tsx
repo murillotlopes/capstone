@@ -6,10 +6,10 @@ import Logo from "../../assets/logo.png";
 
 export const FeedPage = () => {
   const { publications } = usePublication();
-  
+
   return (
     <Flex
-    direction="column"
+      direction="column"
       justifyContent={"flex-start"}
       alignItems={"flex-start"}
       bgGradient={"linear(to-r, bgColor 75%, primary 25%)"}
@@ -17,13 +17,7 @@ export const FeedPage = () => {
       h={"100vh"}
       w={"100vw"}
     >
-      <Flex
-        h="100px"
-     
-        w="100vw"
-        alignItems="center"
-        justifyContent="flex-start"
-      >
+      <Flex h="100px" w="100vw" alignItems="center" justifyContent="flex-start">
         <Image src={Logo} w="85px" margin="10px" />
       </Flex>
       <ButtonFeed />

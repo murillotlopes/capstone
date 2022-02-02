@@ -28,7 +28,6 @@ export const Content = () => {
           fontSize={["100px", "120px", "200px"]}
           bgGradient="linear(to-l, black, primary)"
           bgClip="text"
-          // opacity={["0.07"]}
           fontWeight="bold"
         >
           FIND
@@ -45,7 +44,7 @@ export const Content = () => {
           fontSize={["2.5rem", "3rem"]}
           fontWeight={900}
         >
-          {users} incritos
+          {users} inscritos
         </Text>
 
         <Button

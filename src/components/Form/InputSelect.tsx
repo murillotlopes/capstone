@@ -42,7 +42,8 @@ const SelectBase: ForwardRefRenderFunction<HTMLSelectElement, SelectProps> = (
     { value: "fitness", label: "Fitness" },
     { value: "sobremesa", label: "Sobremesa" },
     { value: "entradas", label: "Entradas" },
-    { value: "prato-principal", label: "Prato Principal" }]
+    { value: "prato-principal", label: "Prato Principal" },
+  ];
 
   useEffect(() => {
     if (!!error) {
@@ -63,7 +64,7 @@ const SelectBase: ForwardRefRenderFunction<HTMLSelectElement, SelectProps> = (
       return setInputStatus("error");
     }
   }, [error, inputValue]);
-  
+
   return (
     <FormControl isInvalid={!!error}>
       {!!label && <FormLabel>{label}</FormLabel>}
@@ -85,7 +86,9 @@ const SelectBase: ForwardRefRenderFunction<HTMLSelectElement, SelectProps> = (
           onChangeCapture={(e) => setInputValue(e.currentTarget.value)}
         >
           {categoryOptions.map((item) => (
-            <option   key={item.value} value={item.value}>{item.label}</option>
+            <option key={item.value} value={item.value}>
+              {item.label}
+            </option>
           ))}
         </ChakraSelect>
       </InputGroup>

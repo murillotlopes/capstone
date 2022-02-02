@@ -41,7 +41,7 @@ export const SignInForm = ({ handleSignIn, errors, register }: SignInProps) => {
       rounded="lg"
       margin={["0 auto", "0 auto", "0 auto", "0 auto"]}
     >
-      <Heading color={"violet.900"} as="h3">
+      <Heading bgGradient="linear(to-l, black, primary)" bgClip="text" as="h3">
         Entrar
       </Heading>
       <Flex flexDirection={"column"}>
@@ -68,19 +68,20 @@ export const SignInForm = ({ handleSignIn, errors, register }: SignInProps) => {
           boxShadow="md"
           p="6"
           rounded="md"
+          bg="gray.800"
+          bgClip="text"
+          _hover={{ transform: "scale(1.1)", transition: "all 0.5s" }}
         />
-        <Text
-          textAlign={"center"}
-        >
-          Ainda não possui conta? 
-          <br/>
+        <Text textAlign={"center"}>
+          Ainda não possui conta?
+          <br />
           <ChakraButton
             variant="link"
-            color="violet.500"
+            bg="gray.800"
+            bgClip="text"
             onClick={() => history.push("/signup")}
           >
-            {" "}
-             Cadastre-se
+            Cadastre-se
           </ChakraButton>
         </Text>
       </Flex>
