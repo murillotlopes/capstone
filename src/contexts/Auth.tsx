@@ -6,6 +6,7 @@ import {
   useContext,
   useState,
 } from "react";
+import { useHistory } from "react-router-dom";
 
 import { api } from "../services/api";
 
@@ -63,6 +64,8 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     return {} as AuthState;
   });
 
+  const history = useHistory();
+
   const signUp = useCallback(
     async ({ username, email, password, profile }: SignUpCredentials) => {
       const response = await axios.post(
@@ -70,12 +73,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         { username, email, password, profile }
       );
 
-      const { accessToken, user } = response.data;
-
-      localStorage.setItem("@FindRecipes: accessToken", accessToken);
-      localStorage.setItem("@FindRecipes: user", JSON.stringify(user));
-
-      setData({ accessToken, user } as AuthState);
+      history.push("/signin");
     },
     []
   );
