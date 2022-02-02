@@ -30,6 +30,7 @@ interface Publication {
   category: string;
   description: string;
   id: number;
+  date: string;
 }
 
 interface EditModalprops {
@@ -46,6 +47,7 @@ const EditModal = ({ publication }: EditModalprops) => {
   const { editPublication, setEditPublicationData, editPublicationData } =
     usePublication();
   const { isOpen, onClose, onOpen } = useDisclosure();
+  const [testing, setTesting] = useState(false);
 
   const PublicationEditShema = yup.object().shape({
     description: yup.string(),
@@ -61,34 +63,39 @@ const EditModal = ({ publication }: EditModalprops) => {
     resolver: yupResolver(PublicationEditShema),
   });
 
-  const handleEditPublication = async (data: PublicationEditData) => {
+  const handleEditPublication =  (data: PublicationEditData) => {
     console.log(data);
 
-  
-      if (data.category !== "") {
-        setEditPublicationData({
-          ...editPublicationData,
-          category: data.category,
-        });
-      }
-      if (data.photo !== "") {
-        setEditPublicationData({ ...editPublicationData, photo: data.photo });
-      }
-      if (data.description !== "") {
-        setEditPublicationData({
-          ...editPublicationData,
-          description: data.description,
-        });
-      }
+    
 
+    if (data.category !== "") {
+      setEditPublicationData({
+        ...editPublicationData,
+        category: data.category,
+      });
+    }
+    if (data.photo !== "") {
+      setEditPublicationData({ ...editPublicationData, photo: data.photo });
+    }
+    if (data.description !== "") {
+      setEditPublicationData({
+        ...editPublicationData,
+        description: data.description,
+      });
+    }
 
-    console.log(editPublicationData);
-    //  return editPublication(publication)
+   
+    return editPublication(publication);
   };
 
   return (
     <>
-      <Center fontSize="2xl" color="gray.600"  as="button" onClick={() => onOpen()}>
+      <Center
+        fontSize="2xl"
+        color="gray.600"
+        as="button"
+        onClick={() => onOpen()}
+      >
         <FaEdit />
       </Center>
       <Modal onClose={onClose} isOpen={isOpen}>

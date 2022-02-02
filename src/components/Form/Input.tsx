@@ -81,13 +81,13 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
           name={name}
           id={name}
           variant="outline"
-          {...rest}
           color={InputColor[inputStatus]}
           borderColor={InputColor[inputStatus]}
           onBlur={InputBlur}
           onFocusCapture={InputFocus}
           onChangeCapture={(e) => setInputValue(e.currentTarget.value)}
           value={inputValue}
+          {...rest}
         />
       </InputGroup>
       {!!error && <FormErrorMessage> {error.message}</FormErrorMessage>}
