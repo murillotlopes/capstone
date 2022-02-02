@@ -2,8 +2,10 @@ import { useAuth } from "../../contexts/Auth";
 import { SignInForm } from "./SignInForm";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
+import { useHistory } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
+  Box,
   Flex,
   Image,
   Link,
@@ -11,8 +13,9 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import Decor from "../../assets/plant.png";
-import Logo from "../../assets/logo.png"
+import Logo from "../../assets/logo.png";
 import ModalError from "../../components/Form/ModalError";
+import { FiArrowLeftCircle } from "react-icons/fi";
 
 interface SignInData {
   email: string;
@@ -21,6 +24,7 @@ interface SignInData {
 
 export const SignIn = () => {
   const toast = useToast();
+  const history = useHistory();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -64,27 +68,32 @@ export const SignIn = () => {
       bgGradient={"linear(to-r, bgColor 75%, primary 25%)"}
       h={"100vh"}
     >
+      <Box
+        position="fixed"
+        right="0"
+        top="0"
+        fontSize="40px"
+        margin={["10px", "30px 30px 0 0"]}
+        _hover={{ color: "white", transition: "0.5s" }}
+        cursor="pointer"
+      >
+        <FiArrowLeftCircle type="button" onClick={() => history.push("/")} />
+      </Box>
+
       <Flex
         h={"100vh"}
         flexDirection={"column"}
         justifyContent={"space-between"}
       >
-        <Link href="/" textDecor={"none"} _hover={{ textDecor: "none" }} cursor={"pointer"} >
-          <Image
-            src={Logo}
-            position={"absolute"}
-            w={"85px"}
-            margin={"10px"}
-          />
+        <Link
+          href="/"
+          textDecor={"none"}
+          _hover={{ textDecor: "none" }}
+          cursor={"pointer"}
+        >
+          <Image src={Logo} position={"absolute"} w={"85px"} margin={"10px"} />
         </Link>
-        <Image 
-          src={Decor} 
-          position={["absolute"]}
-          w={["20%", "20%", "15%", "10%"]}
-          h="auto"
-          top={["50%", "25%", "30%", "30%"]}
-          right={["80%", "80%", "85%", "90%"]}
-        />
+        <Image src={Decor} position={"absolute"} bottom="0" h="70%" />
       </Flex>
       <SignInForm
         errors={errors}

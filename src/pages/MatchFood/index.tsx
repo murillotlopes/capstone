@@ -38,11 +38,20 @@ export const MatchFood = () => {
           onClick={() => history.push("/dashboard")}
         />
         <Flex flexDir={"column"}>
-          <Box onClick={() => history.goBack()} _hover={{ cursor: "pointer" }}>
-            <FiArrowLeftCircle size={25} />
+          <Box
+            onClick={() => history.goBack()}
+            cursor="pointer"
+            margin={["10px", "30px 30px 0 0"]}
+          >
+            <FiArrowLeftCircle size={30} />
           </Box>
-          <Box onClick={signOut} _hover={{ cursor: "pointer" }} mt={"15px"}>
-            <FiLogOut color={"#000000"} size={25} />
+          <Box
+            onClick={signOut}
+            cursor="pointer"
+            mt={"15px"}
+            margin={["10px", "30px 30px 0 0"]}
+          >
+            <FiLogOut color={"#000000"} size={30} />
           </Box>
         </Flex>
       </Flex>
@@ -57,9 +66,11 @@ export const MatchFood = () => {
           as={"h2"}
           fontSize={["22px", "34px", "46px", "58px"]}
           fontWeight={"500"}
-          color={"violet.900"}
+          bgGradient="linear(to-l, black, primary)"
+          bgClip="text"
           textAlign={"center"}
           marginBottom={"10px"}
+          marginTop={["10px", "10px", "60px"]}
         >
           Explore Nossas Comidas
         </Text>

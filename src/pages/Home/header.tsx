@@ -40,7 +40,7 @@ export const Header = () => {
         ) : (
           <Box
             marginRight="15px"
-            _hover={{ color: "gray.600", transition: "0.5s" }}
+            _hover={{ color: "white", transition: "0.5s" }}
           >
             <FiUser
               onClick={() => history.push("/signin")}
@@ -60,7 +60,7 @@ export const Header = () => {
             <Text marginLeft="5px">Nosso Time</Text>
           </Button>
         ) : (
-          <Box _hover={{ color: "gray.600", transition: "0.5s" }}>
+          <Box _hover={{ color: "white", transition: "0.5s" }}>
             <FiUsers
               onClick={() => history.push("/team")}
               cursor="pointer"
