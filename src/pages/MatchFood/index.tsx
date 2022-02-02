@@ -98,7 +98,7 @@ export const MatchFood = () => {
             _hover={{ transform: "scale(1.1)", transition: "all 0.5s" }}
             onClick={() => fastFilter()}
           >
-            <Text marginLeft="5px">Menos de 30</Text>
+            <Text marginLeft="5px">Menos de 30min</Text>
           </Button>
           <Button
             background="transparent"
