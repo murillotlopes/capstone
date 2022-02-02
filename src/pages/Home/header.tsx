@@ -22,7 +22,7 @@ export const Header = () => {
       alignItems="center"
     >
       <Box>
-        <Image src={logo} w="85px" />
+        <Image src={logo} w="120px" />
       </Box>
 
       <Flex margin={["0"]}>

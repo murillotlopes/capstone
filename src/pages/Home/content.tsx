@@ -23,7 +23,7 @@ export const Content = () => {
 
   return (
     <Flex W="100%" h="90%" justifyContent="space-between">
-      <Flex flexDirection="column" justifyContent="flex-start" marginTop="20px">
+      <Flex flexDirection="column" justifyContent="flex-start">
         <Text
           fontSize={["100px", "120px", "200px"]}
           bgGradient="linear(to-l, black, primary)"
