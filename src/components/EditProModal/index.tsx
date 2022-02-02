@@ -1,4 +1,4 @@
-import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalCloseButton, useDisclosure, Box, Flex, VStack, Image, Center} from '@chakra-ui/react'
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalCloseButton, useDisclosure, Box, Flex, VStack, Image, Center, useToast} from '@chakra-ui/react'
 import { useForm } from 'react-hook-form'
 import { FiArrowLeft, FiArrowRight, FiUser } from 'react-icons/fi'
 import * as yup from 'yup'
@@ -12,8 +12,9 @@ import { Input } from '../Form/Input'
 
 export const EditProModal = () => {
     const {isOpen: isEditProOpen, onClose: onEditProClose, onOpen: onEditProOpen} = useDisclosure()
-    const { user } = useAuth()
+    const { user, signUpdate } = useAuth()
     const { icons } = useIcons()
+    const toast = useToast()
 
     const [ chgUsername, setChgUsername] = useState(user.username)
     const [ chgProfile, setChgProfile] = useState(user.profile)
@@ -49,7 +50,7 @@ export const EditProModal = () => {
 
     const saveEditProfile = () => {
         const data = {username:chgUsername, profile: chgProfile, email: chgEmail, password: chgPassword }
-
+        signUpdate(data)
     }
 
     return(

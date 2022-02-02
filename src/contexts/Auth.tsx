@@ -1,3 +1,4 @@
+import { useDisclosure, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import {
   createContext,
@@ -45,6 +46,7 @@ interface AuthContextData {
   signIn: (credentials: SignInCredentials) => Promise<void>;
   signUp: (credentials: SignUpCredentials) => Promise<void>;
   signOut: () => void;
+  signUpdate: (Ndata: SignUpCredentials) => void
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -52,6 +54,7 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 const useAuth = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
+  const toast = useToast()
   const [data, setData] = useState<AuthState>(() => {
     const accessToken = localStorage.getItem("@FindRecipes:accessToken");
     const user = localStorage.getItem("@FindRecipes:user");
@@ -91,11 +94,40 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   }, []);
 
   const signOut = useCallback(() => {
-    localStorage.removeItem("@FindRecipes:accessToken");
-    localStorage.removeItem("@FindRecipes:user");
+    //localStorage.removeItem("@FindRecipes:accessToken");
+    //localStorage.removeItem("@FindRecipes:user");
+    localStorage.clear()
 
     setData({} as AuthState);
   }, []);
+
+
+  const {onClose} = useDisclosure()
+
+  const signUpdate = (Ndata: SignUpCredentials ) => {
+
+    api.patch(`users/${data.user.id}`, Ndata, {headers: {Authorization: `Bearer ${data.accessToken}`}})
+    .then( res => {
+      const profile = {username: res.data.username, email: res.data.email , profile: res.data.profile , id: res.data.id}
+
+      localStorage.setItem("@FindRecipes:user", JSON.stringify(profile))
+
+      setData({accessToken: data.accessToken, user: profile} as AuthState)
+
+      toast({
+        position: "top",
+        title: `Profile atualizado`,
+        description: "Caso queira, estamos aqui",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
+
+      onClose()
+
+    })
+    .catch( error => console.log(error))
+  }
 
   return (
     <AuthContext.Provider
@@ -105,6 +137,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         signIn,
         signUp,
         signOut,
+        signUpdate
       }}
     >
       {children}
