@@ -17,6 +17,8 @@ interface User {
   username: string;
   email: string;
   id: string;
+  profile: string;
+  password?: string
 }
 
 interface AuthState {
