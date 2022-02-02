@@ -2,7 +2,7 @@ import { Routes } from "./routes";
 
 function App() {
   return (
-    <div>
+    <div style={{ overflowX: "hidden" }}>
       <Routes />
     </div>
   );
