@@ -2,6 +2,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import { theme } from "../styles/theme";
 import { AuthProvider } from "./Auth";
+import { IconsProvider } from "./Icons";
 import { PublicationProvider } from "./Publication";
 import { RecipesProvider } from "./Recipes";
 
@@ -14,7 +15,9 @@ export const AppProvider = ({ children }: AppProviderProps) => (
     <AuthProvider>
       <RecipesProvider>
         <PublicationProvider>
-          {children}
+          <IconsProvider>
+            {children}
+          </IconsProvider>
         </PublicationProvider>
       </RecipesProvider>
     </AuthProvider>
