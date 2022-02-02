@@ -129,7 +129,7 @@ export const MatchFood = () => {
 
       <Flex
         flexWrap={"wrap"}
-        justifyContent={["center", "center", "space-between"]}
+        justifyContent={"center"}
         padding={["0 25px", "0 50px", "0 100px"]}
       >
         {renderRecipes.map((item) => (
