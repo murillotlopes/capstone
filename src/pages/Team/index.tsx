@@ -16,8 +16,9 @@ export const TeamPage = () => {
       flexDirection={"column"}
       alignItems={"center"}
       bgGradient={"linear(to-r, bgColor 70%, primary 30%)"}
-      height={["100vh"]}
+      h={["150vh", "150vh", "100vh", "100vh"]}
       fontFamily="Poppins"
+      bgRepeat={"repeat"}
     >
       <Link href="/" textDecor={"none"} _hover={{ textDecor: "none" }}>
         <Image
@@ -33,19 +34,19 @@ export const TeamPage = () => {
         textAlign={"center"}
         fontSize={["2rem", "2rem", "3rem", "3rem"]}
         fontWeight="500"
-        color="violet.900"
-        top={["5%", "10%", "10%", "25%"]}
+        color="black"
+        top={["5%", "10%", "10%", "20%"]}
       >
         Time
       </Text>
       <Flex
         position={"absolute"}
-        top={["15%", "20%", "20%", "40%"]}
+        top={["10%", "15%", "20%", "30%"]}
         w={"90vw"}
         flexDirection={"row"}
         justifyContent={"space-evenly"}
         alignItems={"center"}
-        wrap={["wrap", "wrap", "wrap", "nowrap"]}
+        wrap={["wrap", "wrap", "wrap", "wrap"]}
       >
         <TeamCard
           name="Luan Diniz"

@@ -98,7 +98,7 @@ export const MatchFood = () => {
             _hover={{ transform: "scale(1.1)", transition: "all 0.5s" }}
             onClick={() => fastFilter()}
           >
-            <Text marginLeft="5px">Menos de 30</Text>
+            <Text marginLeft="5px">Menos de 30min</Text>
           </Button>
           <Button
             background="transparent"
@@ -129,7 +129,7 @@ export const MatchFood = () => {
 
       <Flex
         flexWrap={"wrap"}
-        justifyContent={["center", "center", "space-between"]}
+        justifyContent={"center"}
         padding={["0 25px", "0 50px", "0 100px"]}
       >
         {renderRecipes.map((item) => (

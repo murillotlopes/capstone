@@ -59,7 +59,7 @@ export const SignUp = () => {
         toast({
           position: "top",
           title: "Conta criada com sucesso! ",
-          description: "Você será redirecionado.",
+          description: "Por favor, faça o login.",
           status: "success",
           duration: 9000,
           isClosable: true,
