@@ -83,9 +83,15 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
     publication: CreatePublicationProps,
     onClose: () => void
   ) => {
-    console.log(publication);
+    const date = new Date();
+    const dia = String(date.getDate()).padStart(2, '0');
+    const mes = String(date.getMonth() + 1).padStart(2, '0');
+    const ano = date.getFullYear();
+    const actualDate = dia + '/' + mes + '/' + ano;
+    const actualPublication = {...publication, date: actualDate}
+
     api
-      .post("/publications", publication, {
+      .post("/publications", actualPublication, {
         headers: {
           Authorization: `Bearer ${accessToken} `,
         },
@@ -117,6 +123,7 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
   };
 
   const editPublication = (publication : Publication) => {
+    
     console.log(editPublicationData)
     api
       .patch(`/publications/${publication.id}`, editPublicationData, {

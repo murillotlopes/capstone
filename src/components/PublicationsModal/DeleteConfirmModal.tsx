@@ -35,7 +35,7 @@ const DeleteConfirmModal = ({
 
   return (
     <>
-      <Center as="button" fontSize="xl" onClick={() => onOpen()}>
+      <Center as="button" fontSize="xl" color="gray.600" onClick={() => onOpen()}>
         <FaTrash />
       </Center>
 
