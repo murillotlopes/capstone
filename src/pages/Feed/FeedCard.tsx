@@ -45,7 +45,7 @@ export const FeedCard = ({ publication }: FeedCartProps) => {
       >
         <Image
           src={user.profile}
-          alt="Dan Abramov"
+          alt={user.username}
           mb="2"
           w="50px"
           h="50px"
@@ -84,7 +84,7 @@ export const FeedCard = ({ publication }: FeedCartProps) => {
         <Flex>
           <Image
             src={publication.photo}
-            alt="Dan Abramov"
+            alt={publication.category}
             mb="2"
             w={["250px", "300px"]}
             h={["250px", "300px"]}

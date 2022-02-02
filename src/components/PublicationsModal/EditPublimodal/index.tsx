@@ -42,10 +42,9 @@ interface PublicationEditData {
   description: string;
 }
 
-
-
 const EditModal = ({ publication }: EditModalprops) => {
-  const { editPublication, setEditPublicationData, editPublicationData } = usePublication();
+  const { editPublication, setEditPublicationData, editPublicationData } =
+    usePublication();
   const { isOpen, onClose, onOpen } = useDisclosure();
 
   const PublicationEditShema = yup.object().shape({
@@ -62,25 +61,29 @@ const EditModal = ({ publication }: EditModalprops) => {
     resolver: yupResolver(PublicationEditShema),
   });
 
-
-
   const handleEditPublication = async (data: PublicationEditData) => {
     console.log(data);
 
+  
+      if (data.category !== "") {
+        setEditPublicationData({
+          ...editPublicationData,
+          category: data.category,
+        });
+      }
+      if (data.photo !== "") {
+        setEditPublicationData({ ...editPublicationData, photo: data.photo });
+      }
+      if (data.description !== "") {
+        setEditPublicationData({
+          ...editPublicationData,
+          description: data.description,
+        });
+      }
 
-     if(data.category !== ""){
-        setEditPublicationData({...editPublicationData, category: data.category})
-    }    
-    if(data.photo !== ""){
-      setEditPublicationData({...editPublicationData, photo: data.photo})
-  }  
-  if(data.description !== ""){
-    setEditPublicationData({...editPublicationData, description: data.description})
-}  
-   
 
-     return editPublication(publication)
-   
+    console.log(editPublicationData);
+    //  return editPublication(publication)
   };
 
   return (

@@ -117,6 +117,7 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
   };
 
   const editPublication = (publication : Publication) => {
+    
     console.log(editPublicationData)
     api
       .patch(`/publications/${publication.id}`, editPublicationData, {
