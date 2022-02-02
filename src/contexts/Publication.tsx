@@ -83,7 +83,8 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
     publication: CreatePublicationProps,
     onClose: () => void
   ) => {
-    console.log(publication);
+    const date = new Date();
+    console.log(date);
     api
       .post("/publications", publication, {
         headers: {

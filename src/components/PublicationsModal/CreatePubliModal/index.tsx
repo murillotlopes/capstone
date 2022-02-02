@@ -71,7 +71,7 @@ export const CreatePubliModal = () => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>O que deseja compartilhar?</ModalHeader>
+          <ModalHeader mr="10px" textAlign="center">O que deseja compartilhar?</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <PublicationForm
