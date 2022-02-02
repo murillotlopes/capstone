@@ -84,9 +84,14 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
     onClose: () => void
   ) => {
     const date = new Date();
-    console.log(date);
+    const dia = String(date.getDate()).padStart(2, '0');
+    const mes = String(date.getMonth() + 1).padStart(2, '0');
+    const ano = date.getFullYear();
+    const actualDate = dia + '/' + mes + '/' + ano;
+    const actualPublication = {...publication, date: actualDate}
+
     api
-      .post("/publications", publication, {
+      .post("/publications", actualPublication, {
         headers: {
           Authorization: `Bearer ${accessToken} `,
         },
