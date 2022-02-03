@@ -85,7 +85,7 @@ const EditModal = ({ publication }: EditModalprops) => {
   return (
     <>
       <Center
-        fontSize="2xl"
+        fontSize="lg"
         color="gray.600"
         as="button"
         onClick={() => onOpen()}
