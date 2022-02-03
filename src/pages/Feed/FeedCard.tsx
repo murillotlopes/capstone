@@ -3,12 +3,11 @@ import { useAuth } from "../../contexts/Auth";
 import DeleteConfirmModal from "../../components/PublicationsModal/DeleteConfirmModal";
 import EditModal from "../../components/PublicationsModal/EditPublimodal";
 import { useEffect, useState } from "react";
-import Entrada from "../../assets/entradas.png"
-import Sobremesa from "../../assets/sweet.png"
-import Principal from "../../assets/principal.png"
-import Fitness from "../../assets/healthy.png"
+import Entrada from "../../assets/entradas.png";
+import Sobremesa from "../../assets/sweet.png";
+import Principal from "../../assets/principal.png";
+import Fitness from "../../assets/healthy.png";
 import { string } from "yup/lib/locale";
-
 
 interface FeedCartProps {
   publication: {
@@ -25,25 +24,22 @@ interface FeedCartProps {
 export const FeedCard = ({ publication }: FeedCartProps) => {
   const { user } = useAuth();
   const userId = parseInt(user.id, 10);
-  const [categoryImage, setCategoryImage] = useState("")
+  const [categoryImage, setCategoryImage] = useState("");
 
-  useEffect(()=>{
-    if(publication.category === "sobremesa"){
+  useEffect(() => {
+    if (publication.category === "sobremesa") {
       setCategoryImage(Sobremesa);
     }
-    if(publication.category === "fitness"){
-      setCategoryImage(Fitness)
+    if (publication.category === "fitness") {
+      setCategoryImage(Fitness);
     }
-    if(publication.category === "entradas"){
-      setCategoryImage(Entrada)
+    if (publication.category === "entradas") {
+      setCategoryImage(Entrada);
     }
-    if(publication.category === "prato-principal"){
-      setCategoryImage(Principal)
+    if (publication.category === "prato-principal") {
+      setCategoryImage(Principal);
     }
-
-    
-  },[publication])
-
+  }, [publication]);
 
   return (
     <Box
@@ -100,8 +96,14 @@ export const FeedCard = ({ publication }: FeedCartProps) => {
         )}
       </Flex>
 
-      <Flex w="100%" alignItems="center" justifyContent="center" direction="column" >
-        
+      <Flex
+          
+        w="100%"
+        justifyContent="center"
+        alignItems="flex-end"
+        direction="column"
+        padding="20px"
+      >
         <Heading
           as="p"
           fontSize="md"
@@ -109,13 +111,20 @@ export const FeedCard = ({ publication }: FeedCartProps) => {
           p="1px"
           w="100%"
           fontWeight="500"
-          margin="0 14px 5px 10px"
         >
           {publication.description}
         </Heading>
-        <Center opacity="0.4" margin="20px" bg="chardon" color="chardon" w="40px" h="30px" borderRadius="30%" >
-        <Image  boxSize="25px"  src={categoryImage}  />
-
+        <Center
+          
+          opacity="0.4"
+         
+          bg="chardon"
+          color="chardon"
+          w="40px"
+          h="30px"
+          borderRadius="30%"
+        >
+          <Image boxSize="25px" src={categoryImage} />
         </Center>
       </Flex>
     </Box>
