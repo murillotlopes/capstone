@@ -58,7 +58,7 @@ const usePublication = () => useContext(PublicationContext);
 
 const PublicationProvider = ({ children }: PublicationProviderProps) => {
   const [publications, setPublications] = useState<Publication[]>([]);
-  const { accessToken, user } = useAuth();
+  const { accessToken } = useAuth();
   const toast = useToast();
 
   useEffect(() => {
@@ -103,9 +103,6 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
           isClosable: true,
         });
         onClose();
-        // setTimeout(() => {
-        //   document.location.reload();
-        // }, 3000);
       })
       .catch((err) =>
         toast({
