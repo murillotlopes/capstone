@@ -19,7 +19,6 @@ import { PublicationForm } from "./PublicationForm";
 import { useAuth } from "../../../contexts/Auth";
 
 interface PublicationData {
-  photo: string;
   category: string;
   description: string;
 }
@@ -32,7 +31,6 @@ export const CreatePubliModal = () => {
 
   const PublicationShema = yup.object().shape({
     description: yup.string().required("Campo obrigatório"),
-    photo: yup.string(),
     category: yup.string().required("Campo obrigatório"),
   });
 

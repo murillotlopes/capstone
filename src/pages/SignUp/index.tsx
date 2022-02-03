@@ -55,7 +55,6 @@ export const SignUp = () => {
     };
     signUp(currentData)
       .then((_) => {
-        console.log(data);
         toast({
           position: "top",
           title: "Conta criada com sucesso! ",
@@ -66,8 +65,7 @@ export const SignUp = () => {
         });
         history.push("/dashboard");
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((_) => {
         onOpen();
       });
   };
@@ -85,7 +83,12 @@ export const SignUp = () => {
         h={"100vh"}
       >
         <Link href="/" textDecor={"none"} _hover={{ textDecor: "none" }}>
-          <Image src={Logo} position={"absolute"} w={"85px"} margin={"10px"} />
+          <Image
+            src={Logo}
+            position={"absolute"}
+            w={["100px", "120px"]}
+            margin={["10px", "15px 0 0 30px"]}
+          />
         </Link>
         <Image src={Decor} position={"absolute"} bottom="0" h="70%" />
       </Flex>

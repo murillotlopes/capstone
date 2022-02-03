@@ -1,4 +1,4 @@
-<img src="https://user-images.githubusercontent.com/88336360/152155152-429eb554-6e3a-477a-961b-8cc7f3b1618c.png"/>
+<img src="https://user-images.githubusercontent.com/88336360/152347803-c1712550-607f-47df-aa81-937cf5340b64.png"/>
 <img src="https://img.shields.io/static/v1?label=react&message=framework&color=blue&style=for-the-badge&logo=REACT"/>
 
 ## Descrição do Projeto <br/>
