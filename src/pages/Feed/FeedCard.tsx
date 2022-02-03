@@ -1,12 +1,12 @@
-import { Flex, Box, Image, Heading, HStack } from "@chakra-ui/react";
+import { Flex, Box, Image, Heading, HStack, Center } from "@chakra-ui/react";
 import { useAuth } from "../../contexts/Auth";
 import DeleteConfirmModal from "../../components/PublicationsModal/DeleteConfirmModal";
 import EditModal from "../../components/PublicationsModal/EditPublimodal";
 import { useEffect, useState } from "react";
-import Entrada from "../../assets/entrada.png"
-import Sobremesa from "../../assets/sobremesa.png"
-import Principal from "../../assets/prato-principal.png"
-import Fitness from "../../assets/fitness.png"
+import Entrada from "../../assets/entradas.png"
+import Sobremesa from "../../assets/sweet.png"
+import Principal from "../../assets/principal.png"
+import Fitness from "../../assets/healthy.png"
 import { string } from "yup/lib/locale";
 
 
@@ -100,8 +100,8 @@ export const FeedCard = ({ publication }: FeedCartProps) => {
         )}
       </Flex>
 
-      <Flex w="100%" textAlign="start">
-        <Image boxSize="50px"  src={categoryImage}  />
+      <Flex w="100%" alignItems="start" justifyContent="space-evenly" >
+        
         <Heading
           as="p"
           fontSize="md"
@@ -113,6 +113,10 @@ export const FeedCard = ({ publication }: FeedCartProps) => {
         >
           {publication.description}
         </Heading>
+        <Center opacity="0.4" margin="20px" bg="chardon" color="chardon" w="40px" h="30px" borderRadius="30%" >
+        <Image  boxSize="25px"  src={categoryImage}  />
+
+        </Center>
       </Flex>
     </Box>
   );
