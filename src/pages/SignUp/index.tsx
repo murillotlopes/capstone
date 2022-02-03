@@ -55,7 +55,6 @@ export const SignUp = () => {
     };
     signUp(currentData)
       .then((_) => {
-        console.log(data);
         toast({
           position: "top",
           title: "Conta criada com sucesso! ",
@@ -66,8 +65,7 @@ export const SignUp = () => {
         });
         history.push("/dashboard");
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((_) => {
         onOpen();
       });
   };
