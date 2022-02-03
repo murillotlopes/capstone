@@ -53,8 +53,7 @@ export const SignIn = () => {
           isClosable: true,
         });
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((_) => {
         onOpen();
       });
   };
