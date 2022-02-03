@@ -1,4 +1,4 @@
-import { useDisclosure, useToast } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 import axios from "axios";
 import {
   createContext,
@@ -71,10 +71,12 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const signUp = useCallback(
     async ({ username, email, password, profile }: SignUpCredentials) => {
-      const response = await axios.post(
-        "https://capstone-json.herokuapp.com/users",
-        { username, email, password, profile }
-      );
+      await axios.post("https://capstone-json.herokuapp.com/users", {
+        username,
+        email,
+        password,
+        profile,
+      });
 
       history.push("/signin");
     },

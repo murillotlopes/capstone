@@ -3,7 +3,6 @@ import { FiLogOut } from "react-icons/fi";
 import { MenuList } from "../../components/ContainerDashboard/MenuList";
 import { RecomendedList } from "../../components/ContainerDashboard/RecomendadList";
 import { useAuth } from "../../contexts/Auth";
-import { CreatePubliModal } from "../../components/PublicationsModal/CreatePubliModal";
 import Logo from "../../assets/logo.png";
 
 export const Dashboard = () => {

@@ -1,7 +1,6 @@
 import { Flex, VStack } from "@chakra-ui/react";
 import { DeepMap, FieldError, FieldValues } from "react-hook-form";
 import Button from "../../Button";
-import { Input } from "../../Form/Input";
 import { Select } from "../../Form/InputSelect";
 import { TextArea } from "../../Form/TextArea";
 

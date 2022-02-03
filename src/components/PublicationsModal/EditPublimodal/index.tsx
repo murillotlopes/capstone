@@ -1,6 +1,5 @@
 import {
   Center,
-  Flex,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -8,20 +7,15 @@ import {
   ModalHeader,
   ModalOverlay,
   useDisclosure,
-  VStack,
 } from "@chakra-ui/react";
 import { usePublication } from "../../../contexts/Publication";
-import { Input } from "../../Form/Input";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import Button from "../../Button";
-import { Select } from "../../Form/InputSelect";
 import { FaEdit } from "react-icons/fa";
 import EditForm from "./EditPubliForm";
-import { useState } from "react";
 
-interface Publication { 
+interface Publication {
   userId: number;
   icon: string;
   username: string;
@@ -41,10 +35,8 @@ interface PublicationEditData {
 }
 
 const EditModal = ({ publication }: EditModalprops) => {
-  const { editPublication } =
-    usePublication();
+  const { editPublication } = usePublication();
   const { isOpen, onClose, onOpen } = useDisclosure();
-  const [testing, setTesting] = useState(false);
 
   const PublicationEditShema = yup.object().shape({
     description: yup.string(),
@@ -60,25 +52,22 @@ const EditModal = ({ publication }: EditModalprops) => {
     resolver: yupResolver(PublicationEditShema),
   });
 
-  const handleEditPublication =  (data: PublicationEditData) => {
-  
-
+  const handleEditPublication = (data: PublicationEditData) => {
     let editData = {};
 
     if (data.category !== "") {
       editData = {
         ...editData,
         category: data.category,
-      }
+      };
     }
     if (data.description !== "") {
       editData = {
         ...editData,
         description: data.description,
-      }
+      };
     }
 
-  
     return editPublication(publication, editData, onClose);
   };
 

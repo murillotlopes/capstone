@@ -1,7 +1,7 @@
 import { Flex, Box, Text } from "@chakra-ui/react";
 import { useRecipes } from "../../contexts/Recipes";
 
-interface RecipeBox {
+interface RecipeBoxProps {
   recipe: Recipe;
 }
 
@@ -14,7 +14,7 @@ interface Recipe {
   image: string;
 }
 
-export const RecipeBox = ({ recipe }: RecipeBox) => {
+export const RecipeBox = ({ recipe }: RecipeBoxProps) => {
   const { getRecipeById } = useRecipes();
 
   return (

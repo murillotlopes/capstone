@@ -7,7 +7,6 @@ import AineProfile from "../../assets/AineLinkedin.png";
 import MuriloProfile from "../../assets/MuriloLinkedin.png";
 import OtavioProfile from "../../assets/OtavioLinkedin.png";
 import Logo from "../../assets/logo.png";
-import { useHistory } from "react-router-dom";
 
 export const TeamPage = () => {
   return (

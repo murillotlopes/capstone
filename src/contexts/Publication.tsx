@@ -45,7 +45,7 @@ interface PublicationContextData {
   editPublication: (
     publication: Publication,
     editData: EditPublicationData,
-    onClose : ()=>void
+    onClose: () => void
   ) => void;
   deletePublication: (publication: Publication) => void;
 }
@@ -70,10 +70,7 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
       })
       .then((response) => {
         setPublications(response.data);
-      })
-      .catch((err) => setPublications(publications));
-
-    
+      });
   });
 
   const addPublication = (
@@ -118,7 +115,8 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
 
   const editPublication = (
     publication: Publication,
-    editData: EditPublicationData,onClose : ()=>void
+    editData: EditPublicationData,
+    onClose: () => void
   ) => {
     api
       .patch(`/publications/${publication.id}`, editData, {

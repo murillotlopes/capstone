@@ -1,4 +1,4 @@
-import { Box, Flex, Image, Link, Stack, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, Link } from "@chakra-ui/react";
 import Logo from "../../assets/logo.png";
 import { FiArrowLeftCircle, FiLogOut } from "react-icons/fi";
 import { useAuth } from "../../contexts/Auth";

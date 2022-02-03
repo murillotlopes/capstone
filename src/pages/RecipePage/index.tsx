@@ -1,4 +1,4 @@
-import { Box, Flex, Image, Link, Stack, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { FiUser } from "react-icons/fi";
 import { useRecipes } from "../../contexts/Recipes";

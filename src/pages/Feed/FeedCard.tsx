@@ -7,7 +7,6 @@ import Entrada from "../../assets/entradas.png";
 import Sobremesa from "../../assets/sweet.png";
 import Principal from "../../assets/principal.png";
 import Fitness from "../../assets/healthy.png";
-import { string } from "yup/lib/locale";
 
 interface FeedCartProps {
   publication: {

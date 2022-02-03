@@ -1,9 +1,4 @@
-import {
-  FiArrowLeftCircle,
-  FiLogOut,
-  FiPlusCircle,
-  FiUser,
-} from "react-icons/fi";
+import { FiArrowLeftCircle, FiLogOut } from "react-icons/fi";
 import { useHistory } from "react-router-dom";
 import { HStack, Box } from "@chakra-ui/react";
 

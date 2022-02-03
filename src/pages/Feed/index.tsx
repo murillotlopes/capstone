@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, Image } from "@chakra-ui/react";
+import { Flex, Image } from "@chakra-ui/react";
 import { FeedCard } from "../Feed/FeedCard";
 import { ButtonFeed } from "../Feed/ButtonFeed";
 import { usePublication } from "../../contexts/Publication";
