@@ -64,8 +64,8 @@ export const FeedCard = ({ publication }: FeedCartProps) => {
         position="relative"
       >
         <Image
-          src={user.profile}
-          alt={user.username}
+          src={publication.icon}
+          alt={publication.username}
           mb="2"
           w="50px"
           h="50px"

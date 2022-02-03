@@ -58,7 +58,7 @@ const usePublication = () => useContext(PublicationContext);
 
 const PublicationProvider = ({ children }: PublicationProviderProps) => {
   const [publications, setPublications] = useState<Publication[]>([]);
-  const { accessToken, user } = useAuth();
+  const { accessToken } = useAuth();
   const toast = useToast();
 
   useEffect(() => {
@@ -103,7 +103,6 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
           isClosable: true,
         });
         onClose();
-
       })
       .catch((err) =>
         toast({
@@ -125,7 +124,7 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
       .patch(`/publications/${publication.id}`, editData, {
         headers: { Authorization: `Bearer ${accessToken}` },
       })
-      .then((res) => {
+      .then((_) => {
         toast({
           position: "top",
           title: "Post editado com sucesso!",
@@ -134,7 +133,6 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
           isClosable: true,
         });
         onClose();
-        console.log(res);
       })
       .catch((err) =>
         toast({
@@ -153,8 +151,7 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
       .delete(`/publications/${publication.id}`, {
         headers: { Authorization: `Bearer ${accessToken}` },
       })
-      .then((res) => {
-        console.log(res);
+      .then((_) => {
         toast({
           position: "top",
           title: "Seu post foi deletado com sucesso!",

@@ -12,7 +12,7 @@ export const Dashboard = () => {
   return (
     <Container
       w={"100%"}
-      h={["100vh", "100vh", "100vh", "100vh"]}
+      h={"120vh"}
       m={0}
       maxW="none"
       p={0}

@@ -32,6 +32,8 @@ export const RecomendedList = () => {
       {(isWideVersion ? recommendedWide : recommendedMobile).map((recipe) => (
         <VStack
           w={["50%", "50%", "25%", "20%"]}
+          maxW={["50%", "50%", "25%", "20%"]}
+          minW={["50%", "50%", "25%", "20%"]}
           h={"100%"}
           maxH={"300px"}
           m={2}
