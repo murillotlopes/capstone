@@ -17,31 +17,24 @@ interface Publication {
   userId: number;
   icon: string;
   username: string;
-  photo: string;
   category: string;
   description: string;
   id: number;
-  date:string;
+  date: string;
 }
 
 interface CreatePublicationProps {
   userId: number;
   icon: string;
   username: string;
-  photo: string;
   category: string;
   description: string;
-  
 }
 
-
-  interface EditPublicationData{
-   
-      description?: string;
-      photo?:string;
-      category?:string;
-    }
-  
+interface EditPublicationData {
+  description?: string;
+  category?: string;
+}
 
 interface PublicationContextData {
   publications: Publication[];
@@ -49,10 +42,12 @@ interface PublicationContextData {
     publication: CreatePublicationProps,
     onClose: () => void
   ) => void;
-  editPublication: (publication : Publication) => void;
+  editPublication: (
+    publication: Publication,
+    editData: EditPublicationData,
+    onClose : ()=>void
+  ) => void;
   deletePublication: (publication: Publication) => void;
-  setEditPublicationData:(arg: EditPublicationData) => void;
-  editPublicationData: EditPublicationData;
 }
 
 const PublicationContext = createContext<PublicationContextData>(
@@ -62,11 +57,9 @@ const PublicationContext = createContext<PublicationContextData>(
 const usePublication = () => useContext(PublicationContext);
 
 const PublicationProvider = ({ children }: PublicationProviderProps) => {
-  const [editPublicationData, setEditPublicationData] = useState<EditPublicationData>({} as EditPublicationData)
   const [publications, setPublications] = useState<Publication[]>([]);
   const { accessToken, user } = useAuth();
   const toast = useToast();
- 
 
   useEffect(() => {
     api
@@ -79,18 +72,20 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
         setPublications(response.data);
       })
       .catch((err) => setPublications(publications));
-  }, []);
+
+    
+  });
 
   const addPublication = (
     publication: CreatePublicationProps,
     onClose: () => void
   ) => {
     const date = new Date();
-    const dia = String(date.getDate()).padStart(2, '0');
-    const mes = String(date.getMonth() + 1).padStart(2, '0');
+    const dia = String(date.getDate()).padStart(2, "0");
+    const mes = String(date.getMonth() + 1).padStart(2, "0");
     const ano = date.getFullYear();
-    const actualDate = dia + '/' + mes + '/' + ano;
-    const actualPublication = {...publication, date: actualDate}
+    const actualDate = dia + "/" + mes + "/" + ano;
+    const actualPublication = { ...publication, date: actualDate };
 
     api
       .post("/publications", actualPublication, {
@@ -124,26 +119,35 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
       );
   };
 
-  const editPublication = (publication : Publication) => {
-   
-    console.log(editPublicationData)
+  const editPublication = (
+    publication: Publication,
+    editData: EditPublicationData,onClose : ()=>void
+  ) => {
     api
-      .patch(`/publications/${publication.id}`, editPublicationData, {
+      .patch(`/publications/${publication.id}`, editData, {
         headers: { Authorization: `Bearer ${accessToken}` },
       })
-      .then((res) =>{
-        console.log(res)
-        setEditPublicationData({} as EditPublicationData)
+      .then((res) => {
+        toast({
+          position: "top",
+          title: "Post editado com sucesso!",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+        });
+        onClose();
+        console.log(res);
       })
       .catch((err) =>
-              toast({
-        position: "top",
-        title: "Erro ao editar seu post!",
-        description: "Tente novamente.",
-        status: "error",
-        duration: 9000,
-        isClosable: true,
-      }));
+        toast({
+          position: "top",
+          title: "Erro ao editar seu post!",
+          description: "Tente novamente.",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        })
+      );
   };
 
   const deletePublication = (publication: Publication) => {
@@ -161,7 +165,6 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
           duration: 9000,
           isClosable: true,
         });
-
       })
       .catch((err) =>
         toast({
@@ -178,8 +181,6 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
   return (
     <PublicationContext.Provider
       value={{
-        editPublicationData,
-        setEditPublicationData,
         publications,
         addPublication,
         editPublication,

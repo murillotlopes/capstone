@@ -20,13 +20,11 @@ import { Select } from "../../Form/InputSelect";
 import { FaEdit } from "react-icons/fa";
 import EditForm from "./EditPubliForm";
 import { useState } from "react";
-import { waitFor } from "@testing-library/react";
 
-interface Publication {
+interface Publication { 
   userId: number;
   icon: string;
   username: string;
-  photo: string;
   category: string;
   description: string;
   id: number;
@@ -38,13 +36,12 @@ interface EditModalprops {
 }
 
 interface PublicationEditData {
-  photo: string;
   category: string;
   description: string;
 }
 
 const EditModal = ({ publication }: EditModalprops) => {
-  const { editPublication, setEditPublicationData, editPublicationData } =
+  const { editPublication } =
     usePublication();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const [testing, setTesting] = useState(false);
@@ -64,28 +61,25 @@ const EditModal = ({ publication }: EditModalprops) => {
   });
 
   const handleEditPublication =  (data: PublicationEditData) => {
-    console.log(data);
+  
 
-    
+    let editData = {};
 
     if (data.category !== "") {
-      setEditPublicationData({
-        ...editPublicationData,
+      editData = {
+        ...editData,
         category: data.category,
-      });
-    }
-    if (data.photo !== "") {
-      setEditPublicationData({ ...editPublicationData, photo: data.photo });
+      }
     }
     if (data.description !== "") {
-      setEditPublicationData({
-        ...editPublicationData,
+      editData = {
+        ...editData,
         description: data.description,
-      });
+      }
     }
 
-   
-    return editPublication(publication);
+  
+    return editPublication(publication, editData, onClose);
   };
 
   return (
