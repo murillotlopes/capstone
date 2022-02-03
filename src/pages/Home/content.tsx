@@ -33,7 +33,7 @@ export const Content = () => {
           FIND
         </Text>
         <Text fontSize={["1.3rem", "1.3rem", "2rem"]} fontWeight={"900"}>
-          FAÇA COMIDA COM OQUE VOCÊ TEM!
+          FAÇA COMIDA COM O QUE VOCÊ TEM!
         </Text>
         <Text fontSize={["0.9rem", "1.5rem"]}>
           Nossa comunidade já conta com:
