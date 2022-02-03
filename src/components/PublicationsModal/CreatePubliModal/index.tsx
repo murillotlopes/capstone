@@ -49,8 +49,8 @@ export const CreatePubliModal = () => {
 
     const dataRequest = {
       ...data,
+      icon: user.profile,
       userId: userId,
-      icon: "icon",
       username: user.username,
     };
 

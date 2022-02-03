@@ -10,6 +10,17 @@ import { useIcons } from '../../contexts/Icons'
 import { Input } from '../Form/Input'
 
 
+interface SignUpCredentials {
+    username: string;
+    email: string;
+    password: string;
+    profile: string;
+}
+
+type editProData = {
+    [key:string]:string;
+}
+
 export const EditProModal = () => {
     const {isOpen: isEditProOpen, onClose: onEditProClose, onOpen: onEditProOpen} = useDisclosure()
     const { user, signUpdate } = useAuth()
@@ -28,7 +39,6 @@ export const EditProModal = () => {
         username: yup.string().required('Campo obrigatório'),
         email: yup.string().required('Campo obrigatório').email('E-mail inválido'),
         password: yup.string().required('Campo obrigatório'),
-        confirm_password: yup.string().required('Campo obrigatório').oneOf([yup.ref('password')], 'As senhas são diferentes'),
         profile: yup.string(),
     })
 
@@ -48,9 +58,25 @@ export const EditProModal = () => {
         setChgProfile(icons[position].image)
     }
 
+    const leftProfile = () => {
+        const size = icons.length-1
+
+        if(position === size){
+            setPosition(0)
+        }else{
+            setPosition(position-1)
+        }
+
+        setChgProfile(icons[position].image)
+    }
+
     const saveEditProfile = () => {
         const data = {username:chgUsername, profile: chgProfile, email: chgEmail, password: chgPassword }
-        signUpdate(data)
+        //const newData = {...data, profile: chgProfile}
+
+        console.log(data)
+
+        signUpdate(data, onEditProClose)            
     }
 
     return(
@@ -90,6 +116,7 @@ export const EditProModal = () => {
                                         h={'35px'} 
                                         cursor={'pointer'} 
                                         borderRadius={'5px'}
+                                        onClick={leftProfile}
                                     >
                                         <FiArrowLeft color='white'/>
                                     </Center>
@@ -100,8 +127,9 @@ export const EditProModal = () => {
                                         h={'35px'} 
                                         cursor={'pointer'} 
                                         borderRadius={'5px'}
+                                        onClick={rightProfile}
                                     >
-                                        <FiArrowRight color='white' onClick={rightProfile}/>
+                                        <FiArrowRight color='white'/>
                                     </Center>
                                 </Flex>
                             </Flex>
@@ -112,7 +140,6 @@ export const EditProModal = () => {
                                 placeholder='Seu nome'
                                 onChangeCapture={ e => setChgUsername(e.currentTarget.value)}
                                 error={errors.username}
-
                             />
 
                             <Input 
@@ -130,15 +157,6 @@ export const EditProModal = () => {
                                 onChangeCapture={e => setChgPassword(e.currentTarget.value)}
                                 type={'password'}
                                 error={errors.password}
-                            />
-
-                            <Input 
-                                {...register('confirm_password')} 
-                                placeholder='Confirme sua senha'
-                                type={'password'}
-                                error={errors.confirm_password}
-                                value={chgConfPassword}
-                                onChangeCapture={e => setChgConfPassword(e.currentTarget.value)}
                             />
 
                             <Button filled text='Salvar' type='submit'/>
