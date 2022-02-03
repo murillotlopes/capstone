@@ -1,4 +1,4 @@
-import { useToast } from "@chakra-ui/react";
+import { useDisclosure, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import {
   createContext,
@@ -20,7 +20,7 @@ interface User {
   email: string;
   id: string;
   profile: string;
-  password?: string
+  password?: string;
 }
 
 interface AuthState {
@@ -46,7 +46,7 @@ interface AuthContextData {
   signIn: (credentials: SignInCredentials) => Promise<void>;
   signUp: (credentials: SignUpCredentials) => Promise<void>;
   signOut: () => void;
-  signUpdate: (Ndata: SignUpCredentials, onClose: () => void) => void
+  signUpdate: (Ndata: SignUpCredentials, onClose: () => void) => void;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -71,7 +71,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const signUp = useCallback(
     async ({ username, email, password, profile }: SignUpCredentials) => {
-      await axios.post(
+      const response = await axios.post(
         "https://capstone-json.herokuapp.com/users",
         { username, email, password, profile }
       );
@@ -92,39 +92,42 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     setData({ accessToken, user } as AuthState);
   }, []);
 
-  const signOut = useCallback(() => {
-    localStorage.clear()
-
+  const signOut = () => {
+    localStorage.clear();
     setData({} as AuthState);
-  }, []);
+  };
 
-  const toast = useToast()
+  const toast = useToast();
 
   const signUpdate = (Ndata: SignUpCredentials, onEditProClose: () => void) => {
+    api
+      .patch(`users/${data.user.id}`, Ndata, {
+        headers: { Authorization: `Bearer ${data.accessToken}` },
+      })
+      .then((response) => {
+        const profile = {
+          username: response.data.username,
+          email: response.data.email,
+          profile: response.data.profile,
+          id: response.data.id,
+        };
 
-    api.patch(`users/${data.user.id}`, Ndata, {headers: {Authorization: `Bearer ${data.accessToken}`}})
-    .then( response => {
+        localStorage.setItem("@FindRecipes:user", JSON.stringify(profile));
 
-      const profile = {username: response.data.username, email: response.data.email , profile: response.data.profile , id: response.data.id}
+        setData({ accessToken: data.accessToken, user: profile } as AuthState);
 
-      localStorage.setItem("@FindRecipes:user", JSON.stringify(profile))
-  
-      setData({accessToken: data.accessToken, user: profile} as AuthState)
-
-      toast({
+        toast({
           position: "top",
           title: `Profile atualizado`,
           description: "Caso queira, estamos aqui",
           status: "success",
           duration: 9000,
           isClosable: true,
-      });
-      onEditProClose()
-  })
-
-
-
-  }
+        });
+        onEditProClose();
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <AuthContext.Provider
@@ -134,7 +137,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         signIn,
         signUp,
         signOut,
-        signUpdate
+        signUpdate,
       }}
     >
       {children}
