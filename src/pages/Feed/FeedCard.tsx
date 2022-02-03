@@ -14,10 +14,10 @@ interface FeedCartProps {
     userId: number;
     icon: string;
     username: string;
-    photo: string;
     category: string;
     description: string;
     id: number;
+    date:string;
   };
 }
 
@@ -69,7 +69,7 @@ export const FeedCard = ({ publication }: FeedCartProps) => {
             size="4xs"
             fontWeight="500"
           >
-            Data
+           {publication.date}
           </Heading>
         </Box>
         {publication.userId === userId && (
@@ -79,19 +79,6 @@ export const FeedCard = ({ publication }: FeedCartProps) => {
           </HStack>
         )}
       </Flex>
-
-      {publication.photo !== "" && (
-        <Flex>
-          <Image
-            src={publication.photo}
-            alt={publication.category}
-            mb="2"
-            w={["250px", "300px"]}
-            h={["250px", "300px"]}
-            borderRadius="10px"
-          />
-        </Flex>
-      )}
 
       <Flex w="100%" textAlign="start">
         <Heading

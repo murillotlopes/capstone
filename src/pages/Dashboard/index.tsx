@@ -30,12 +30,16 @@ export const Dashboard = () => {
         alignItems={"center"}
         p={"0px 10px"}
       >
-        <Image src={Logo} w="85px" margin="10px" />
+        <Image
+          src={Logo}
+          w={["100px", "120px"]}
+          margin={["10px", "15px 0 0 30px"]}
+        />
         <Box
           position="fixed"
           right="0"
           top="0"
-          fontSize="40px"
+          fontSize="35px"
           margin={["10px", "30px 30px 0 0"]}
           _hover={{ color: "white", transition: "0.5s" }}
           cursor="pointer"

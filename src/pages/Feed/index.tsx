@@ -7,6 +7,7 @@ import Logo from "../../assets/logo.png";
 export const FeedPage = () => {
   const { publications } = usePublication();
 
+
   return (
     <Flex
       direction="column"

@@ -20,16 +20,15 @@ import { Select } from "../../Form/InputSelect";
 import { FaEdit } from "react-icons/fa";
 import EditForm from "./EditPubliForm";
 import { useState } from "react";
-import { waitFor } from "@testing-library/react";
 
-interface Publication {
+interface Publication { 
   userId: number;
   icon: string;
   username: string;
-  photo: string;
   category: string;
   description: string;
   id: number;
+  date: string;
 }
 
 interface EditModalprops {
@@ -37,15 +36,15 @@ interface EditModalprops {
 }
 
 interface PublicationEditData {
-  photo: string;
   category: string;
   description: string;
 }
 
 const EditModal = ({ publication }: EditModalprops) => {
-  const { editPublication, setEditPublicationData, editPublicationData } =
+  const { editPublication } =
     usePublication();
   const { isOpen, onClose, onOpen } = useDisclosure();
+  const [testing, setTesting] = useState(false);
 
   const PublicationEditShema = yup.object().shape({
     description: yup.string(),
@@ -61,34 +60,36 @@ const EditModal = ({ publication }: EditModalprops) => {
     resolver: yupResolver(PublicationEditShema),
   });
 
-  const handleEditPublication = async (data: PublicationEditData) => {
-    console.log(data);
+  const handleEditPublication =  (data: PublicationEditData) => {
+  
+
+    let editData = {};
+
+    if (data.category !== "") {
+      editData = {
+        ...editData,
+        category: data.category,
+      }
+    }
+    if (data.description !== "") {
+      editData = {
+        ...editData,
+        description: data.description,
+      }
+    }
 
   
-      if (data.category !== "") {
-        setEditPublicationData({
-          ...editPublicationData,
-          category: data.category,
-        });
-      }
-      if (data.photo !== "") {
-        setEditPublicationData({ ...editPublicationData, photo: data.photo });
-      }
-      if (data.description !== "") {
-        setEditPublicationData({
-          ...editPublicationData,
-          description: data.description,
-        });
-      }
-
-
-    console.log(editPublicationData);
-    //  return editPublication(publication)
+    return editPublication(publication, editData, onClose);
   };
 
   return (
     <>
-      <Center fontSize="2xl" color="gray.600"  as="button" onClick={() => onOpen()}>
+      <Center
+        fontSize="2xl"
+        color="gray.600"
+        as="button"
+        onClick={() => onOpen()}
+      >
         <FaEdit />
       </Center>
       <Modal onClose={onClose} isOpen={isOpen}>

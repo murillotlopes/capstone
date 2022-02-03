@@ -17,10 +17,10 @@ interface Publication {
   userId: number;
   icon: string;
   username: string;
-  photo: string;
   category: string;
   description: string;
   id: number;
+  date:string;
 }
 
 interface DeleteConfirmationProps {
