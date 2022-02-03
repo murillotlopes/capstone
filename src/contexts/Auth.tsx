@@ -1,4 +1,4 @@
-import { useDisclosure, useToast } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 import axios from "axios";
 import {
   createContext,
@@ -71,7 +71,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const signUp = useCallback(
     async ({ username, email, password, profile }: SignUpCredentials) => {
-      const response = await axios.post(
+      await axios.post(
         "https://capstone-json.herokuapp.com/users",
         { username, email, password, profile }
       );
@@ -93,8 +93,6 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   }, []);
 
   const signOut = useCallback(() => {
-    //localStorage.removeItem("@FindRecipes:accessToken");
-    //localStorage.removeItem("@FindRecipes:user");
     localStorage.clear()
 
     setData({} as AuthState);
@@ -123,7 +121,6 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       });
       onEditProClose()
   })
-  .catch( err => console.log(err))
 
 
 
