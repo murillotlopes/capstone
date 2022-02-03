@@ -100,7 +100,7 @@ export const FeedCard = ({ publication }: FeedCartProps) => {
         )}
       </Flex>
 
-      <Flex w="100%" alignItems="start" justifyContent="space-evenly" >
+      <Flex w="100%" alignItems="center" justifyContent="center" direction="column" >
         
         <Heading
           as="p"
