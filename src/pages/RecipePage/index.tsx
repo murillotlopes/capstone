@@ -12,7 +12,7 @@ export const RecipePage = () => {
     <Flex
       key={recipeRender.id}
       bgGradient={"linear(to-r, bgColor 75%, primary 25%)"}
-      h={["130vh", "100vh"]}
+      h={["100vh"]}
       justifyContent="flex-start"
       alignItems="center"
       flexDirection={["column"]}
@@ -27,8 +27,8 @@ export const RecipePage = () => {
         w={"80vw"}
         marginTop={["15px", "15px", "70px", "90px"]}
         alignItems={"center"}
+        overflowY={'auto'}
       >
-        {/* <----------------------------------------------> */}
         <Flex
           w={["100%", "100%", "100%", "70%"]}
           flexDirection={["column", "column", "row", "row"]}
@@ -51,8 +51,9 @@ export const RecipePage = () => {
             mt={["20px", "20px", "0", "0"]}
             ml={["0", "0", "20px", "20px"]}
             justifyContent={"center"}
+            flexDir={['column-reverse', 'row']}
           >
-            <Box w={"55%"}>
+            <Box w={['100%', "55%"]}>
               <Text
                 w={["100%", "90%", "70%", "70%"]}
                 fontFamily={"Playfair Display"}

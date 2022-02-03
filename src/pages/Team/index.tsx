@@ -16,7 +16,7 @@ export const TeamPage = () => {
       flexDirection={"column"}
       alignItems={"center"}
       bgGradient={"linear(to-r, bgColor 70%, primary 30%)"}
-      h={["150vh", "150vh", "100vh", "100vh"]}
+      h={["200vh", "150vh", "100vh", "100vh"]}
       fontFamily="Poppins"
       bgRepeat={"repeat"}
     >
