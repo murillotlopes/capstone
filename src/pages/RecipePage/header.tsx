@@ -11,9 +11,8 @@ export const Header = () => {
     <Flex
       as="header"
       justifyContent={"space-between"}
-      top="0"
       marginTop={"10px"}
-      h={"0 auto"}
+      h={"auto"}
       w={"90%"}
     >
       <Link
