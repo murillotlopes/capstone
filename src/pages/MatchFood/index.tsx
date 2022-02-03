@@ -1,4 +1,19 @@
-import { Box, Button, Center, Flex, Image, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Center,
+  Flex,
+  Image,
+  Text,
+  HStack,
+  useMediaQuery,
+} from "@chakra-ui/react";
+
+import Sweet from "../../assets/sweet.png";
+import Healthy from "../../assets/healthy.png";
+import All from "../../assets/all.png";
+import Tirthy from "../../assets/tirthy.png";
+
 import { FiArrowLeftCircle, FiLogOut } from "react-icons/fi";
 import { RecipeBox } from "../../components/RecipeBox";
 import { useRecipes } from "../../contexts/Recipes";
@@ -12,6 +27,7 @@ export const MatchFood = () => {
   const { signOut } = useAuth();
   const history = useHistory();
   const [renderRecipes, setRenderRecipes] = useState(recipes);
+  const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
 
   const healthyFilter = () => {
     setRenderRecipes(recipes.filter((recipe) => recipe.type === "fit"));
@@ -25,105 +41,142 @@ export const MatchFood = () => {
 
   return (
     <Flex
-      bg={"chardon"}
+      bgGradient={"linear(to-r, bgColor 75%, primary 25%)"}
       w={"100vw"}
       maxw={"100vw"}
       minH={"100vh"}
-      alignItems={"flex-start"}
+      alignItems={"center"}
       flexDir={"column"}
-      padding={"10px 0"}
-      justifyContent={"center"}
+      justifyContent={"flex-start"}
     >
       <Flex
         w={"100%"}
-        position={"absolute"}
+        position={"relative"}
         top={0}
         justifyContent={"space-between"}
         alignItems={"center"}
-        p={"0px 10px"}
       >
         <Image
           src={Logo}
-          w="85px"
-          margin="10px"
+          w={["100px", "120px"]}
+          margin={["10px", "15px 0 0 30px"]}
           _hover={{ cursor: "pointer" }}
           onClick={() => history.push("/dashboard")}
         />
-        <Flex flexDir={"column"}>
+        <Flex flexDir={"row"} h={"100%"}>
           <Box
             onClick={() => history.goBack()}
             cursor="pointer"
-            margin={["10px", "30px 30px 0 0"]}
+            _hover={{ color: "white", transition: "0.5s" }}
+            marginRight="20px"
           >
             <FiArrowLeftCircle size={30} />
           </Box>
           <Box
             onClick={signOut}
             cursor="pointer"
-            mt={"15px"}
-            margin={["10px", "30px 30px 0 0"]}
+            _hover={{ color: "white", transition: "0.5s" }}
+            marginRight="40px"
           >
-            <FiLogOut color={"#000000"} size={30} />
+            <FiLogOut size={30} />
           </Box>
         </Flex>
       </Flex>
       <Center
         w={"100vw"}
         flexDir={"column"}
-        mt={["100px", "100px", "0px", "0px"]}
+        marginTop={""}
         marginBottom={"30px"}
-        padding={["0 25px", "0 50px", "0 100px"]}
       >
         <Text
           as={"h2"}
           fontSize={["22px", "34px", "46px", "58px"]}
-          fontWeight={"500"}
+          fontWeight={"900"}
           bgGradient="linear(to-l, black, primary)"
           bgClip="text"
           textAlign={"center"}
-          marginBottom={"10px"}
-          marginTop={["10px", "10px", "60px"]}
+          marginBottom={"15px"}
         >
-          Explore Nossas Comidas
+          Explore Nossas Receitas
         </Text>
-        <Flex
-          flexDir={["column", "column", "row", "row"]}
-          w={"70%"}
-          h={["200px", "200px", "auto", "auto"]}
-          justifyContent={"space-between"}
-        >
-          <Button
-            background="transparent"
-            border="1px solid black"
-            _hover={{ transform: "scale(1.1)", transition: "all 0.5s" }}
-            onClick={() => fastFilter()}
-          >
-            <Text marginLeft="5px">Menos de 30min</Text>
-          </Button>
-          <Button
-            background="transparent"
-            border="1px solid black"
-            _hover={{ transform: "scale(1.1)", transition: "all 0.5s" }}
-            onClick={() => healthyFilter()}
-          >
-            <Text marginLeft="5px">Saudável</Text>
-          </Button>
-          <Button
-            background="transparent"
-            border="1px solid black"
-            _hover={{ transform: "scale(1.1)", transition: "all 0.5s" }}
-            onClick={() => candyFilter()}
-          >
-            <Text marginLeft="5px">Doces</Text>
-          </Button>
-          <Button
-            background="transparent"
-            border="1px solid black"
-            _hover={{ transform: "scale(1.1)", transition: "all 0.5s" }}
-            onClick={() => setRenderRecipes(recipes)}
-          >
-            <Text marginLeft="5px">Todos</Text>
-          </Button>
+        <Flex flexDir={"row"} w={"70%"}>
+          {isLargerThan768 ? (
+            <HStack
+              w="100%"
+              display="flex"
+              justifyContent={"center"}
+              spacing={"15px"}
+            >
+              <Button
+                background="transparent"
+                border="1px solid black"
+                _hover={{ transform: "scale(1.1)", transition: "all 0.5s" }}
+                onClick={() => fastFilter()}
+              >
+                <Text marginLeft="5px">Menos de 30min</Text>
+              </Button>
+              <Button
+                background="transparent"
+                border="1px solid black"
+                _hover={{ transform: "scale(1.1)", transition: "all 0.5s" }}
+                onClick={() => healthyFilter()}
+              >
+                <Text marginLeft="5px">Saudável</Text>
+              </Button>
+              <Button
+                background="transparent"
+                border="1px solid black"
+                _hover={{ transform: "scale(1.1)", transition: "all 0.5s" }}
+                onClick={() => candyFilter()}
+              >
+                <Text marginLeft="5px">Doces</Text>
+              </Button>
+              <Button
+                background="transparent"
+                border="1px solid black"
+                _hover={{ transform: "scale(1.1)", transition: "all 0.5s" }}
+                onClick={() => setRenderRecipes(recipes)}
+              >
+                <Text marginLeft="5px">Todos</Text>
+              </Button>
+            </HStack>
+          ) : (
+            <HStack
+              w="100%"
+              display="flex"
+              justifyContent={"center"}
+              spacing={"25px"}
+            >
+              <Box
+                width="55px"
+                onClick={() => fastFilter()}
+                _hover={{ transform: "scale(1.1)", transition: "all 0.5s" }}
+              >
+                <Image src={Tirthy} />
+              </Box>
+              <Box
+                width="55px"
+                onClick={() => healthyFilter()}
+                _hover={{ transform: "scale(1.1)", transition: "all 0.5s" }}
+              >
+                <Image src={Healthy} />
+              </Box>
+              <Box
+                width="55px"
+                onClick={() => candyFilter()}
+                _hover={{ transform: "scale(1.1)", transition: "all 0.5s" }}
+              >
+                <Image src={Sweet} />
+              </Box>
+              <Box
+                width="55px"
+                onClick={() => setRenderRecipes(recipes)}
+                _hover={{ transform: "scale(1.1)", transition: "all 0.5s" }}
+              >
+                <Image src={All} />
+              </Box>
+            </HStack>
+          )}
         </Flex>
       </Center>
 
@@ -131,6 +184,7 @@ export const MatchFood = () => {
         flexWrap={"wrap"}
         justifyContent={"center"}
         padding={["0 25px", "0 50px", "0 100px"]}
+        w={["100%", "100%", "90%", "90%"]}
       >
         {renderRecipes.map((item) => (
           <RecipeBox key={item.id} recipe={item} />
