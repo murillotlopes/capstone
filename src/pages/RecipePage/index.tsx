@@ -17,7 +17,7 @@ export const RecipePage = () => {
     <Flex
       key={recipeRender.id}
       bgGradient={"linear(to-r, bgColor 75%, primary 25%)"}
-      h={["150vh", "150vh", "100vh", "100vh"]}
+      h={["100%", "100%", "100vh", "100vh"]}
       flexDirection={"column"}
     >
       <Flex justifyContent={"space-between"}>
