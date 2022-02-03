@@ -46,7 +46,7 @@ interface AuthContextData {
   signIn: (credentials: SignInCredentials) => Promise<void>;
   signUp: (credentials: SignUpCredentials) => Promise<void>;
   signOut: () => void;
-  signUpdate: (Ndata: SignUpCredentials) => void
+  signUpdate: (Ndata: SignUpCredentials, onClose: () => void) => void
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -54,7 +54,6 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 const useAuth = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
-  const toast = useToast()
   const [data, setData] = useState<AuthState>(() => {
     const accessToken = localStorage.getItem("@FindRecipes:accessToken");
     const user = localStorage.getItem("@FindRecipes:user");
@@ -101,32 +100,33 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     setData({} as AuthState);
   }, []);
 
+  const toast = useToast()
 
-  const {onClose} = useDisclosure()
-
-  const signUpdate = (Ndata: SignUpCredentials ) => {
+  const signUpdate = (Ndata: SignUpCredentials, onEditProClose: () => void) => {
 
     api.patch(`users/${data.user.id}`, Ndata, {headers: {Authorization: `Bearer ${data.accessToken}`}})
-    .then( res => {
-      const profile = {username: res.data.username, email: res.data.email , profile: res.data.profile , id: res.data.id}
+    .then( response => {
+
+      const profile = {username: response.data.username, email: response.data.email , profile: response.data.profile , id: response.data.id}
 
       localStorage.setItem("@FindRecipes:user", JSON.stringify(profile))
-
+  
       setData({accessToken: data.accessToken, user: profile} as AuthState)
 
       toast({
-        position: "top",
-        title: `Profile atualizado`,
-        description: "Caso queira, estamos aqui",
-        status: "success",
-        duration: 9000,
-        isClosable: true,
+          position: "top",
+          title: `Profile atualizado`,
+          description: "Caso queira, estamos aqui",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
       });
+      onEditProClose()
+  })
+  .catch( err => console.log(err))
 
-      onClose()
 
-    })
-    .catch( error => console.log(error))
+
   }
 
   return (
