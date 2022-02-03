@@ -50,6 +50,8 @@ export const FeedCard = ({ publication }: FeedCartProps) => {
       alignItems="center"
       flexDirection={"column"}
       borderRadius="10px"
+      boxShadow={"-3px 6px 15px -7px #000000"}
+      _hover={{ filter: "brightness(0.8)", transition: "all 0.5s" }}
     >
       <Flex
         w="100%"
@@ -114,9 +116,7 @@ export const FeedCard = ({ publication }: FeedCartProps) => {
           {publication.description}
         </Heading>
         <Center
-          
           opacity="0.4"
-         
           bg="chardon"
           color="chardon"
           w="40px"

@@ -1,9 +1,13 @@
-import { FiArrowLeftCircle, FiLogOut, FiPlusCircle, FiUser } from "react-icons/fi";
+import {
+  FiArrowLeftCircle,
+  FiLogOut,
+  FiPlusCircle,
+  FiUser,
+} from "react-icons/fi";
 import { useHistory } from "react-router-dom";
-import { Box, Stack, useDisclosure } from "@chakra-ui/react";
-import { PseudoBox } from "@chakra-ui/core";
+import { HStack, Box } from "@chakra-ui/react";
 
-import { CreatePubliModal } from "../../components/PublicationsModal/CreatePubliModal"
+import { CreatePubliModal } from "../../components/PublicationsModal/CreatePubliModal";
 import { useAuth } from "../../contexts/Auth";
 import { EditProModal } from "../../components/EditProModal";
 import { useIcons } from "../../contexts/Icons";
@@ -12,29 +16,36 @@ import { useEffect } from "react";
 export const ButtonFeed = () => {
   const history = useHistory();
   const { signOut } = useAuth();
-  const { loadIcons} = useIcons()
-  
+  const { loadIcons } = useIcons();
+
   useEffect(() => {
-    loadIcons()
-  }, [])
+    loadIcons();
+  }, []);
 
   return (
-    <Box
+    <HStack
       position="fixed"
       right="0"
-      fontSize="30px"
+      fontSize={["25px", "30px"]}
       cursor="pointer"
       display="flex"
-      flexDirection={["row", "column"]}
+      flexDirection={"row"}
       justifyContent="space-evenly"
-      margin={["10px", "5px 30px 0 0"]}
-      h={["50px", "150px"]}
-      w={["120px", "30px"]}
+      spacing="15px"
+      marginRight={["10px", "10px", "30px"]}
     >
-      <EditProModal/>
-      <CreatePubliModal />
-      <FiArrowLeftCircle onClick={() => history.push("/dashboard")} />
-      <FiLogOut onClick={signOut} />
-    </Box>
+      <Box _hover={{ transform: "scale(1.2)", transition: "all 0.5s" }}>
+        <EditProModal />
+      </Box>
+      <Box _hover={{ transform: "scale(1.2)", transition: "all 0.5s" }}>
+        <CreatePubliModal />
+      </Box>
+      <Box _hover={{ transform: "scale(1.2)", transition: "all 0.5s" }}>
+        <FiArrowLeftCircle onClick={() => history.push("/dashboard")} />
+      </Box>
+      <Box _hover={{ transform: "scale(1.2)", transition: "all 0.5s" }}>
+        <FiLogOut onClick={signOut} />
+      </Box>
+    </HStack>
   );
 };

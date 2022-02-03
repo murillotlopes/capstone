@@ -50,8 +50,7 @@ export const SignUp = () => {
       username: data.username,
       email: data.email,
       password: data.password,
-      profile:
-        "https://raw.githubusercontent.com/thdias00/capstone/develop/src/assets/profileHolder.png",
+      profile: "https://i.ibb.co/RQzkSHf/icondefault.png",
     };
     signUp(currentData)
       .then((_) => {

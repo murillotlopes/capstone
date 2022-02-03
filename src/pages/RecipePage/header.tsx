@@ -34,7 +34,7 @@ export const Header = () => {
           _hover={{ color: "white", transition: "0.5s" }}
           cursor="pointer"
         >
-          <FiArrowLeftCircle size={35} />
+          <FiArrowLeftCircle size={30} />
         </Box>
         <Box
           onClick={signOut}
@@ -42,7 +42,7 @@ export const Header = () => {
           cursor="pointer"
           mt={"15px"}
         >
-          <FiLogOut size={35} />
+          <FiLogOut size={30} />
         </Box>
       </Box>
     </Flex>
