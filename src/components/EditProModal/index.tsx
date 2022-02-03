@@ -47,8 +47,8 @@ export const EditProModal = () => {
     const leftProfile = () => {
         const size = icons.length-1
 
-        if(position === size){
-            setPosition(0)
+        if(position === 0){
+            setPosition(size)
         }else{
             setPosition(position-1)
         }
