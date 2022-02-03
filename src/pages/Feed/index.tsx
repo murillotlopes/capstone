@@ -36,7 +36,7 @@ export const FeedPage = () => {
         <ButtonFeed />
       </Flex>
 
-      <Flex flexWrap={"wrap"} justifyContent={"center"}>
+      <Flex flexWrap={"wrap"} justifyContent={"center"} overflowY="scroll">
         {publications.map((item, index) => (
           <FeedCard key={index} publication={item} />
         ))}
