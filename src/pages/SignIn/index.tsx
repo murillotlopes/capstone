@@ -25,9 +25,7 @@ interface SignInData {
 export const SignIn = () => {
   const toast = useToast();
   const history = useHistory();
-
   const { isOpen, onOpen, onClose } = useDisclosure();
-
   const { signIn } = useAuth();
 
   const SignInSchema = yup.object().shape({
@@ -91,7 +89,12 @@ export const SignIn = () => {
           _hover={{ textDecor: "none" }}
           cursor={"pointer"}
         >
-          <Image src={Logo} position={"absolute"} w={"85px"} margin={"10px"} />
+          <Image
+            src={Logo}
+            position={"absolute"}
+            w={["100px", "120px"]}
+            margin={["10px", "15px 0 0 30px"]}
+          />
         </Link>
         <Image src={Decor} position={"absolute"} bottom="0" h="70%" />
       </Flex>
