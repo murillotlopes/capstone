@@ -97,7 +97,6 @@ export const FeedCard = ({ publication }: FeedCartProps) => {
       </Flex>
 
       <Flex
-          
         w="100%"
         justifyContent="center"
         alignItems="flex-end"
