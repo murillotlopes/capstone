@@ -103,9 +103,7 @@ const PublicationProvider = ({ children }: PublicationProviderProps) => {
           isClosable: true,
         });
         onClose();
-        // setTimeout(() => {
-        //   document.location.reload();
-        // }, 3000);
+
       })
       .catch((err) =>
         toast({

@@ -1,13 +1,14 @@
-import {
-  Flex,
-  Box,
-  Image,
-  Heading,
-  HStack,
-} from "@chakra-ui/react";
+import { Flex, Box, Image, Heading, HStack } from "@chakra-ui/react";
 import { useAuth } from "../../contexts/Auth";
 import DeleteConfirmModal from "../../components/PublicationsModal/DeleteConfirmModal";
 import EditModal from "../../components/PublicationsModal/EditPublimodal";
+import { useEffect, useState } from "react";
+import Entrada from "../../assets/entrada.png"
+import Sobremesa from "../../assets/sobremesa.png"
+import Principal from "../../assets/prato-principal.png"
+import Fitness from "../../assets/fitness.png"
+import { string } from "yup/lib/locale";
+
 
 interface FeedCartProps {
   publication: {
@@ -17,13 +18,32 @@ interface FeedCartProps {
     category: string;
     description: string;
     id: number;
-    date:string;
+    date: string;
   };
 }
 
 export const FeedCard = ({ publication }: FeedCartProps) => {
   const { user } = useAuth();
   const userId = parseInt(user.id, 10);
+  const [categoryImage, setCategoryImage] = useState("")
+
+  useEffect(()=>{
+    if(publication.category === "sobremesa"){
+      setCategoryImage(Sobremesa);
+    }
+    if(publication.category === "fitness"){
+      setCategoryImage(Fitness)
+    }
+    if(publication.category === "entradas"){
+      setCategoryImage(Entrada)
+    }
+    if(publication.category === "prato-principal"){
+      setCategoryImage(Principal)
+    }
+
+    
+  },[publication])
+
 
   return (
     <Box
@@ -69,7 +89,7 @@ export const FeedCard = ({ publication }: FeedCartProps) => {
             size="4xs"
             fontWeight="500"
           >
-           {publication.date}
+            {publication.date}
           </Heading>
         </Box>
         {publication.userId === userId && (
@@ -81,6 +101,7 @@ export const FeedCard = ({ publication }: FeedCartProps) => {
       </Flex>
 
       <Flex w="100%" textAlign="start">
+        <Image boxSize="50px"  src={categoryImage}  />
         <Heading
           as="p"
           fontSize="md"
@@ -93,7 +114,6 @@ export const FeedCard = ({ publication }: FeedCartProps) => {
           {publication.description}
         </Heading>
       </Flex>
-
     </Box>
   );
 };

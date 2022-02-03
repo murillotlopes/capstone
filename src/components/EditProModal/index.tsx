@@ -9,6 +9,14 @@ import { useState } from 'react'
 import { useIcons } from '../../contexts/Icons'
 import { Input } from '../Form/Input'
 
+// interface EditprofileProps{
+//     username:string;
+//     email:string;
+// }
+
+type editProData = {
+    [key:string]:string;
+}
 
 export const EditProModal = () => {
     const {isOpen: isEditProOpen, onClose: onEditProClose, onOpen: onEditProOpen} = useDisclosure()
@@ -48,9 +56,10 @@ export const EditProModal = () => {
         setChgProfile(icons[position].image)
     }
 
-    const saveEditProfile = () => {
-        const data = {username:chgUsername, profile: chgProfile, email: chgEmail, password: chgPassword }
-        signUpdate(data)
+    const saveEditProfile = (data:editProData) => {
+        console.log(data)
+        // const data = {username:chgUsername, profile: chgProfile, email: chgEmail, password: chgPassword }
+        // signUpdate(data)
     }
 
     return(
