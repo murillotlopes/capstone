@@ -1,142 +1,109 @@
 import { Box, Flex, Image, Link, Stack, Text } from "@chakra-ui/react";
 import { AiOutlineClockCircle } from "react-icons/ai";
-import { FiArrowLeftCircle, FiLogOut } from "react-icons/fi";
 import { FiUser } from "react-icons/fi";
 import { useRecipes } from "../../contexts/Recipes";
-import Logo from "../../assets/logo.png";
-import { useHistory } from "react-router-dom";
-import { useAuth } from "../../contexts/Auth";
+import Plant from "../../assets/plant.png";
+import { Header } from "../../pages/RecipePage/header";
 
 export const RecipePage = () => {
-  const { signOut } = useAuth();
   const { recipeRender } = useRecipes();
-
-  const history = useHistory();
 
   return (
     <Flex
       key={recipeRender.id}
       bgGradient={"linear(to-r, bgColor 75%, primary 25%)"}
       h={["100%", "100%", "100vh", "100vh"]}
-      flexDirection={"column"}
+      justifyContent="flex-start"
+      alignItems="center"
+      flexDirection={["column"]}
     >
-      <Flex justifyContent={"space-between"}>
-        <Link
-          href="/dashboard"
-          textDecor={"none"}
-          _hover={{ textDecor: "none" }}
-          cursor={"pointer"}
-        >
-          <Image
-            src={Logo}
-            w="85px"
-            margin="10px"
-            onClick={() => history.push("/dashboard")}
-          />
-        </Link>
-        <Stack
-          position="fixed"
-          right="0"
-          fontSize="30px"
-          cursor="pointer"
-          display="flex"
-          flexDirection={"column"}
-          margin="30px"
-          spacing="15px"
-        >
-          <Box
-            onClick={() => history.goBack()}
-            _hover={{ color: "white", transition: "0.5s" }}
-            cursor="pointer"
-          >
-            <FiArrowLeftCircle size={35} />
-          </Box>
-          <Box
-            onClick={signOut}
-            _hover={{ color: "white", transition: "0.5s" }}
-            cursor="pointer"
-            mt={"15px"}
-          >
-            <FiLogOut size={35} />
-          </Box>
-        </Stack>
-      </Flex>
+      <Header />
+
+      <Image src={Plant} position={"fixed"} bottom={"0"} left={"0"} h={"75%"} />
+
       <Flex
-        flexDir={["column", "column", "row-reverse", "row-reverse"]}
-        justifyContent={"center"}
+        flexDirection={"column"}
+        h={"70vh"}
+        w={"80vw"}
+        marginTop={["15px", "15px", "70px", "90px"]}
         alignItems={"center"}
       >
-        <Flex justifyContent={"flex-end"}>
-          <Image
-            src={recipeRender.image}
-            borderRadius={"5px 0px 0px 525px"}
-            w={["100vw", "100vw", "50vw", "50vw"]}
-            maxH={"75vh"}
-            mt={"1rem"}
-          />
-        </Flex>
-        <Flex flexDir={"column"}>
+        <Flex
+          w={["100%", "100%", "100%", "70%"]}
+          flexDirection={["column", "column", "row", "row"]}
+          bg={"#ffedde"}
+          borderRadius={"8px"}
+          padding={"20px"}
+          boxShadow={"-3px 6px 15px -7px #000000"}
+          alignItems={"center"}
+          zIndex={"1"}
+        >
+          <Box w={["100%", "70%", "50%", "50%"]}>
+            <Image
+              src={recipeRender.image}
+              objectFit="cover"
+              borderRadius={"8px"}
+              height="100%"
+            />
+          </Box>
           <Flex
-            justifyContent={"flex-start"}
-            margin={[
-              "2.5rem auto",
-              "2.5rem auto",
-              "auto auto auto 2.5rem",
-              "auto auto auto 2.5rem",
-            ]}
-            width={["100vw", "100vw", "50vw", "50vw"]}
+            mt={["20px", "20px", "0", "0"]}
+            ml={["0", "0", "20px", "20px"]}
+            justifyContent={"center"}
           >
-            <Box
-              width={"40%"}
-              mr={"0.5rem"}
-              ml={["1rem", "1rem", "1rem", "1rem"]}
-            >
+            <Box w={"55%"}>
+              <Text
+                w={["100%", "90%", "70%", "70%"]}
+                fontFamily={"Playfair Display"}
+                fontStyle={"normal"}
+                fontWeight={"700"}
+                mb="0.3rem"
+                marginRight={["10px"]}
+              >
+                Ingredientes
+              </Text>
+
+              <ul>
+                {!!recipeRender.ingredients.length &&
+                  recipeRender.ingredients.map((item, index) => (
+                    <Box listStyleType="none">
+                      <li key={index}>{item}</li>
+                    </Box>
+                  ))}
+              </ul>
+            </Box>
+
+            <Box>
               <Text
                 fontSize={"1.2rem"}
                 fontFamily={"Playfair Display"}
                 fontStyle={"normal"}
                 fontWeight={"700"}
                 mb="0.3rem"
+                ml={["10px"]}
               >
                 {recipeRender.title}
               </Text>
-              <Flex justifyContent={"flex-start"}>
-                {" "}
-                <AiOutlineClockCircle /> <Text ml={"0.2rem"}>30 min</Text>{" "}
+              <Flex ml={["10px"]}>
+                <AiOutlineClockCircle /> <Text ml={"0.2rem"}>30 min</Text>
               </Flex>
-              <Flex justifyContent={"flex-start"}>
-                {" "}
+              <Flex ml={["10px"]}>
                 <FiUser /> <Text ml={"0.2rem"}>{recipeRender.serves}</Text>{" "}
               </Flex>
             </Box>
-            <Box width={"40%"}>
-              <Text
-                fontFamily={"Playfair Display"}
-                fontStyle={"normal"}
-                fontWeight={"700"}
-                mb="0.3rem"
-              >
-                Ingredientes
-              </Text>
-              <ul>
-                {!!recipeRender.ingredients.length &&
-                  recipeRender.ingredients.map((item, index) => (
-                    <li key={index}>{item}</li>
-                  ))}
-              </ul>
-            </Box>
           </Flex>
-          <Box
-            width={["90vw", "90vw", "50vw", "50vw"]}
-            bgColor={"white"}
-            borderRadius={"25px"}
-            marginLeft={["auto", "auto", "2.5rem", "2.5rem"]}
-            mt={["auto", "auto", "1,5rem", "1.5rem"]}
-            padding={"1rem"}
-          >
-            <Text>Receita</Text>
-            <Text>{recipeRender.method}</Text>
-          </Box>
+        </Flex>
+
+        <Flex
+          marginTop={"20px"}
+          w={["100%", "100%", "100%", "70%"]}
+          bg={"#ffedde"}
+          borderRadius={"8px"}
+          boxShadow={"-3px 6px 15px -7px #000000"}
+          padding={"20px"}
+          zIndex={"1"}
+        >
+          <Text>{recipeRender.method}</Text>
         </Flex>
       </Flex>
     </Flex>
