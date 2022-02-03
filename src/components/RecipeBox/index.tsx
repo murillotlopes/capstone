@@ -45,6 +45,7 @@ export const RecipeBox = ({ recipe }: RecipeBox) => {
         flexDir={"column"}
         padding={["8px", "8px", "10px 12px"]}
         justifyContent={"center"}
+        w={"100%"}
       >
         <Text
           as={"h3"}

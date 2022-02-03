@@ -16,6 +16,7 @@ export const RecipePage = () => {
       justifyContent="flex-start"
       alignItems="center"
       flexDirection={["column"]}
+      overflowY={"auto"}
     >
       <Header />
 
@@ -25,9 +26,8 @@ export const RecipePage = () => {
         flexDirection={"column"}
         h={"70vh"}
         w={"80vw"}
-        marginTop={["15px", "15px", "70px", "90px"]}
+        marginTop={["20px", "20px", "70px", "90px"]}
         alignItems={"center"}
-        overflowY={'auto'}
       >
         <Flex
           w={["100%", "100%", "100%", "70%"]}
@@ -51,9 +51,9 @@ export const RecipePage = () => {
             mt={["20px", "20px", "0", "0"]}
             ml={["0", "0", "20px", "20px"]}
             justifyContent={"center"}
-            flexDir={['column-reverse', 'row']}
+            flexDir={["column-reverse", "row"]}
           >
-            <Box w={['100%', "55%"]}>
+            <Box w={["100%", "55%"]}>
               <Text
                 w={["100%", "90%", "70%", "70%"]}
                 fontFamily={"Playfair Display"}

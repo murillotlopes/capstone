@@ -11,9 +11,8 @@ export const Header = () => {
     <Flex
       as="header"
       justifyContent={"space-between"}
-      top="0"
       marginTop={"10px"}
-      h={"0 auto"}
+      h={"auto"}
       w={"90%"}
     >
       <Link
@@ -35,7 +34,7 @@ export const Header = () => {
           _hover={{ color: "white", transition: "0.5s" }}
           cursor="pointer"
         >
-          <FiArrowLeftCircle size={35} />
+          <FiArrowLeftCircle size={30} />
         </Box>
         <Box
           onClick={signOut}
@@ -43,7 +42,7 @@ export const Header = () => {
           cursor="pointer"
           mt={"15px"}
         >
-          <FiLogOut size={35} />
+          <FiLogOut size={30} />
         </Box>
       </Box>
     </Flex>
