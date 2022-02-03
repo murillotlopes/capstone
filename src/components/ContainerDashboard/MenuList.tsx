@@ -23,7 +23,7 @@ export const MenuList = () => {
     >
       <Flex
         w={["100%", "100%", "20%", "20%"]}
-        h={["30%", "30%", "80%", "100%"]}
+        h={["30%", "30%", "80%", "80%"]}
         m={["10px 20px", "10px 20px", "0px 30px", "0px 30px"]}
         borderRadius={"20px"}
         bg={"#FFFFFF"}
@@ -56,7 +56,7 @@ export const MenuList = () => {
       </Flex>
       <Flex
         w={["100%", "100%", "20%", "20%"]}
-        h={["30%", "30%", "80%", "100%"]}
+        h={["30%", "30%", "80%", "80%"]}
         m={["10px 20px", "10px 20px", "0px 30px", "0px 30px"]}
         borderRadius={"20px"}
         bg={"#FFFFFF"}
@@ -106,7 +106,7 @@ export const MenuList = () => {
       </Flex>
       <Flex
         w={["100%", "100%", "20%", "20%"]}
-        h={["30%", "30%", "80%", "100%"]}
+        h={["30%", "30%", "80%", "80%"]}
         m={["10px 20px", "10px 20px", "0px 30px", "0px 30px"]}
         borderRadius={"20px"}
         bg={"#FFFFFF"}
